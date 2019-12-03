@@ -7,7 +7,7 @@ FOLD=65
 ############
 COLOR_Black=$'\u001b[30m'
 COLOR_Red=$'\u001b[31m'
-COLOR_Green=$'\u001b[32m'
+export COLOR_Green=$'\u001b[32m'
 COLOR_Yellow=$'\u001b[33m'
 COLOR_Blue=$'\u001b[34m'
 COLOR_Magenta=$'\u001b[35m'
@@ -43,10 +43,12 @@ BG_BR_Magenta=$'\u001b[45;1m'
 BG_BR_Cyan=$'\u001b[46;1m'
 BG_BR_White=$'\u001b[47;1m'
 
+SPEECH=$COLOR_Yellow
+
 prompt () { echo -ne "${1}${COLOR_Reset}<Press ENTER> "; read ANS; }
 
 spell () {
-	echo -e "${BG_Black}${COLOR_BR_Green}${1}\t${COLOR_Green}$2"
+	echo -e "${COLOR_BR_Green}${1}\t${COLOR_Reset}${COLOR_Green}${2}\n" | fold -w $FOLD -s
 }
 
 if [[ $BASH_SOURCE == $0 ]]; then
