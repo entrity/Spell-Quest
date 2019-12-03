@@ -2,13 +2,19 @@
 
 FOLD=65
 
+spell () {
+	printf "${SPELL}${*}${RESET}${SPEECH}"
+}
+export -f spell
+alt () {
+	printf "${COLOR_Cyan}${*}${RESET}${SPEECH}"
+}
+
 ############
 # COLORS
 ############
 COLOR_Black=$'\u001b[30m'
 COLOR_Red=$'\u001b[31m'
-export COLOR_Green=$'\u001b[32m'
-COLOR_Yellow=$'\u001b[33m'
 COLOR_Blue=$'\u001b[34m'
 COLOR_Magenta=$'\u001b[35m'
 COLOR_Cyan=$'\u001b[36m'
@@ -16,12 +22,13 @@ COLOR_White=$'\u001b[37m'
 COLOR_Reset=$'\u001b[0m'
 COLOR_BR_Black=$'\u001b[30;1m'
 COLOR_BR_Red=$'\u001b[31;1m'
-COLOR_BR_Green=$'\u001b[32;1m'
-COLOR_BR_Yellow=$'\u001b[33;1m'
-COLOR_BR_Blue=$'\u001b[34;1m'
-COLOR_BR_Magenta=$'\u001b[35;1m'
-COLOR_BR_Cyan=$'\u001b[36;1m'
-COLOR_BR_White=$'\u001b[37;1m'
+
+GREEN=$'\033[32m'
+YELLOW=$'\033[33m'
+BOLD=$'\033[;1m'
+RESET=$'\033[0;0;0m'
+SPEECH=$YELLOW
+SPELL=${BOLD}${GREEN}
 
 ############
 # COLORS
@@ -42,14 +49,6 @@ BG_BR_Blue=$'\u001b[44;1m'
 BG_BR_Magenta=$'\u001b[45;1m'
 BG_BR_Cyan=$'\u001b[46;1m'
 BG_BR_White=$'\u001b[47;1m'
-
-SPEECH=$COLOR_Yellow
-
-prompt () { echo -ne "${1}${COLOR_Reset}<Press ENTER> "; read ANS; }
-
-spell () {
-	echo -e "${COLOR_BR_Green}${1}\t${COLOR_Reset}${COLOR_Green}${2}\n" | fold -w $FOLD -s
-}
 
 if [[ $BASH_SOURCE == $0 ]]; then
 	echo DEMO
