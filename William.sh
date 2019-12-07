@@ -1,7 +1,7 @@
 #!/bin/bash
 
 shopt -s expand_aliases
-. util/shared.sh
+. .util/shared.sh
 
 
 fold -w $FOLD -s <<HEREDOC | less -r
@@ -14,7 +14,7 @@ What's that you have there? A spellbook? Ah, that old homebody can teach you a l
 
 You say you want to go to the local magic academy? Why nothing could be easier! Just spread your wings, hop to the window, and --- what's that? You have no wings? Oh, dear.
 
-Well, I suppose I could teach you a spell or two that would help. Write these down in your spellbook, would you? But **DON"T** invoke the spell yet, or you could be whisked away and not know where!
+Well, I suppose I could teach you a spell or two that would help. Write these down in your spellbook, would you? But $(alt "DON'T") invoke the spell yet, or you could be whisked away and not know where!
 
 $(spell cd) and $(spell pwd)
 
@@ -47,5 +47,13 @@ An $(alt absolute) path contains directions that can be understood from anywhere
 $(spell cd /north)
     uses an absolute path, and it would teleport you to $(alt /north).
 $(spell cd $(pwd))
-    also uses an absolute path, and it would teleport you to $(alt $(pwd)). 
+    also uses an absolute path, and it would teleport you to $(alt $(pwd)).
+
+
+                           {O,O}
+                          ./)_)
+... Are you still here?     " "
+My advice is that you $(spell cd) into the forest $(spell north) of here and see if there's anyone who can guide you further.
+
+$(red Press q to leave)
 HEREDOC

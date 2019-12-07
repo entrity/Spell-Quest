@@ -1,14 +1,20 @@
 #!/bin/bash
 
+THISDIR=$(dirname "$(readlink -f "$BASH_SOURCE")")
 FOLD=65
 
 spell () {
-	printf "${SPELL}${*}${RESET}${SPEECH}"
+	printf "${SPELL}${*}${SPEECH_N}"
 }
-export -f spell
 alt () {
-	printf "${COLOR_Cyan}${*}${RESET}${SPEECH}"
+	printf "${COLOR_Cyan}${*}${SPEECH_N}"
 }
+red () {
+	printf "${COLOR_Red}${*}${SPEECH_N}"
+}
+
+BIGBUN=$( cat $THISDIR/ascii/big-bun.txt )
+LILBUN=$( cat $THISDIR/ascii/lil-bun.txt )
 
 ############
 # COLORS
@@ -25,9 +31,12 @@ COLOR_BR_Red=$'\u001b[31;1m'
 
 GREEN=$'\033[32m'
 YELLOW=$'\033[33m'
+CYAN=$'\033[36m'
+RED=$'\033[31m'
 BOLD=$'\033[;1m'
 RESET=$'\033[0;0;0m'
 SPEECH=$YELLOW
+SPEECH_N=$'\033[0;33m'
 SPELL=${BOLD}${GREEN}
 
 ############
