@@ -1,14 +1,17 @@
-## Starting
+## Generic
 
-* ls
+* ls (Teleportation)
 * cat
 * cd ./../~/-
+* less
 
 ## Transmutation
 
 * mv
 * rm
 * sed
+* sort -u
+* cut
 
 ## ?
 
@@ -23,6 +26,7 @@
 ## Illusion
 
 * eog
+* open
 
 ## Shadow
 

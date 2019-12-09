@@ -41,9 +41,9 @@ If the destination does $(red not) exist, then the arrow's name will be changed 
 
 For example, do you see that $(cyan Closet) there? That's a directory. Do you see that Cupboard there? That's also a directory. There are some tools inside of the closet: a broom, a mop, and a bucket.
 
-$(spell mv -n Closet/bucket Shelf) ...now the bucket is located at Shelf/bucket
+$(spell mv -n Closet/bucket Cupboard) ...now the bucket is located at Cupboard/bucket
 
-$(spell mv -n Shelf/bucket Shelf/rag) ...now the bucket has been changed into a rag! Well, not really. But from the *outside*, at least, it looks like a rag. One time, a friend of mine tried to use this spell to turn a lump of coal into a gold nugget. He sold it to a stranger, but the stranger eventually realized the gold was really still coal on the inside, and he took my friend to task for it. Broke a chair over him, he did.
+$(spell mv -n Cupboard/bucket Cupboard/rag) ...now the bucket has been changed into a rag! Well, not really. But from the *outside*, at least, it looks like a rag. One time, a friend of mine tried to use this spell to turn a lump of coal into a gold nugget. He sold it to a stranger, but the stranger eventually realized the gold was really still coal on the inside, and he took my friend to task for it. Broke a chair over him, he did.
 
 $(spell mv -n Closet/broom .) ...now the broom is here in this location instead of in the Closet. What fun! I could do this all day!
 
@@ -52,7 +52,8 @@ Wait a moment! I hear footsteps. I had better go. Just shut this window behind m
 $(red Press q to end)
 HEREDOC
 
-mv "$THISDIR/Closet/broom" "$THISDIR"
-mv "$THISDIR/Closet/bucket" "$THISDIR/Shelf/rag"
-mv "$0" ".$0"
-mv "$THISDIR/.Raleigh.sh" "$THISDIR/Raleigh.sh"
+
+mv "$THISDIR/Closet/broom" "$THISDIR" 2>/dev/null
+mv "$THISDIR/Closet/bucket" "$THISDIR/Cupboard/rag" 2>/dev/null
+mv "$0" "$(dirname "$0")/.$(basename "$0")" 2>/dev/null
+mv "$THISDIR/.Raleigh.sh" "$THISDIR/Raleigh.sh" 2>/dev/null
