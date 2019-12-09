@@ -1,5 +1,9 @@
 #!/bin/bash
 
+THISDIR=$(dirname "$(readlink -f "$0")")
+ROOTDIR="${THISDIR%/Spell-Quest/*}/Spell-Quest"
+. "$ROOTDIR/.util/shared.sh"
+
 COLOR_Black=$'\u001b[30m'
 COLOR_Red=$'\u001b[31m'
 COLOR_Blue=$'\u001b[34m'
@@ -49,3 +53,5 @@ ${GREEN}For example, once you run "ls", you should be able to see William. He's 
 
 ${COLOR_Red}Press q to leave${YELLOW}
 HEREDOC
+
+bash "$ROOTDIR/.util/setup.sh"

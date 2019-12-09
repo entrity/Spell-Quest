@@ -26,3 +26,8 @@ for path in `seq 16`; do
 done
 
 ln -s "$(readlink -f "$THISDIR/academy-sylphan")" "$ROOTDIR/north/forest/path-5/tree-7/"
+mkdir -p "$THISDIR/academy-sylphan/Transmutation/Cupboard"
+mkdir -p "$THISDIR/academy-sylphan/Transmutation/Closet"
+touch "$THISDIR/academy-sylphan/Transmutation/Closet/broom"
+touch "$THISDIR/academy-sylphan/Transmutation/Closet/mop"
+touch "$THISDIR/academy-sylphan/Transmutation/Closet/bucket"
