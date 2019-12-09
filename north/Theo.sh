@@ -17,7 +17,7 @@ But I can teach you such a spell! I can indeed.
 
 $(spell find)
 
-It's a way to search for almost anything you might need. It's only a generic first-level spell, but it's very powerful. If invoked with no parameters, it searches for all files and directories contained within your current directory.
+It's a way to search for almost anything you might need. It's actually a second-level Divination spell, and it's very powerful. If invoked with no parameters, it searches for all files and directories contained within your current directory.
 
 Admittedly that's not every useful in a forest. You'd find all manner of trees and winding paths. But if you supply parameters, you can use it very powerfully. The first parameter will always be the path where you want your search to start. (Searches always move downward to deeper paths, never upward to shallower paths.) If you want to start your search from your current location, you can just use $(spell .) to represent the starting location. If you want to start your search from one level above your current location use $(spell ..)
 
@@ -67,3 +67,7 @@ Oh... well... this is kind of embarrassing, but I don't entirely remember the na
 
 $(red Press q to leave)
 HEREDOC
+
+echo
+echo -e "$LILBUN"
+echo "Once again, the first word is like \"academy\" or \"academia\" or something like that. The second word is \"sylphan\" or maybe \"sylvan\" or something. Maybe that's enough to guide you in crafting a PATTERN for 'find'." | fold -s -w $FOLD

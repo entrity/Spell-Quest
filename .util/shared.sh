@@ -13,8 +13,10 @@ red () {
 	printf "${COLOR_Red}${*}${SPEECH_N}"
 }
 
+BOW=$( cat $THISDIR/ascii/bow.txt )
 BIGBUN=$( cat $THISDIR/ascii/big-bun.txt )
 LILBUN=$( cat $THISDIR/ascii/lil-bun.txt )
+WIZARD_JAGGERS=$( cat $THISDIR/ascii/wizard-jaggers.txt )
 
 ############
 # COLORS

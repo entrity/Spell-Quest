@@ -3,8 +3,14 @@
 # Set up forest northward
 
 THISDIR=$(dirname "$(readlink -f "$0")")
+ROOTDIR=$(readlink -f "$THISDIR/..")
+cd "$ROOTDIR"
 mkdir -p north
 cd north
+
+for classroom in Transmutation Divination Conjuration Shadow Illusion Destruction; do
+	mkdir $THISDIR/academy-sylphan/$classroom
+done
 
 RED_HERRING_PARTS=(academy forest academia academic forestry wood)
 
@@ -19,4 +25,4 @@ for path in `seq 16`; do
 	done
 done
 
-ln -s "$(readlink -f "$THISDIR/academy-sylphan")" path-143/tree-71/
+ln -s "$(readlink -f "$THISDIR/academy-sylphan")" "$ROOTDIR/north/forest/path-5/tree-7/"
