@@ -18,20 +18,8 @@ SPEECH=$YELLOW
 SPELL=${BOLD}${GREEN}
 
 fold -w 60 -s <<HEREDOC | less -r
-${COLOR_White}           (                 ,&&&.
-            )                .,.&&
-           (  (              \=__/
-               )             ,'-'.
-         (    (  ,,      _.__|/ /|
-          ) /\ -((------((_|___/ |
-        (  // | (`'      ((  `'--|
-      _ -.;_/ \\--._      \\ \-._/.
-     (_;-// | \ \-'.\    <_,\_\`--'|
-     ( `.__ _  ___,')      <_,-'__,'
-      `'(_ )_)(_)_)'
-
 ${SPEECH}
-So your friends have all gone away to that warty-hog school, that one in England, have they?
+So your friends have all gone away to that warty-hog school, have they? They think they'll all be witches and wizards, do they?
 
 So you think you're going to start a life of treasure hunting, do you?
 
