@@ -10,7 +10,7 @@ bag_check () {
 		echo
 		echo "I'll teach you a little spell: $(spell mkdir TARGET). 'mkdir' is an abbreviation for 'make directory'. I want you to create a directory named 'bag'. You should create it in your home directory."
 		echo
-		echo -e "Did you learn the arcane symbol '$(spell '~')'? It signifies your home directory, so to create a directiory named bag there, just invoke:"
+		echo -e "Did you learn the arcane symbol '$(spell '~')'? It signifies your home directory, so to create a directiory named \"bag\" there, just invoke:"
 		echo
 		echo -e "$(spell mkdir '~/bag')"
 		echo
