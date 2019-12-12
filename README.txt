@@ -4,6 +4,7 @@
 * cat
 * cd ./../~/-
 * less
+* mkdir
 
 ## Transmutation
 
@@ -13,7 +14,7 @@
 * sort -u
 * cut
 
-## ?
+## Divination
 
 * grep
 * find
