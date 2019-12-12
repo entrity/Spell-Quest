@@ -1,9 +1,5 @@
 #!/bin/bash
 
-shopt -s expand_aliases
-THISDIR=$(dirname "$(readlink -f "$0")")
-. $THISDIR/../.util/shared.sh
-
 fold -w $FOLD -s <<HEREDOC | less -r
 ${SPEECH}${BIGBUN}
 
@@ -17,9 +13,9 @@ But I can teach you such a spell! I can indeed.
 
 $(spell find)
 
-It's a way to search for almost anything you might need. It's actually a second-level Divination spell, and it's very powerful. If invoked with no parameters, it searches for all files and directories contained within your current directory.
+It's a way to search for almost anything you might need. It's actually a second-level Divination spell, and it's very powerful. If invoked with no parameters, it searches for all files and directories contained within or beneath your current directory.
 
-Admittedly that's not every useful in a forest. You'd find all manner of trees and winding paths. But if you supply parameters, you can use it very powerfully. The first parameter will always be the path where you want your search to start. (Searches always move downward to deeper paths, never upward to shallower paths.) If you want to start your search from your current location, you can just use $(spell .) to represent the starting location. If you want to start your search from one level above your current location use $(spell ..)
+Admittedly that's not every useful in a forest. You'd find all manner of trees and winding paths. But if you supply parameters, you can use it very powerfully. The first parameter will always  the path where you want your search to start. (Searches always move downward to deeper paths, never upward to shallower paths.) If you want to start your search from your current location, you can just use $(spell .) to represent the starting location. If you want to start your search from one level above your current location use $(spell ..)
 
 $(spell find .)
 
@@ -29,7 +25,7 @@ Whew. But I'm just going to show you how to find items of a certain name because
 
 $(spell find "LOCATION" -iname "PATTERN")
 
-There we are. the $(spell -iname) parameter means that whatever pattern follows is a pattern for the item that you want to find. How do you use a pattern? Well, you can use the "$(spell \*)" character as a "wild card."
+There we are. the $(spell -iname) parameter means that *next* parameter is a pattern for the item that you want to find. How do you use a pattern? Well, you can use the "$(spell \*)" symbol as a "wild card."
   _____
  |A .  | _____
  | /.\ ||A ^  | _____
@@ -41,21 +37,22 @@ There we are. the $(spell -iname) parameter means that whatever pattern follows 
                       |____V|
 
 
-How does it work? Well, here's an example:
+How does it work? Here's an example:
 
-$(spell find . -iname \"*-*=*\") will match:
+$(spell 'find . -iname "*foo*bar*"') will match:
 ${CYAN}
--=
-first-directory/a-b=c
-foo-bar=baz
-abc-=
--=xyz.txt
+foobar
+abcfoodefbarghi
+first-directory/foo+bar
+foo-bar-baz
+123foobar
+foobar123
 ${SPEECH}
 ...and many more! But *NOT*:
 ${CYAN}
-=-
-foo-barbaz
-abc=
+barfoo
+foo
+123bar
 ${SPEECH}
 You may need to try this spell a few times before you get the hang of it.
 
@@ -70,4 +67,4 @@ HEREDOC
 
 echo
 echo -e "$LILBUN"
-echo "Once again, the first word is like \"academy\" or \"academia\" or something like that. The second word is \"sylphan\" or maybe \"sylvan\" or something. Maybe that's enough to guide you in crafting a PATTERN for 'find'." | fold -s -w $FOLD
+echo -e "${SPEECH}Once again, the first word is like \"academy\" or \"academia\" or something like that. The second word is \"sylphan\" or maybe \"sylvan\" or something. Maybe that's enough to guide you in crafting a PATTERN for 'find'.\n\nYou should invoke $(spell find . -iname) with a pattern after $(spell -iname). You will need to use the wildcard symbol $(alt \*) at least once." | fold -s -w $FOLD

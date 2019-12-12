@@ -1,6 +1,6 @@
 __FILE__=$(readlink -f $BASH_SOURCE)
 export __DIR__=$(dirname "$__FILE__")
-export HOME="$__DIR__/heim"
+export HOME="$__DIR__"
 IMGDIR="$__DIR__/.util/ascii"
 
 ###########

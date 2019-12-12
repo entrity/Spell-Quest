@@ -1,59 +1,45 @@
 #!/bin/bash
 
-shopt -s expand_aliases
-. .util/shared.sh
-
-
 fold -w $FOLD -s <<HEREDOC | less -r
 ${SPEECH}
  {O,O}
 ./)_)
-  " "  Ah, it's about time someone came to talk with me.
+  " "  Hoot! It's about time someone came to talk with me.
 
-What's that you have there? A spellbook? Ah, that old homebody can teach you a little magic but not much. His problem is that he never leaves his hovel. Maybe if he had a pair of wings like mine his life would be different.
+What's that you have there? A spellbook? Ah, that old fuddy-duddy can teach you a *little* magic but not much. His problem is that he never leaves this hermitage. Maybe if he had a pair of wings like mine his life would be different.
 
 You say you want to go to the local magic academy? Why nothing could be easier! Just spread your wings, hop to the window, and --- what's that? You have no wings? Oh, dear.
 
-Well, I suppose I could teach you a spell or two that would help. Write these down in your spellbook, would you? But $(alt "DON'T") invoke the spell yet, or you could be whisked away and not know where!
+Well, I suppose I could teach you a Teleportation spell. Write this down in your spellbook, would you? But *DON'T* invoke the spell yet, or you could be whisked away and not know where!
 
-$(spell cd) and $(spell pwd)
+$(spell cd) lets you change your location. Its name is short for "change directory."
 
-Fantastic spells. One lets you change your location, and the other lets you learn your location. Did you know? "cd" is short for 'change directory', and "pwd" is short for 'present working directory'?
+Did you know that many spell names are abbreviations? I'll bet that old hermit didn't tell you that, did he? Well, $(alt ls) is short for "list" because it lists the contents of a directory. And $(alt pwd) is short for "present working directory."
 
-So how do you cast these spells?
+So how do you cast $(spell cd)?
 
-"pwd" is simple. Just enter it on the command line. But "cd" requires more skill: it expects you to specify a target, and to use it, you have to have some understanding of the world around you:
+Like $(alt ls), $(spell cd) can be cast with or without parameters.
 
-Did you run "ls" from this location? You can see that there are two directories: "north" and "south." If you were to invoke "cd north," you would find yourself instantly transported to the "north" directory.
+Did you run $(alt ls) yet? You can see that the trunk is actually a directory, which means that you can squeeze into it if you invoke $(spell cd trunk)! And you can move up a level by invoking $(spell cd ..)! And you can stay right where you are by invoking $(spell cd .)! Oh --- I suppose that last one isn't very useful.
 
+As a reminder, our current location is
+$(alt $(pwd))
 
-$(spell cd) with no parameter assumes you want to travel to your home directory
+If you wanted to leave this hut and go to the forest north of here, you could invoke either of the following (but there are also other ways to write the path for the forest):
+$BRCYAN
+cd ../north/forest
+cd $(readlink -f ../north/forest)
+$SPEECH_N
+What if you invoke $(spell cd) with no parameters? You'll be transported to your $(alt home directory). What's that? You didn't know that you had a home? Well, you have! Your home (at least while on this quest) is $(alt $HOME)
 
-$(spell cd \~) ALSO assumes you want to go to your home directory because "~" is a secret symbol for HOME
-
-$(spell cd ..) teleports you up one level. What is a level? Well, when you run "pwd", you might notice that your location is specified as one or more names, separated by a "/". The "/" divides up every location into levels. Your current location is $(alt $(pwd)), so if you invoked $(spell cd ..), you would find yourself transported to $(alt $(dirname $(pwd)))
-
-$(spell cd -) teleports you to the PREVIOUS directory that you occupied.
-
-The next two ways of using "cd" require you to specify a path. What's a path? Well, it's just a directory. When you run *pwd*, you are shown your current path. There are two kinds of path, and that's why there are two more ways of using "cd."
-
-We have names for these two kinds of path: "relative" and "absolute".
-
-A $(alt relative) path contains directions that can be followed from your current location. For instance,
-$(spell cd north)
-would take you to $(alt $(pwd)/north) if you cast the spell in $(alt $(pwd)). But it would take you to $(alt /fee/fi/fo/north) if you cast it in $(alt /fee/fi/fo).
-
-An $(alt absolute) path contains directions that can be understood from anywhere. An absolute path begins with $(alt /). For instance,
-$(spell cd /north)
-    uses an absolute path, and it would teleport you to $(alt /north).
-$(spell cd $(pwd))
-    also uses an absolute path, and it would teleport you to $(alt $(pwd)).
-
+There's one other handy $(alt technique) for $(spell cd): if you go somewhere that you don't want to be, you can return to the directory which you previously occupied by invoking $(spell cd -). Suppose you accidently cast $(spell cd) and ended up in your home. Well, you could go right back to where you were by casting $(spell cd -).
 
                            {O,O}
                           ./)_)
 ... Are you still here?     " "
-My advice is that you $(spell cd) into the forest $(spell north) of here and see if there's anyone who can guide you further.
+My advice is that you $(spell cd) $(alt northward) of here and see if there's anyone who can guide you further.
 
 $(red Press q to leave)
 HEREDOC
+
+echo -e "$SPEECH_N\nYou should follow William's advice. Invoke $(spell cd ../north)\nDon't forget that you can identify special files with $(spell ls -F)"
