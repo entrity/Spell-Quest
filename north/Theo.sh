@@ -1,6 +1,6 @@
 #!/bin/bash
 
-fold -w $FOLD -s <<HEREDOC | less -r
+speak <<HEREDOC
 ${SPEECH}${BIGBUN}
 
 Ah! What's all this, then?
@@ -67,6 +67,6 @@ HEREDOC
 
 echo
 echo -e "$LILBUN"
-echo -e "${SPEECH}Once again, the first word is like \"academy\" or \"academia\" or something like that. The second word is \"sylphan\" or maybe \"sylvan\" or something. Maybe that's enough to guide you in crafting a PATTERN for 'find'.\n\nYou should invoke $(spell find . -iname) with a pattern after $(spell -iname). You will need to use the wildcard symbol $(alt \*) at least once. Put quotation marks around your pattern." | fold -s -w $FOLD
+echo -e "${SPEECH}Once again, the first word is like \"academy\" or \"academia\" or something like that. The second word is \"sylphan\" or maybe \"sylvan\" or something. Maybe that's enough to guide you in crafting a PATTERN for 'find'.\n\nYou should invoke $(spell find . -iname) with a pattern after $(spell -iname). You will need to use the wildcard symbol $(alt \*) at least once. Put quotation marks around your pattern." | wrap
 
 learned find

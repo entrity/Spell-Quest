@@ -1,6 +1,6 @@
 #!/bin/bash
 
-fold -w $FOLD -s <<HEREDOC | less -r
+speak <<HEREDOC
 ${SPEECH}
 ${BOW}
 Ahoy, there!
@@ -40,7 +40,7 @@ Wait a moment! I hear footsteps. I had better go. Just shut this window behind m
 $CONTINUE
 HEREDOC
 
-fold -w $FOLD -s <<HEREDOC
+wrap <<HEREDOC
 $SPEECH
 Fletcher has just jumped out the window. And a professorial-looking character has just entered the room.
 HEREDOC

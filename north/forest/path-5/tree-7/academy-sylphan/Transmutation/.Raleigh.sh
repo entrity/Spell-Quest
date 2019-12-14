@@ -24,7 +24,7 @@ check_scroll_edit () {
 }
 
 get_bag () {
-	fold -w $FOLD -s <<-HEREDOC | less -r
+	speak <<-HEREDOC
 	${SPEECH}
 	Hello, I'm---
 
@@ -39,7 +39,7 @@ get_bag () {
 final_instruction () {
 	LIST=$(find "$HOME/north/forest" -name tree\* | xargs basename --multiple | sort -u)
 	if cmp "$HOME/bag/trees.txt" <<<"$LIST"; then
-		fold -w $FOLD -s <<-HEREDOC | less -r
+		speak <<-HEREDOC
 		${SPEECH}
 		Well done!
 
@@ -50,7 +50,7 @@ final_instruction () {
 		$(red Press q to leave)
 		HEREDOC
 	else
-		fold -w $FOLD -s <<-HEREDOC | less -r
+		speak <<-HEREDOC
 		${SPEECH}
 		Well, I do see a file called $(alt trees.txt) in your bag, but it doesn't contain the right contents.
 
@@ -67,7 +67,7 @@ final_instruction () {
 	fi
 }
 main_instruction () {
-	fold -w $FOLD -s <<-HEREDOC | less -r
+	speak <<-HEREDOC
 	${SPEECH}
 	Thank you. It feels much calmer in here now.
 
@@ -87,50 +87,39 @@ main_instruction () {
 
 	As for the book in the tree, you mustn't take it with you because then that ruffian will know I was responsible for its disappearance. Instead, you should extract certain information from it. When you return here to give me the information, don't mention what you read. I don't want Jaggers or anyone else to overhear. Instead, you should put the information $(alt into a file in your bag). Name the file $(alt book-extract.txt). Then just come back here and say hello to me. I'll take a peak into the file while we're talking about other things.
 
-	The book is formatted as a CSV. (Grown-up adventurers would probably wish to know that CSV is a format for spreadsheets, and programs like Excel and Google Sheets can save their spreadsheets in CSV format. CSV stands for "comma-separated values" because the columns in a CSV file are separated from each other with commas.)
+	The book is a long list of information about individuals who used to inhabit this land. But there are too many lines for me to concern myself with, so I want you to extract only the lines which include phone numbers. What's a "phone number," you ask? As near as I have been able to determine, it used to be something people used to communicate. But that's not important; what *is* important is how to recognize a phone number:
 
-	Let me show you what a very simple CSV looks like when you view it in a text editor:
-	${BRCYAN}
-	Month,April,May,June
-	Axes,30,26,12
-	Pikes,15,15,4
-	Bows,10,11,9
-	Arrows,88,121,30
-	${SPEECH_N}
-	This CSV shows how many weapons were available during different months last year. Now suppose that I only wanted to know how many weapons were available in May. You can use the $(spell cut) spell whenever you want to extract a column from CSV data.
+	A phone number has ten numerals, split up into three groups. Sometimes phone numbers are written like this: $(alt 800-867-5309). Sometimes they're written like this: $(alt '(800) 867-5309'). And sometimes they're written like this: $(alt '800.867.5309').
 
-	But that's not the only place you can use $(spell cut): any time you have a line of information which is joined by a special character, you can use $(spell cut) to extract sections of it. Have you noticed that paths are like this? They are a series of directories separated by a $(alt \/) character.
+	To complete this task, you'll need to make use of a spell which allows you to filter lines which match a $(alt pattern) which you get to specify. Here's an example of how to invoke it:
 
-	Suppose I had the contents of a $(spell find) command in a file named $(alt found.txt), and it looked like this:
-	${BRCYAN}
-	north/forest/path-8/tree-6/academy-academic
-	north/forest/path-8/tree-16/academic-forestry
-	north/forest/path-8/tree-11/academia-forestry
-	north/forest/path-8/tree-13/academic-forest
-	north/forest/path-8/tree-15/academic-forestry
-	north/forest/path-8/tree-7/academy-academia
-	${SPEECH_N}
-	If I desired only the names of the trees, I could invoke the following:
+	$(spell 'grep "^[0-9]\{3\}c[ ]+b.$" myfile.txt')
 
-	$(spell 'cut -d / -f 4 found.txt')
+	* $(alt grep) is the name of the spell
 
-	* $(alt cut) is the name of the spell
-	* $(alt \-d) means that the next paramter will be the separating character. "-d" is short for "delimiter."
-	* $(alt \/) is the character that separates fields in each row.
-	* $(alt \-f) means that the next parameter will the field (or fields) that you want to extract.
-	* $(alt 4) is the field we are extracting in this invocation.
-	* $(alt found.txt) is the name of the file that contains the information.
+	* $(alt '"^[0-9]\{3\}c[ ]+b.$"') is the pattern. I'll talk more about this in a minute.
 
-	The parameter that follows $(alt \-f) is pretty special because it can be more than just a number. It can be multiple numbers or a range of numbers.
+	* $(alt myfile.txt) is the input file. Any lines from this file which match my pattern will be printed. All others will be ignored.
 
-	For instance:
+	$(spell grep) uses much more complicated patterns than $(spell find) does. There's a name for these complicated patterns: "regular expressions." Let me walk you through a the elements of my the example regular expression which I gave a moment ago:
+	
+	* When brackets ($(alt [])) appear, they mean "match *any* of the characters that appear between these brackets." So a regular expression of $(alt '^[abc]$') would match $(alt a) or $(alt b) or $(alt c) but *nothing* else!
+	
+	* When a $(alt '+') follows a pair of brackets, it means "match one or more of these characters." So a regular expression of $(alt '^[abc]+$') would match $(alt a), $(alt aa) $(alt bcca), $(alt ccccc), and many more.
+	
+	* When an $(alt '*') follows a pair of brachets, it means "match zero or more of these characters." So a regular expression of $(alt '^[abc]*$') would match any of the lines that $(alt '^[abc]+$') would match, but it would also match an empty line!
+	
+	* The $(alt '+') and $(alt '*') don't have to follow a pair of brackets, though. When they follow an ordinary character, they mean "match one or more (or zero or more) of this character."
+		
+	* When $(alt -) appears inside a set of brackets it means "match any characters in a range." For example, $(alt '[0-9]') would match any single character between 0 and 9. And $(alt '[a-cD-G3-6]') would match any of the following characters: a, b, c, D, E, F, G, 3, 4, 5, 6.
+	
+	* When curly braces $(alt '\{\}') appear, they work like a $(alt \+) or $(alt \*), except that they mean "match exactly the number of repetitions specified by the numbers inside the curly braces." For instance, $(alt '[a-z]\{4\}') means "match exactly four characters between a and z." You can actually specify multiple numbers, separated by commas or joined by a hypen: $(alt '[a-z]\{2,4\}') means "match 2 or 4 characters between a and z," and $(alt '[a-z]\{3-5\}') means "match anywhere between 3 and 5 characters between a and z."
+	
+	* The $(alt .) character has a special meaning in a regular expression. It is a wild card which means "exactly one of any character." 
 
-	* $(alt 1,3) would give us the 1st and 3rd column
-	* $(alt 2-4) would give us columns 2, 3, and 4
-	* $(alt -3) would give us columns 1, 2, and 3
-	* $(alt 2-) would give us all columns from 2 onward
+	With a little bit of practice, regular expressions aren't too hard to write, but they *can* be pretty difficult to read. Don't feel discouraged if you can't interpret the example I gave above.
 
-	So I need you to find that book and extract its 1st, 2nd, and 13th columns. Remember to save the information into a file in your bag named $(alt book-extract.txt). I guess you can use $(spell cut) to read the information, then use a text editor to create the $(alt book-extract.txt) file.
+
 
 	Hmm... there's actually an easier way to get the extracted information into your $(alt book-extract.txt) file than opening a text editor and scribing it yourself, but I don't know where the documents which provide instruction on that $(alt technique) have gone. Maybe they're still in one of the classrooms...
 
@@ -139,10 +128,11 @@ main_instruction () {
 	$CONTINUE
 	HEREDOC
 
+	learned $EDITOR
 	learned grep
 }
 cleanup () {
-	fold -w $FOLD -s <<-HEREDOC | less -r
+	speak <<-HEREDOC
 	${SPEECH}
 	Ah! Can it be a student? --Oh! Who made this mess?
 
@@ -158,14 +148,14 @@ cleanup () {
 	echo 'The broom belongs in the Closet. And that rag which is currently in the Cupboard should be transformed into a bucket in the Closet.'
 }
 fail_book_extract_edit () {
-	fold -w $FOLD -s <<-HEREDOC | less -r
+	speak <<-HEREDOC
 	Don't look so obvious! Pretend we're talking about the weather while I get a look at this book extract. Hm... oh dear, oh dear. This isn't quite what I was expecting.
 
 	Did you remember to specify $(alt ,) as the delimiter? Did you remember to specify $(alt 1,2,13) as the field selection?
 	HEREDOC	
 }
 fail_scroll_edit () {
-	fold -w $FOLD -s <<-HEREDOC | less -r
+	speak <<-HEREDOC
 	Hm. Wait one minute while I gaze into my crystal ball...
 
 	Ehm. It seems the changes you made to the scroll were not as I directed. Did you remember to $(alt save) the file before exiting the text editor? Did you remember that upper-case and lower-case are distinct?

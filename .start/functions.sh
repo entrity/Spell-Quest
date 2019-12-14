@@ -8,7 +8,9 @@ alt () { printf "${CYAN}${*}${SPEECH_N}"; }
 export -f alt
 red () { printf "${RED}${*}${SPEECH_N}"; }
 export -f red
-speak () { myfmt | less -r; }
+wrap () { python $HOME/.util/my_formatter.py; }
+export -f wrap
+speak () { wrap | less -r; }
 export -f speak
 learned () { touch "$HOME/.lessons/$*"; }
 export -f learned

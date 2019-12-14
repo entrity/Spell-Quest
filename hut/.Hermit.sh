@@ -8,17 +8,21 @@ decompose_path () {
 	echo /
 }
 
-fold -w 60 -s <<-HEREDOC | less -r
+speak <<-HEREDOC
 ${SPEECH}
-Who goes there? Oh, I wasn't expecting visitors.
+So your friends have gone off to that Warty Hogs school to become wizards and witches, have they? What's that? You don't want to learn magic, you just want to be a treasure hunter?
 
-So you're feeling disappointed because all your friends have gone off to that Warty Hogs school to become wizards and witches? What's that? You don't want to learn magic, you just want to be a treasure hunter?
+Bah and piffle! You won't go far without a bit of magic of your own, treasure hunter or no! But I suppose you could learn enough to get your treasure hunt on its way at the local magic academy.
 
-Bah and piffle! You won't go far without a bit of magic of your own, treasure hunter or no!
+What's that you say? You don't know how to reach the local magic academy?
 
-Indeed, before you go on your way, you'll need a spellbook and a writing quill. It doesn't need to be very large, but if you aspire to find the treasure that the other treasure hunters are questing after, you'll surely scribe quite a lot of spells, as well as a few magical techniques. You'll have to learn spells of Transmutation, Conjuration, Divination, Destruction, and Illusion.
+Well, I suppose I could get you started, just enough to put you on the road. What do you say?
 
-I suppose if anyone is going to get you started, it shall have to be me. Here is your first spell: $(spell ls) is a "look" spell. It lets you look not just in front of you but *anywhere*, even faraway places. Its only limitation is that you have to give the location of where you want to look. Write it down as a first-level Divination spell.
+The first thing you'll need to do is get yourself a spellbook. It doesn't have to be very large, but it had better have several pages. You're going to need to scribe the spells that you learn on the journey ahead, as well as a few magical techniques. Your mother or father should be able to furnish you with such a spellbook, as well as a quill for writing and maybe a sandwich to take on your journey.
+
+You'll have to learn spells of Transmutation, Conjuration, Teleportation, Divination, Destruction, and Illusion, to name a few. You'll need first-level spells, second-level spells, and perhaps even a third-level spell or two.
+
+I'm afraid I can't really teach you a great deal, but I do know charm or two, and I'm handy with an enchantment. Here is your first spell: $(spell ls) is a "look" spell. It lets you look not just in front of you but *anywhere*, even faraway places. Its only limitation is that you have to give the location of where you want to look. Write it down as a first-level Divination spell.
 
 How do you cast it? Just type $(spell ls), followed by a space, then a $(alt path). What's a "path," you ask? A $(alt path) is how people specify the location of a $(alt file) or $(alt directory).
 
@@ -34,7 +38,7 @@ So if you want to look inside your current directory, invoke:
 
 $(spell ls \"$(pwd)\")
 
-Always put a space between the name of the spell and its parameters. Then press "Enter" or "Return" when you're ready for the spell to be cast.
+Always put a space between the name of the spell and its parameters. Then press $(alt Enter) or $(alt Return) when you're ready for the spell to be cast.
 
 Did you notice that I put $(alt \"quotation marks\") around the path? That isn't strictly necessary, but if the path contains spaces or other special characters, it becomes important. Just imagine if your path were $(alt /foo/My Documents/bar). The spell would look like this:
 
@@ -58,17 +62,17 @@ That's pretty easy. Try it out now.
 ${CONTINUE}
 HEREDOC
 
-echo -e "$SPEECH\nDo as the old hermit said: invoke \"ls\" with no parameters. Remember to press \"Enter\" or \"Return\" after \"ls.\"\n$RESET"
+echo -e "$SPEECH\nDo as the old hermit said: invoke $(spell ls) with no parameters. Remember to press $(alt Enter) or $(alt Return) after $(spell ls).\n$RESET" | wrap
 printf "$ "
 read CMD
 regexp="^[ ]*ls[ ]*$"
 while ! [[ $CMD =~ $regexp ]]; do
-	>&2 echo -e "$SPEECH\nHm. That's not quite what you should do. Just enter $(spell ls) with no quotation marks and nothing after it. Then hit Enter.\n$RESET"
+	>&2 echo -e "$SPEECH\nHm. That's not quite what you should do. Just enter $(spell ls) with no quotation marks and nothing after it. Then hit $(alt Enter).\n$RESET" | wrap
 	printf "$ "
 	read CMD
 done
 
-fold -w 60 -s <<-HEREDOC | less -r
+speak <<-HEREDOC
 \$ $CMD
 $(ls --color=always)
 ${SPEECH}
@@ -90,17 +94,17 @@ Go ahead. Try looking in the trunk, and you'll see that it's empty.
 $CONTINUE
 HEREDOC
 
-echo -e "$SPEECH\nDo as the old hermit said: invoke \"ls\" with \"trunk\" as your parameter. Remember to press \"Enter\" or \"Return.\"\n$RESET"
+echo -e "$SPEECH\nDo as the old hermit said: invoke $(spell ls) with $(alt trunk) as your parameter. Remember to press $(alt Enter) or $(alt Return).\n$RESET" | wrap
 printf "$ "
 read CMD
 regexp="^[ ]*ls[ ]*[\"']*trunk[\"']*[ ]*$"
 while ! [[ $CMD =~ $regexp ]]; do
-	>&2 echo -e "${SPEECH}\nHm. That's not quite what you should do.\nJust enter $(spell ls trunk) or $(spell 'ls "trunk"') or $(spell "ls 'trunk'"). Then hit Enter.\n$RESET"
+	>&2 echo -e "${SPEECH}\nHm. That's not quite what you should do.\nJust enter $(spell ls trunk) or $(spell 'ls "trunk"') or $(spell "ls 'trunk'"). Then hit $(alt Enter).\n$RESET"
 	printf "$ "
 	read CMD
 done
 
-fold -w 60 -s <<-HEREDOC | less -r
+speak <<-HEREDOC
 \$ $CMD
 $(ls --color=always trunk)
 ${SPEECH}
@@ -115,8 +119,7 @@ $(dirname "$(pwd)")
 $(pwd)/..
 $(pwd)/../../$(basename "$(dirname "$(pwd)")")
 $SPEECH_N
-If you want, you can look at the contents of the directory one level up from here by invoking $(spell ls ..)
-Another $(alt technique) is the use of the $(alt .) token. This token signifies your current directory. When this hut is your location, the following two paths are equivalent:
+If you want, you can look at the contents of the directory one level up from here by invoking $(spell ls ..) Another $(alt technique) is the use of the $(alt .) token. This token signifies your current directory. When this hut is your location, the following two paths are equivalent:
 $BRCYAN
 .
 $(pwd)
@@ -153,6 +156,7 @@ HEREDOC
 echo -e "$SPEECH\nThe strange hermit totters away and is gone, leaving you alone in the hut.\n\nYou should try to talk to William. Remeber to invoke $(spell ./William.sh)"
 
 learned ls
-learned '(technique) activate script'
-learned '(path element) .'
-learned '(path element) ..'
+learned pwd
+learned '%(technique) activate script'
+learned '%(path element) .'
+learned '%(path element) ..'

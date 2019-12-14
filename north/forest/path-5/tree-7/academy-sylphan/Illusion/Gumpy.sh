@@ -1,6 +1,6 @@
 #!/bin/bash
 
-fold -w $FOLD -s <<HEREDOC | less -r
+speak <<HEREDOC
 ${SPEECH}
 Eh? Who are you? Did you come here to learn? Oh, Gumpy can teach you, yes, he can! Gumpy is powerful wizard and most respected professor at the forest academy.
 
@@ -47,7 +47,7 @@ What? Don't you believe Gumpy? Hmph! Gumpy will prove it to you! But this is the
 $CONTINUE
 HEREDOC
 
-fold -w $FOLD -s <<EOF
+wrap <<EOF
 $SPEECH
 You should try it. Gumpy seems very eager for you to look in his file. Invoke $(spell cat gumpy.txt) and see what happens!
 
@@ -56,5 +56,5 @@ You should try it. Gumpy seems very eager for you to look in his file. Invoke $(
 EOF
 
 learned echo
-learned '(technique) >'
-learned '(technique) >>'
+learned '%(technique) >'
+learned '%(technique) >>'

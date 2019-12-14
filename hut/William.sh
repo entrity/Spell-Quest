@@ -1,6 +1,6 @@
 #!/bin/bash
 
-fold -w $FOLD -s <<HEREDOC | less -r
+speak <<HEREDOC
 ${SPEECH}
  {O,O}
 ./)_)
