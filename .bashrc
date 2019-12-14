@@ -51,9 +51,10 @@ alias egrep='egrep --color=auto'
 # Start
 ##############
 
+mkdir -p $HOME/.lessons
 if [[ -f "$__DIR__/hut/.Hermit.sh" ]]; then
 	cd "$__DIR__/hut"
-	(($#)) && bash "./.Hermit.sh"
+	(($#)) || bash "./.Hermit.sh"
 else
 	>&2 echo "ERROR: hut or Hermit not found"
 	exit 1

@@ -10,3 +10,5 @@ red () { printf "${RED}${*}${SPEECH_N}"; }
 export -f red
 learned () { touch "$HOME/.lessons/$*"; }
 export -f learned
+lessons () { ls -1 ~/.lessons; }
+export -f lessons
