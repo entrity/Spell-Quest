@@ -18,7 +18,7 @@ class Line(object):
 			self.hanging_indent = HANGING_INDENT
 		# Loop through tokens
 		for token in self.tokens:
-			plaintext = re.sub(r'\033\[[0-9;]m', '', token)
+			plaintext = re.sub(r'\033\[[0-9;]+m', '', token)
 			# If a single token is too long for even a line of its own, starting printing it
 			if self.printlen == 0:
 				while len(plaintext) > WIDTH:
