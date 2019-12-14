@@ -151,3 +151,8 @@ $CONTINUE
 HEREDOC
 
 echo -e "$SPEECH\nThe strange hermit totters away and is gone, leaving you alone in the hut.\n\nYou should try to talk to William. Remeber to invoke $(spell ./William.sh)"
+
+learned ls
+learned '(technique) activate script'
+learned '(path element) .'
+learned '(path element) ..'

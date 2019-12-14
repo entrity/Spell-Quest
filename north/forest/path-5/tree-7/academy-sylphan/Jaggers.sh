@@ -10,6 +10,9 @@ bag_check () {
 		echo
 		echo -e "$(spell mkdir '~/bag')"
 	fi
+
+	learned mkdir
+	learned '(path element) ~'
 }
 
 fold -w $FOLD -s <<HEREDOC | less -r
@@ -29,11 +32,11 @@ $CONTINUE
 HEREDOC
 
 if ! [[ -e "$HOME/bag" ]]; then
-fold -w $FOLD -s <<HEREDOC
-$SPEECH
-You should do as the elderly man suggested: create a directory named "bag" within your home directory.
-Invoke $(spell mkdir \~/bag)
+	fold -w $FOLD -s <<-HEREDOC
+	$SPEECH
+	You should do as the elderly man suggested: create a directory named "bag" within your home directory.
+	Invoke $(spell mkdir \~/bag)
 
-Then go see what this academy has to offer. The elderly man mentioned a $(alt Transmutaiton professor) and someone else, but I don't recall who.
-HEREDOC
+	Then go see what this academy has to offer. The elderly man mentioned a $(alt Transmutaiton professor) and someone else, but I don't recall who.
+	HEREDOC
 fi

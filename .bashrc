@@ -3,37 +3,22 @@ export __DIR__=$(dirname "$__FILE__")
 export HOME="$__DIR__"
 IMGDIR="$__DIR__/.util/ascii"
 
-###########
-# Color
-###########
-
-export BRBLUE==$'\033[1;34m'
-export BRGREEN=$'\033[1;32m'
-export BRCYAN=$'\033[1;36m'
-export GREEN=$'\033[32m'
-export YELLOW=$'\033[33m'
-export CYAN=$'\033[36m'
-export RED=$'\033[31m'
-export BOLD=$'\033[;1m'
-export RESET=$'\033[0;0;0m'
-export SPEECH=$YELLOW
-export SPEECH_N=$'\033[0;33m'
-export SPELL=$'\033[1;32m'
+. "$__DIR__/.start/ascii-art.sh"
+. "$__DIR__/.start/color.sh"
+. "$__DIR__/.start/aliases.sh"
+. "$__DIR__/.start/functions.sh"
 
 ###########
 # Settings
 ###########
 
 export FOLD=65
-
-###########
-# ASCII Art
-###########
-
-export BOW=$( cat $IMGDIR/bow.txt )
-export BIGBUN=$( cat $IMGDIR/big-bun.txt )
-export LILBUN=$( cat $IMGDIR/lil-bun.txt )
-export WIZARD_JAGGERS=$( cat $IMGDIR/wizard-jaggers.txt )
+if [[ $(uname) =~ Linux ]]; then
+	export EDITOR=gedit
+elif [[ $(uname) =~ Mac ]]; then
+	export EDITOR="open -e"
+	osascript -e 'tell application "Terminal" to set current settings of front window to first settings set whose name is "Homebrew"'
+fi
 
 ###########
 # Strings
@@ -41,17 +26,7 @@ export WIZARD_JAGGERS=$( cat $IMGDIR/wizard-jaggers.txt )
 
 export LEAVE="${RED}Press \"q\" to leave${SPEECH_N} "
 export CONTINUE="${RED}Press \"q\" to continue${SPEECH_N} "
-
-###########
-# Functions
-###########
-
-spell () { printf "${SPELL}${*}${SPEECH_N}"; }
-export -f spell
-alt () { printf "${CYAN}${*}${SPEECH_N}"; }
-export -f alt
-red () { printf "${RED}${*}${SPEECH_N}"; }
-export -f red
+export ACADEMYN="$HOME/north/forest/path-5/tree-7/academy-sylphan"
 
 ############
 # Color Config
@@ -72,14 +47,13 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-
 ##############
 # Start
 ##############
 
 if [[ -f "$__DIR__/hut/.Hermit.sh" ]]; then
 	cd "$__DIR__/hut"
-	bash "./.Hermit.sh"
+	(($#)) && bash "./.Hermit.sh"
 else
 	>&2 echo "ERROR: hut or Hermit not found"
 	exit 1

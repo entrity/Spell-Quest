@@ -13,12 +13,12 @@ $RESET$(echo "Gumpy is great!")
 $SPEECH
 Did you see? Did you hear?
 
-Whatever I command to be echoed is echoed! ...Oh, you don't think that's very great? Not very useful? Well, what if I combine it with a $(alt technique)? Did you learn the arcane symbol $(alt \~)? It means "home." Watch what happens when I echo the home symbol:
+Whatever I command to be echoed is echoed! ...Oh, you don't think that's very great? Not very useful? Well, what if I combine it with a $(alt technique)? Did you learn the arcane symbol $(alt \~)? It means "home." Watch what happens when Gumpy echoes the home symbol:
 
 $(spell 'echo ~')
 $RESET$(echo ~)
 $SPEECH
-The symbol was expanded into its true meaning! There are many magic tokens such as $(alt \~) which can be expanded with the use of $(spell echo). I have heard it said that most magic users can even create their own magic tokens, but Gumpy does not know how.
+The symbol was expanded into its true meaning! There are many magic tokens such as $(alt \~) which can be expanded with the use of $(spell echo). Gumpy has heard it said that most magic users can even create their own magic tokens, but Gumpy does not know how.
 
 Oh, but Gumpy knows another $(alt technique)! The symbol $(alt \>) is called "redirect," and it can be used to save the output of *any* spell into a file!
 
@@ -50,4 +50,11 @@ HEREDOC
 fold -w $FOLD -s <<EOF
 $SPEECH
 You should try it. Gumpy seems very eager for you to look in his file. Invoke $(spell cat gumpy.txt) and see what happens!
+
+($(spell cat) is short for "concatenate" because the contents of multiple files will be concatenated together if you provide multiple files as parameters to $(spell cat).)
+
 EOF
+
+learned echo
+learned '(technique) >'
+learned '(technique) >>'

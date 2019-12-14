@@ -1,0 +1,9 @@
+The output of any program can be sent to a file instead of being printed visibly to the terminal. Use the ">" character to specify this redirection, following the following pattern:
+
+	program [parameters...] > savefile
+
+For example:
+
+	find . -iname "foo*" > record.txt
+
+This ">" redirect will completely overwrite any pre-existing content in the target file. As an alternative, use the ">>" redirect. The ">>" redirect appends new content to the pre-existing content.

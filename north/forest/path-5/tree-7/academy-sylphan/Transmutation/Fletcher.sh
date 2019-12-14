@@ -51,3 +51,5 @@ if [[ $# -eq 0 ]]; then
 	mv "$0" "$(dirname "$0")/.$(basename "$0")" 2>/dev/null
 	mv "$THISDIR/.Raleigh.sh" "$THISDIR/Raleigh.sh" 2>/dev/null
 fi
+
+learned mv
