@@ -12,7 +12,7 @@ bag_check () {
 	fi
 
 	learned mkdir
-	learned '%(path element) ~'
+	learned '(path element) ~'
 }
 
 speak <<HEREDOC

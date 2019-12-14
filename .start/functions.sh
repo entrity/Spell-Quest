@@ -14,5 +14,5 @@ speak () { wrap | less -r; }
 export -f speak
 learned () { touch "$HOME/.lessons/$*"; }
 export -f learned
-lessons () { ls -1 ~/.lessons; }
+lessons () { ls -1 ~/.lessons | sort --version-sort; }
 export -f lessons

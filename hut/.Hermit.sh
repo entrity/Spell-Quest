@@ -157,6 +157,6 @@ echo -e "$SPEECH\nThe strange hermit totters away and is gone, leaving you alone
 
 learned ls
 learned pwd
-learned '%(technique) activate script'
-learned '%(path element) .'
-learned '%(path element) ..'
+learned '(technique) activate script'
+learned '(path element) .'
+learned '(path element) ..'

@@ -14,7 +14,7 @@ class Line(object):
 
 	def loop(self):
 		# If first char is '*', use a hanging indent
-		if len(self.tokens) and self.tokens[0] == '*':
+		if len(self.tokens) and re.match(r'\*|[0-9]+\.', self.tokens[0]):
 			self.hanging_indent = HANGING_INDENT
 		# Loop through tokens
 		for token in self.tokens:
@@ -31,7 +31,7 @@ class Line(object):
 			if self.printlen + len(plaintext) > WIDTH:
 				self.__print()
 			# Append to buffer
-			if self.lineno == 0 or self.printlen or re.search(r'\S', token):
+			if self.lineno == 0 or self.printlen > self.hanging_indent or re.search(r'\S', token):
 				self.printlen += len(plaintext)
 				self.outbuf += token
 		# End of loop
