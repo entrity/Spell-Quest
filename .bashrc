@@ -7,6 +7,7 @@ IMGDIR="$__DIR__/.util/ascii"
 . "$__DIR__/.start/color.sh"
 . "$__DIR__/.start/aliases.sh"
 . "$__DIR__/.start/functions.sh"
+bash "$__DIR__/.util/install.sh"
 
 ###########
 # Settings
@@ -15,9 +16,11 @@ IMGDIR="$__DIR__/.util/ascii"
 export FOLD=65
 if [[ $(uname) =~ Linux ]]; then
 	export EDITOR=gedit
-elif [[ $(uname) =~ Mac ]]; then
-	export EDITOR="open -e"
+elif [[ $(uname) =~ Darwin ]]; then
 	osascript -e 'tell application "Terminal" to set current settings of front window to first settings set whose name is "Homebrew"'
+	export EDITOR="open -e"
+	ENVSUBST_PATH="$(find /usr/local -name envsubst)"
+	alias envsubst="$ENVSUBST_PATH"
 fi
 
 ###########
@@ -54,7 +57,7 @@ alias egrep='egrep --color=auto'
 mkdir -p $HOME/.lessons
 if [[ -f "$__DIR__/hut/.Hermit.sh" ]]; then
 	cd "$__DIR__/hut"
-	(($#)) || bash "./.Hermit.sh"
+	[[ -e "$HOME/.lessons/ls" ]] || bash "./.Hermit.sh"
 else
 	>&2 echo "ERROR: hut or Hermit not found"
 	exit 1
