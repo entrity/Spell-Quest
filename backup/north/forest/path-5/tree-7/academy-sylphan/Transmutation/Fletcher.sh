@@ -46,6 +46,7 @@ Fletcher has just jumped out the window. And a professorial-looking character ha
 HEREDOC
 
 if [[ $# -eq 0 ]]; then
+	THISDIR=$(thisdir)
 	mv "$THISDIR/Closet/broom" "$THISDIR" 2>/dev/null
 	mv "$THISDIR/Closet/bucket" "$THISDIR/Cupboard/rag" 2>/dev/null
 	mv "$0" "$(dirname "$0")/.$(basename "$0")" 2>/dev/null

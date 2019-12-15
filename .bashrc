@@ -57,7 +57,15 @@ alias egrep='egrep --color=auto'
 if ! [[ -e "$__DIR__/home" ]]; then
 	bash "util/install.sh"
 fi
-if [[ -e "$__DIR__/.lessons/ls" ]]; then
+if [[ -e "$HOME/../skip" ]]; then
+	mkdir "$HOME/bag"
+	learned ls
+	grep '[0-9]\{3\}[) -]\{1,2\}[0-9]\{3\}-[0-9]\{4\}' "$HOME/north/forest/path-11/tree-16/spreadsheet.csv" > "$HOME/bag/phone-numbers.csv"
+	grep '[A-Z]\{3\}' "$HOME/north/forest/path-11/tree-16/spreadsheet.csv" > "$HOME/bag/with-capitals.csv"
+	grep 'John' "$HOME/north/forest/path-11/tree-16/spreadsheet.csv" > "$HOME/bag/John.csv"
+	sed -e 's/SALUTARY/INIMICAL/' "$HOME/../backup/north/forest/path-11/tree-16/scroll.txt" > "$HOME/north/forest/path-11/tree-16/scroll.txt"
+	cd "$ACADEMYN/Transmutation"
+elif [[ -e "$__DIR__/.lessons/ls" ]]; then
 	cd "$HOME"
 else
 	cd "$HOME/hut"

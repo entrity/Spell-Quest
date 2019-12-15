@@ -16,3 +16,5 @@ learned () { touch "$HOME/../.lessons/$*"; }
 export -f learned
 lessons () { ls -1 "$HOME/../.lessons" | sort --version-sort; }
 export -f lessons
+thisdir () { dirname "$(readlink -f "$0")"; }
+export -f thisdir

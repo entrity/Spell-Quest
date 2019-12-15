@@ -26,7 +26,10 @@ check_csv () {
 }
 check_scroll_edit () {
 	local BACKUPS="$HOME/../backup"
-	if ! >/dev/null cmp <(trim_whitespace "$HOME../backup//Raleigh/scroll.txt") <(trim_whitespace "$HOME/north/forest/path-11/tree-16/scroll.txt"); then
+	local SCROLL_PATH="north/forest/path-11/tree-16/scroll.txt"
+	ls "$BACKUPS/$SCROLL_PATH"
+	local SCROLL_GOAL=$(sed -e 's/SALUTARY/INIMICAL/' "$BACKUPS/$SCROLL_PATH")
+	if ! cmp <(trim_whitespace <(echo -e "$SCROLL_GOAL")) <(trim_whitespace "$HOME/$SCROLL_PATH"); then
 		wrap <<-HEREDOC
 		${SPEECH}
 		Hm. Wait one minute while I gaze into my crystal ball...
@@ -156,7 +159,9 @@ cleanup () {
 	$(red Press q to leave)
 	HEREDOC
 
-	echo 'The broom belongs in the Closet. And that rag which is currently in the Cupboard should be transformed into a bucket in the Closet.'
+	wrap <<-EOF
+		${SPEECH}The broom belongs in the Closet. And that rag which is currently in the Cupboard should be transformed into a bucket in the Closet. You probably need to use $(spell mv).
+		EOF
 }
 
 if ! [[ -e "$HOME/bag" ]]; then
