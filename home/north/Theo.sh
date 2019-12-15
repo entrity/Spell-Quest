@@ -15,9 +15,11 @@ $(spell find)
 
 It's a way to search for almost anything you might need. It's actually a second-level Divination spell, and it's very powerful. If invoked with no parameters, it searches for all files and directories contained within or beneath your current directory.
 
-Admittedly that's not every useful in a forest. You'd find all manner of trees and winding paths. But if you supply parameters, you can use it very powerfully. The first parameter will always  the path where you want your search to start. (Searches always move downward to deeper paths, never upward to shallower paths.) If you want to start your search from your current location, you can just use $(spell .) to represent the starting location. If you want to start your search from one level above your current location use $(spell ..)
+Admittedly that's not every useful in a forest. You'd find all manner of trees and winding paths. But if you supply parameters, you can use it very powerfully. The first parameter will always  the path where you want your search to start. (Searches always move downward to deeper paths, never upward to shallower paths.)
 
-$(spell find .)
+If you want to start your search from your current location, you can just use $(spell .) to represent the starting location. If you want to start your search from one level above your current location use $(spell ..)
+
+For example: $(spell find .)
 
 All parameters after the location parameter are used to narrow your search. Want to search for items with a particular name? You can do it. Want to find items which were modified more than 6 days ago? You can do it. Want to find items that are at least 3 levels deep? You can do it. Want to find items that are of a particular size? You can do it.
 
@@ -56,7 +58,7 @@ foo
 ${SPEECH}
 You may need to try this spell a few times before you get the hang of it.
 
-Notice that I used quotation marks around the pattern. That's important if you have any wild cards or blank spaces in your pattern. Why? Well, I don't know things like that. I'm just a bunny. Perhaps someone later in your travels can explain it to you.
+Notice that I used quotation marks around the pattern. That's important if you have any wild cards or blank spaces in your pattern. The same thing goes for ANY parameter which contains spaces or special characters. Why? Well, I don't know things like that. I'm just a bunny. Perhaps someone later in your travels can explain it to you.
 
 What's that? You still don't know how to find the academy because you don't know what it's called?
 

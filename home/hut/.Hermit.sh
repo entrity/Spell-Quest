@@ -84,10 +84,10 @@ Trying to look into the trunk by typing the entire path would be like saying, "W
 $(alt $(pwd))
 The trunk's whole path is:
 $(alt $(readlink -f trunk))
-It's path relative to our current path is just:
+Its path relative to our current path is just:
 $(alt trunk)
 
-(Notice that the relative path does NOT start with the $(alt /) symbol.)
+(Notice that a relative path NEVER starts with the $(alt /) symbol.)
 
 Go ahead. Try looking in the trunk, and you'll see that it's empty.
 
@@ -119,12 +119,12 @@ $(dirname "$(pwd)")
 $(pwd)/..
 $(pwd)/../../$(basename "$(dirname "$(pwd)")")
 $SPEECH_N
-If you want, you can look at the contents of the directory one level up from here by invoking $(spell ls ..) Another $(alt technique) is the use of the $(alt .) token. This token signifies your current directory. When this hut is your location, the following two paths are equivalent:
+If you want, you can look at the contents of the directory one level up from here by invoking $(spell ls ..) Another $(alt technique) is the use of the $(alt .) token. This token signifies your current directory. So right now, the following two paths are equivalent:
 $BRCYAN
 .
 $(pwd)
 $SPEECH_N
-You may think that's not useful, but I shall show you now that it is! The last technique I have to teach you is how to $(alt activate a file). Most files cannot be activated; they just hold information, but some files can be activated as if they were spells. You can recognize them by their color, or you can run $(spell ls) with a $(spell -F) parameter. When run $(spell ls -F), it will add a $(alt \*) symbol onto the end of files that can be activated. And it will add a $(alt \/) symbol on to the end of directories.
+You may think that's not useful, but I shall show you now that it is! The last technique I have to teach you is how to $(alt activate a file). Most files cannot be activated; they just hold information, but some files can be activated as if they were spells. You can recognize them by their color, or you can run $(spell ls) with a $(spell -F) parameter. When you run $(spell ls -F), it will add a $(alt \*) symbol onto the end of files that can be activated. And it will add a $(alt \/) symbol on to the end of directories.
 
 Any of the following will work (and you can come up with other invocations that will work as well):
 $BRCYAN

@@ -6,7 +6,7 @@ ${SPEECH}
 ./)_)
   " "  Hoot! It's about time someone came to talk with me.
 
-What's that you have there? A spellbook? Ah, that old fuddy-duddy can teach you a *little* magic but not much. His problem is that he never leaves this hermitage. Maybe if he had a pair of wings like mine his life would be different.
+What's that you have there? A spellbook? Ah, that old fuddy-duddy can teach you a *little* magic but not much. His problem is that he scarcely ever leaves this hermitage. Maybe if he had a pair of wings like mine his life would be different.
 
 You say you want to go to the local magic academy? Why nothing could be easier! Just spread your wings, hop to the window, and --- what's that? You have no wings? Oh, dear.
 
@@ -25,14 +25,14 @@ Did you run $(alt ls) yet? You can see that the trunk is actually a directory, w
 As a reminder, our current location is
 $(alt $(pwd))
 
-If you wanted to leave this hut and go to the forest north of here, you could invoke either of the following (but there are also other ways to write the path for the forest):
+If you wanted to leave this hut and go to the edge forest north of here, you could invoke either of the following (but there are also other ways to write the path for the forest):
 $BRCYAN
-cd ../north/forest
-cd $(readlink -f ../north/forest)
+cd ../north
+cd $(readlink -f ../north)
 $SPEECH_N
 What if you invoke $(spell cd) with no parameters? You'll be transported to your $(alt home directory). What's that? You didn't know that you had a home? Well, you have! Your home (at least while on this quest) is $(alt $HOME)
 
-There's one other handy $(alt technique) for $(spell cd): if you go somewhere that you don't want to be, you can return to the directory which you previously occupied by invoking $(spell cd -). Suppose you accidently cast $(spell cd) and ended up in your home. Well, you could go right back to where you were by casting $(spell cd -).
+There's one other handy $(alt technique) for $(spell cd): if you go somewhere that you don't want to be, you can return to the directory which you previously occupied by invoking $(spell cd -). Suppose you accidently cast $(spell cd) and ended up in your home. Well, you could go right back to where you were last by casting $(spell cd -).
 
                            {O,O}
                           ./)_)
