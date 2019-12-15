@@ -5,7 +5,7 @@ trim_whitespace () {
 }
 check_csv () {
 	local FILE="$HOME/bag/$1.csv"
-	local GOAL="$HOME/.util/Raleigh/$1.csv"
+	local GOAL="$UTIL/Raleigh/$1.csv"
 	if ! [[ -e "$FILE" ]]; then
 		wrap <<-HEREDOC
 		${SPEECH}
@@ -25,7 +25,7 @@ check_csv () {
 	fi
 }
 check_scroll_edit () {
-	if ! >/dev/null cmp <(trim_whitespace "$HOME/.util/Raleigh/new-scroll.txt") <(trim_whitespace "$HOME/north/forest/path-11/tree-16/scroll.txt"); then
+	if ! >/dev/null cmp <(trim_whitespace "$UTIL/Raleigh/new-scroll.txt") <(trim_whitespace "$HOME/north/forest/path-11/tree-16/scroll.txt"); then
 		wrap <<-HEREDOC
 		${SPEECH}
 		Hm. Wait one minute while I gaze into my crystal ball...
@@ -54,9 +54,9 @@ final_instruction () {
 	${SPEECH}
 	Don't look so obvious! Pretend we're talking about the weather while I get a look at these files... Hm... Well done!
 
-	Perhaps --- just perhaps --- you have enough talent to gain admission to $(alt Hattifattener Academy).
+	Perhaps --- just perhaps --- you have enough talent to gain admission to $(alt Hattifattener Academy). As promised, I'll tell you what I can to help you gain entrance:
 
-	As promised, I'll tell you the secret to gaining entrance:
+	$(alt Hattifattener Academy) lies far to the south, beyond the forest, beyond the mountain, in the termagant sea.
 
 	$(red Press q to leave)
 	HEREDOC

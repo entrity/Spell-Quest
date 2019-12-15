@@ -8,11 +8,11 @@ alt () { printf "${CYAN}${*}${SPEECH_N}"; }
 export -f alt
 red () { printf "${RED}${*}${SPEECH_N}"; }
 export -f red
-wrap () { python $HOME/.util/my_formatter.py; }
+wrap () { python "$UTIL/my_formatter.py"; }
 export -f wrap
 speak () { wrap | less -r; }
 export -f speak
-learned () { touch "$HOME/.lessons/$*"; }
+learned () { touch "$HOME/../.lessons/$*"; }
 export -f learned
-lessons () { ls -1 ~/.lessons | sort --version-sort; }
+lessons () { ls -1 "$HOME/../.lessons" | sort --version-sort; }
 export -f lessons

@@ -10,7 +10,7 @@
 | | 1 | 2 | 3 |
 | - | - | - | - |
 | Transmutation | mv, rm, rmdir | cut, sort | sed |
-| Teleportation | cd | | ssh |
+| Teleportation | cd, ln | | ssh |
 | Divination | ls, pwd, cat | find, grep, less |
 | Conjuration | mkdir, curl, wget, seq |
 | Illusion | 

@@ -1,6 +1,6 @@
 __FILE__=$(readlink -f $BASH_SOURCE)
 export __DIR__=$(dirname "$__FILE__")
-export HOME="$__DIR__"
+export HOME="$__DIR__/home"
 IMGDIR="$__DIR__/.util/ascii"
 
 . "$__DIR__/.start/ascii-art.sh"
@@ -29,6 +29,7 @@ fi
 
 export LEAVE="${RED}Press \"q\" to leave${SPEECH_N} "
 export CONTINUE="${RED}Press \"q\" to continue${SPEECH_N} "
+export UTIL="$__DIR__/.util"
 export ACADEMYN="$HOME/north/forest/path-5/tree-7/academy-sylphan"
 
 ############
@@ -54,11 +55,10 @@ alias egrep='egrep --color=auto'
 # Start
 ##############
 
-mkdir -p $HOME/.lessons
-if [[ -f "$__DIR__/hut/.Hermit.sh" ]]; then
-	cd "$__DIR__/hut"
-	[[ -e "$HOME/.lessons/ls" ]] || bash "./.Hermit.sh"
+mkdir -p "$__DIR__/.lessons"
+if [[ -e "$__DIR__/.lessons/ls" ]]; then
+	cd "$HOME"
 else
-	>&2 echo "ERROR: hut or Hermit not found"
-	exit 1
+	cd "$HOME/hut"
+	bash "./.Hermit.sh"
 fi
