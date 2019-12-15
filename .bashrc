@@ -1,13 +1,12 @@
 __FILE__=$(readlink -f $BASH_SOURCE)
 export __DIR__=$(dirname "$__FILE__")
 export HOME="$__DIR__/home"
-IMGDIR="$__DIR__/.util/ascii"
+IMGDIR="$__DIR__/util/ascii"
 
 . "$__DIR__/.start/ascii-art.sh"
 . "$__DIR__/.start/color.sh"
 . "$__DIR__/.start/aliases.sh"
 . "$__DIR__/.start/functions.sh"
-bash "$__DIR__/.util/install.sh"
 
 ###########
 # Settings
@@ -29,7 +28,7 @@ fi
 
 export LEAVE="${RED}Press \"q\" to leave${SPEECH_N} "
 export CONTINUE="${RED}Press \"q\" to continue${SPEECH_N} "
-export UTIL="$__DIR__/.util"
+export UTIL="$__DIR__/util"
 export ACADEMYN="$HOME/north/forest/path-5/tree-7/academy-sylphan"
 
 ############
@@ -55,7 +54,9 @@ alias egrep='egrep --color=auto'
 # Start
 ##############
 
-mkdir -p "$__DIR__/.lessons"
+if ! [[ -e "$__DIR__/home" ]]; then
+	bash "util/install.sh"
+fi
 if [[ -e "$__DIR__/.lessons/ls" ]]; then
 	cd "$HOME"
 else

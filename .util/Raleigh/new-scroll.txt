@@ -1,3 +1,0 @@
-"There's a cave south of here with an imp in it.
-If you give him a small-wand.txt with the word INIMICAL inscribed upon it,
-he will give you a careful-axe.sh and teach you how to use it."

@@ -25,7 +25,8 @@ check_csv () {
 	fi
 }
 check_scroll_edit () {
-	if ! >/dev/null cmp <(trim_whitespace "$UTIL/Raleigh/new-scroll.txt") <(trim_whitespace "$HOME/north/forest/path-11/tree-16/scroll.txt"); then
+	local BACKUPS="$HOME/../backup"
+	if ! >/dev/null cmp <(trim_whitespace "$HOME../backup//Raleigh/scroll.txt") <(trim_whitespace "$HOME/north/forest/path-11/tree-16/scroll.txt"); then
 		wrap <<-HEREDOC
 		${SPEECH}
 		Hm. Wait one minute while I gaze into my crystal ball...
