@@ -1,2 +1,4 @@
 .lessons
 home
+util/flags
+*.sublime-*

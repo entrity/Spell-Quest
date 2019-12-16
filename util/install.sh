@@ -10,6 +10,7 @@ rm -r "$ROOTDIR/home" 2>/dev/null
 # Make dirs
 mkdir "$ROOTDIR/.lessons"
 mkdir "$ROOTDIR/home"
+mkdir -p "$ROOTDIR/home/cave/tunnel/cavern/calm-pool"
 
 # Copy from .backup
 cp -r "$ROOTDIR/backup/"* "$ROOTDIR/home"

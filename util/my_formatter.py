@@ -18,15 +18,17 @@ class Line(object):
 			self.hanging_indent = HANGING_INDENT
 		# Loop through tokens
 		for token in self.tokens:
-			plaintext = re.sub(r'\033\[[0-9;]+m', '', token)
+			plaintext = re.sub(r'\033=\[[0-9;]+m', '', token)
 			# If a single token is too long for even a line of its own, starting printing it
 			if self.printlen == 0:
 				while len(plaintext) > WIDTH:
 					plainpart = plaintext[:WIDTH]
+					plaintext = plaintext[WIDTH:]
 					while len(plainpart):
-						if token[0] == plainpart[0]:
-							plainpart.pop(0)
-						sys.stdout.write(token.pop(0))
+						if token[0] == plainpart[0]: # If the token buffer's beginning is a plaintext char, we can move forward on the plainpart buffer
+							plainpart = plainpart[1:]
+						sys.stdout.write(token[0])
+						token = token[1:]
 			# Buffer at capacity. Print
 			if self.printlen + len(plaintext) > WIDTH:
 				self.__print()

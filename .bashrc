@@ -30,6 +30,7 @@ export LEAVE="${RED}Press \"q\" to leave${SPEECH_N} "
 export CONTINUE="${RED}Press \"q\" to continue${SPEECH_N} "
 export UTIL="$__DIR__/util"
 export ACADEMYN="$HOME/north/forest/path-5/tree-7/academy-sylphan"
+export FLAGS_FILE="$__DIR__/util/flags"
 
 ############
 # Color Config
@@ -39,26 +40,45 @@ case "$TERM" in
 	xterm-color|*-256color) color_prompt=yes;;
 esac
 if [ "$color_prompt" = yes ]; then
-	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+	export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
-	PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+	export PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 unset color_prompt force_color_prompt
 
-alias ls='ls --color=auto'
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
-
 ##############
-# Start
+# Install
 ##############
 
 if ! [[ -e "$__DIR__/home" ]]; then
 	bash "util/install.sh"
 fi
+
+##############
+# Flags & Callbacks
+##############
+
+bash "$__DIR__/util/build-flags.sh" > "$FLAGS_FILE"
+my_prompt_callback () {
+	read -r -a LAST < <(history | tail -n1 | sed 's/^\s\+[0-9]\+\s\+//')
+	NEW_FLAGS=$(bash $__DIR__/util/build-flags.sh)
+	if cmp -s "$FLAGS_FILE" <<< "$NEW_FLAGS"; then
+		while read -r NEW_FLAG; do
+			case $NEW_FLAG in
+				LICH_BOTTLE) bash "$HOME/callbacks/lich.sh" ;;
+			esac
+		done < "$(diff --changed-group-format='%>' --unchanged-group-format='' "$FLAGS_FILE" - <<<"$NEW_FLAGS")"
+		echo -e "$NEW_FLAGS" > "$FLAGS_FILE"
+	fi
+}
+export PROMPT_COMMAND='my_prompt_callback'
+
+##############
+# Start
+##############
+
 if [[ -e "$HOME/../skip" ]]; then
-	mkdir "$HOME/bag"
+	mkdir -p "$HOME/bag"
 	learned ls
 	grep '[0-9]\{3\}[) -]\{1,2\}[0-9]\{3\}-[0-9]\{4\}' "$HOME/north/forest/path-11/tree-16/spreadsheet.csv" > "$HOME/bag/phone-numbers.csv"
 	grep '[A-Z]\{3\}' "$HOME/north/forest/path-11/tree-16/spreadsheet.csv" > "$HOME/bag/with-capitals.csv"
