@@ -64,12 +64,12 @@ HEREDOC
 
 echo -e "$SPEECH\nDo as the old hermit said: invoke $(spell ls) with no parameters. Remember to press $(alt Enter) or $(alt Return) after $(spell ls).\n$RESET" | wrap
 printf "$ "
-read CMD
+read -e CMD
 regexp="^[ ]*ls[ ]*$"
 while ! [[ $CMD =~ $regexp ]]; do
 	>&2 echo -e "$SPEECH\nHm. That's not quite what you should do. Just enter $(spell ls) with no quotation marks and nothing after it. Then hit $(alt Enter).\n$RESET" | wrap
 	printf "$ "
-	read CMD
+	read -e CMD
 done
 
 speak <<-HEREDOC
@@ -96,12 +96,12 @@ HEREDOC
 
 echo -e "$SPEECH\nDo as the old hermit said: invoke $(spell ls) with $(alt trunk) as your parameter. Remember to press $(alt Enter) or $(alt Return).\n$RESET" | wrap
 printf "$ "
-read CMD
+read -e CMD
 regexp="^[ ]*ls[ ]*[\"']*trunk[\"']*[ ]*$"
 while ! [[ $CMD =~ $regexp ]]; do
 	>&2 echo -e "${SPEECH}\nHm. That's not quite what you should do.\nJust enter $(spell ls trunk) or $(spell 'ls "trunk"') or $(spell "ls 'trunk'"). Then hit $(alt Enter).\n$RESET"
 	printf "$ "
-	read CMD
+	read -e CMD
 done
 
 speak <<-HEREDOC
