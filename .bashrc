@@ -7,6 +7,7 @@ IMGDIR="$__DIR__/util/ascii"
 . "$__DIR__/.start/color.sh"
 . "$__DIR__/.start/aliases.sh"
 . "$__DIR__/.start/functions.sh"
+. "$__DIR__/util/prompt-callback.sh"
 
 ###########
 # Settings
@@ -30,9 +31,7 @@ export LEAVE="${RED}Press \"q\" to leave${SPEECH_N} "
 export CONTINUE="${RED}Press \"q\" to continue${SPEECH_N} "
 export UTIL="$__DIR__/util"
 export ACADEMYN="$HOME/north/forest/path-5/tree-7/academy-sylphan"
-export FLAGS_FILE="$__DIR__/util/flags"
 export DATA=$(readlink -f "$__DIR__/data")
-export CBDIR=$(readlink -f "$__DIR__/util/callbacks")
 
 ############
 # Color Config
@@ -55,25 +54,6 @@ unset color_prompt force_color_prompt
 if ! [[ -e "$__DIR__/home" ]]; then
 	bash "util/install.sh"
 fi
-
-##############
-# Flags & Callbacks
-##############
-
-bash "$__DIR__/util/build-flags.sh" > "$FLAGS_FILE"
-my_prompt_callback () {
-	read -r -a LAST < <(history | tail -n1 | sed 's/^\s\+[0-9]\+\s\+//')
-	NEW_FLAGS=$(bash $__DIR__/util/build-flags.sh)
-	while read -r NEW_FLAG; do
-		local NEED_UPDATE=1
-		echo $NEW_FLAG
-		case $NEW_FLAG in
-			LICH_BOTTLE) bash "$CBDIR/lich.sh" ;;
-		esac
-	done < <(echo -e "$NEW_FLAGS" | diff --changed-group-format='%>' --unchanged-group-format='' "$FLAGS_FILE" -)
-	(( $NEED_UPDATE )) && echo -e "$NEW_FLAGS" > "$FLAGS_FILE"
-}
-export PROMPT_COMMAND='my_prompt_callback'
 
 ##############
 # Start
