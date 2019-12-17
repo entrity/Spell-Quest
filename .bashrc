@@ -2,7 +2,9 @@ __FILE__=$(readlink -f $BASH_SOURCE)
 export __DIR__=$(dirname "$__FILE__")
 export HOME="$__DIR__/home"
 IMGDIR="$__DIR__/util/ascii"
+export DEBUG=1
 
+(($DEBUG)) && echo Source .start
 . "$__DIR__/.start/ascii-art.sh"
 . "$__DIR__/.start/color.sh"
 . "$__DIR__/.start/aliases.sh"
@@ -13,6 +15,7 @@ IMGDIR="$__DIR__/util/ascii"
 # Settings
 ###########
 
+(($DEBUG)) && echo Settings
 export FOLD=65
 if [[ $(uname) =~ Linux ]]; then
 	export EDITOR=gedit
@@ -52,6 +55,7 @@ unset color_prompt force_color_prompt
 ##############
 
 if ! [[ -e "$__DIR__/home" ]]; then
+	(($DEBUG)) && echo Install
 	bash "util/install.sh"
 fi
 
@@ -59,6 +63,7 @@ fi
 # Start
 ##############
 
+(($DEBUG)) && echo Start
 if [[ -e "$HOME/../skip" ]]; then
 	mkdir -p "$HOME/bag"
 	learned ls

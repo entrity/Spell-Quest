@@ -62,8 +62,23 @@ final_instruction () {
 
 	$(alt Hattifattener Academy) lies far to the south, beyond the forest, beyond the mountain, in the termagant sea.
 
+	You will be surely be stopped at the gate and questioned. The academy will expect you to know Melisandre's word of aegis, which all graduates of this academy learn. You can find this book in a Melisandre's tome of nice magic. I have a copy of this precious book concealed in a blueberry bush at the edge of the forest. The word you seek can be found on page 85 of the book.
+
+	But that is not all. Take this:
+
+	${CYAN}Raleigh raises a small ground-glass phial with a cork stopper before your face. You can see a dram of clear fluid in the tiny bottle. Raleigh slips it into your bag.
+
+	${SPEECH}There stands a still pool in the very back of a cave beyond the forest. You must add the contents of this bottle to the pool, but take care that you do so from *without* the cave.
+
+	${CYAN}He gives a little shudder.
+
+	${SPEECH}Oh, and you must use the magic word $(alt shibboleth). No go, go on your quest, and mind you don't fall into any trouble.
+
 	$(red Press q to leave)
 	HEREDOC
+
+	cp "$HOME/../data/lich-bottle.txt" "$HOME/bag"
+	echo ok
 }
 main_instruction () {
 	speak <<-HEREDOC
