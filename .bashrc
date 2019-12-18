@@ -8,8 +8,6 @@ debug () { ((1)) && echo "++DEBUG>> $*"; }
 export -f debug
 
 debug Source .start
-. "$__DIR__/.start/ascii-art.sh"
-debug Sourced ascii-art
 . "$__DIR__/.start/color.sh"
 debug Sourced color
 . "$__DIR__/.start/aliases.sh"

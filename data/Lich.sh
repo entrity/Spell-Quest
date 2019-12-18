@@ -32,6 +32,8 @@ if [[ $UTTERANCE == shibboleth ]]; then
 
 	To decode a file, use $(spell base64 -d FILE)${SPEECH}.
 
+	Really, you should include the parameters $(alt '-w 0') like so: $(spell 'base64 -w 0 FILE'). The $(alt \-w) parameter means "the next parameter specifies how often to wrap the output by inserting a new line." If that next parameter is $(alt 0), as in the example I gave, then no wrapping will be performed. After all, if the enciphered text has line breaks inserted into it, it cannot be decoded! (You would have to delete the line breaks by yourself in order to make use of enciphered text that had been wrapped.)
+
 	Both of these invocations will result in the output being printed to the terminal, so if you wish to save the output to a file, remember to redirect with $(alt \>)${SPEECH}.
 
 	Some spells, including $(spell base64)${SPEECH}, can also read text from the command line if it is provided with a special redirect which only works on text (not on files): $(alt '<<<')${SPEECH}.

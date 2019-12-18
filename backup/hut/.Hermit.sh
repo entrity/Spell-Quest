@@ -156,6 +156,7 @@ HEREDOC
 echo -e "$SPEECH\nThe strange hermit totters away and is gone, leaving you alone in the hut.\n\nYou should try to talk to William. Remeber to invoke $(spell ./William.sh)"
 
 learned ls
+learned 'ls -F'
 learned pwd
 learned '(technique) activate script'
 learned '(path element) .'
