@@ -4,18 +4,26 @@ export HOME="$__DIR__/home"
 IMGDIR="$__DIR__/util/ascii"
 export DEBUG=1
 
-(($DEBUG)) && echo Source .start
+debug () { ((1)) && echo "++DEBUG>> $*"; }
+export -f debug
+
+debug Source .start
 . "$__DIR__/.start/ascii-art.sh"
+debug Sourced ascii-art
 . "$__DIR__/.start/color.sh"
+debug Sourced color
 . "$__DIR__/.start/aliases.sh"
+debug Sourced aliases
 . "$__DIR__/.start/functions.sh"
+debug Sourced functions
 . "$__DIR__/util/prompt-callback.sh"
+debug Sourced prompt-callback
 
 ###########
 # Settings
 ###########
 
-(($DEBUG)) && echo Settings
+debug Settings
 export FOLD=65
 if [[ $(uname) =~ Linux ]]; then
 	export EDITOR=gedit
@@ -55,7 +63,7 @@ unset color_prompt force_color_prompt
 ##############
 
 if ! [[ -e "$__DIR__/home" ]]; then
-	(($DEBUG)) && echo Install
+	debug Install
 	bash "util/install.sh"
 fi
 
@@ -63,7 +71,7 @@ fi
 # Start
 ##############
 
-(($DEBUG)) && echo Start
+debug Start
 if [[ -e "$HOME/../skip" ]]; then
 	mkdir -p "$HOME/bag"
 	learned ls
@@ -72,7 +80,8 @@ if [[ -e "$HOME/../skip" ]]; then
 	grep 'John' "$HOME/north/forest/path-11/tree-16/spreadsheet.csv" > "$HOME/bag/John.csv"
 	sed -e 's/SALUTARY/INIMICAL/' "$HOME/../backup/north/forest/path-11/tree-16/scroll.txt" > "$HOME/north/forest/path-11/tree-16/scroll.txt"
 	cd "$ACADEMYN/Transmutation"
-	cd "$HOME/cave/tunnel/cavern/calm-pool"
+	# cd "$HOME/cave/tunnel/cavern/calm-pool"
+	cd "$HOME"
 elif [[ -e "$__DIR__/.lessons/ls" ]]; then
 	cd "$HOME"
 else

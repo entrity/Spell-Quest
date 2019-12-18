@@ -18,3 +18,5 @@ lessons () { ls -1 "$HOME/../.lessons" | sort --version-sort; }
 export -f lessons
 thisdir () { dirname "$(readlink -f "$0")"; }
 export -f thisdir
+art () { cat "$HOME/../util/ascii/$1"; }
+export -f art
