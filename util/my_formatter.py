@@ -24,11 +24,14 @@ class Line(object):
 				while len(plaintext) > WIDTH:
 					plainpart = plaintext[:WIDTH]
 					plaintext = plaintext[WIDTH:]
+					count = 0
 					while len(plainpart):
 						if token[0] == plainpart[0]: # If the token buffer's beginning is a plaintext char, we can move forward on the plainpart buffer
 							plainpart = plainpart[1:]
 						sys.stdout.write(token[0])
+						count += 1
 						token = token[1:]
+					self.__print()
 			# Buffer at capacity. Print
 			if self.printlen + len(plaintext) > WIDTH:
 				self.__print()
