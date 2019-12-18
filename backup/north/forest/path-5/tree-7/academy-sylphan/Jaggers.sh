@@ -17,7 +17,7 @@ bag_check () {
 
 speak <<HEREDOC
 ${SPEECH}
-${WIZARD_JAGGERS}
+$(art 'wizard-jaggers.txt')
 Oh! Hello there. It has been quite a long time since we had any visitors in the academy.
 
 Well, since we're having a slow season, I suppose I can let you poke around any of the classrooms you like, but I must warn you that all of the instructors have gone except for the $(alt Transmutation professor, Raleigh). You can probably find him in his classroom. Oh, and $(alt Gumpy the custodian) sometimes is poking about. You might find him in one of the classrooms.

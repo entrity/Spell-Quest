@@ -2,7 +2,7 @@
 
 speak <<HEREDOC
 ${SPEECH}
-${BOW}
+$(art bow.txt)
 Ahoy, there!
 
 What? Oh, I'm not Raleigh. He's the Transmutation professor. Me, I'm... well, that's not important. Just don't tell Raleigh that I was in here.
