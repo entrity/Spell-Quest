@@ -6,6 +6,7 @@ ROOTDIR=$(readlink -f "$THISDIR/..")
 # Remove everything
 (($DEBUG)) && echo Remove everything
 rm -r "$ROOTDIR/.lessons"* 2>/dev/null
+chmod -R +w "$ROOTDIR/home"
 rm -r "$ROOTDIR/home" 2>/dev/null
 
 # Make dirs
@@ -17,6 +18,9 @@ mkdir -p "$ROOTDIR/home/cave/tunnel/cavern/calm-pool"
 # Copy from .backup
 (($DEBUG)) && echo Copy from backup
 cp -r "$ROOTDIR/backup/"* "$ROOTDIR/home"
+
+# Lock doors
+chmod 0 "$ROOTDIR/home/north/forest/path-5/tree-7/academy-sylphan/Locked Door"
 
 # Raleigh
 (($DEBUG)) && echo Raleigh stuff
