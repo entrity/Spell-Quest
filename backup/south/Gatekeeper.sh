@@ -1,7 +1,7 @@
 #!/bin/bash
 
 PORTAL="$(thisdir)/portal"
-PORTAL_DST=$(readlink "$PORTAL")
+PORTAL_DST=$(canpath "$PORTAL")
 
 read -r -d '' MAIN_TEXT <<-EOF
 $(spell ln -s DESTINATION PORTAL)

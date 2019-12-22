@@ -1,20 +1,19 @@
-__FILE__=$(readlink -f $BASH_SOURCE)
-export __DIR__=$(dirname "$__FILE__")
-export HOME="$__DIR__/home"
-IMGDIR="$__DIR__/util/ascii"
-export DEBUG=1
+__RELFILE__=$BASH_SOURCE # relative file path
+__RELDIR__=$(dirname "$__FILE__") # relative dir path
 
 debug () { ((1)) && echo "++DEBUG>> $*"; }
 export -f debug
 
 debug Source .start
-. "$__DIR__/.start/color.sh"
-debug Sourced color
-. "$__DIR__/.start/aliases.sh"
-debug Sourced aliases
-. "$__DIR__/.start/functions.sh"
+. "$__RELDIR__/.start/functions.sh"
 debug Sourced functions
-. "$__DIR__/util/prompt-callback.sh"
+export __DIR__=$(canpath "$__RELDIR__")
+export HOME="$__DIR__/home"
+. "$__RELDIR__/.start/color.sh"
+debug Sourced color
+. "$__RELDIR__/.start/aliases.sh"
+debug Sourced aliases
+. "$__RELDIR__/util/prompt-callback.sh"
 debug Sourced prompt-callback
 
 ###########
@@ -22,6 +21,7 @@ debug Sourced prompt-callback
 ###########
 
 debug Settings
+IMGDIR=$(canpath "$__DIR__/util/ascii")
 export FOLD=65
 if [[ $(uname) =~ Linux ]]; then
 	export EDITOR=gedit
@@ -40,7 +40,7 @@ export LEAVE="${RED}Press \"q\" to leave${SPEECH_N} "
 export CONTINUE="${RED}Press \"q\" to continue${SPEECH_N} "
 export UTIL="$__DIR__/util"
 export ACADEMYN="$HOME/north/forest/path-5/tree-7/academy-sylphan"
-export DATA=$(readlink -f "$__DIR__/data")
+export DATA=$(canpath "$__DIR__/data")
 
 ############
 # Color Config

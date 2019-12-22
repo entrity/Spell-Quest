@@ -1,9 +1,9 @@
 #!/bin/bash
 
 export FLAGS_FILE="$__DIR__/util/flags"
-export CBDIR=$(readlink -f "$__DIR__/util/callbacks")
+export CBDIR=$(canpath "$__DIR__/util/callbacks")
 
-bash "$__DIR__/util/build-flags.sh" > "$FLAGS_FILE"
+BASH_ENV= DEBUG= bash "$__DIR__/util/build-flags.sh" > "$FLAGS_FILE"
 
 my_prompt_callback () {
 	read -r -a LAST < <(history | tail -n1 | sed 's/^\s\+[0-9]\+\s\+//')

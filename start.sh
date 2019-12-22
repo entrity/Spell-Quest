@@ -4,10 +4,10 @@ if [[ $* =~ -r ]]; then
 	RESTART=1
 fi
 
-THISDIR=$(dirname "$(readlink -f $0)")
+__DIR__=$(dirname "$0")
 if (( $RESTART )); then
-	echo RESTARTING....
-	bash "$THISDIR/util/install.sh" "$THISDIR"
+	echo REINSTALLING....
+	BASH_ENV="$__DIR__/.bashrc" bash "../util/install.sh"
 fi
-
-bash --rcfile "$THISDIR/.bashrc"
+echo STARTING...
+bash --rcfile "$__DIR__/.bashrc"

@@ -83,7 +83,7 @@ You don't believe me? Feel free to look. Oh, you don't want to look because you 
 Trying to look into the trunk by typing the entire path would be like saying, "Walk all the way up to $(alt /), then walk all the way back here, then look in the trunk." No, you can just specify a path relative to our current location. Our current location is:
 $(alt $(pwd))
 The trunk's whole path is:
-$(alt $(readlink -f trunk))
+$(alt $(canpath trunk))
 Its path relative to our current path is just:
 $(alt trunk)
 

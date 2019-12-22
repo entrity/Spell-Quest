@@ -28,7 +28,7 @@ $(alt $(pwd))
 If you wanted to leave this hut and go to the edge forest north of here, you could invoke either of the following (but there are also other ways to write the path for the forest):
 $BRCYAN
 cd ../north
-cd $(readlink -f ../north)
+cd $(canpath ../north)
 $SPEECH_N
 What if you invoke $(spell cd) with no parameters? You'll be transported to your $(alt home directory). What's that? You didn't know that you had a home? Well, you have! Your home (at least while on this quest) is $(alt $HOME)
 
