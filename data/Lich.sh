@@ -13,8 +13,7 @@ The lich begins muttering and performing gestures. An icy feeling wells in your 
 EOF
 
 echo -n -e "${RESET}> "
-UTTERANCE=shibboleth
-# read -r -e UTTERANCE
+read -r -e UTTERANCE
 
 
 if [[ $UTTERANCE == shibboleth ]]; then
@@ -32,7 +31,11 @@ if [[ $UTTERANCE == shibboleth ]]; then
 
 	To decode a file, use $(spell base64 -d FILE)${SPEECH}.
 
-	Really, you should include the parameters $(alt '-w 0') like so: $(spell 'base64 -w 0 FILE'). The $(alt \-w) parameter means "the next parameter specifies how often to wrap the output by inserting a new line." If that next parameter is $(alt 0), as in the example I gave, then no wrapping will be performed. After all, if the enciphered text has line breaks inserted into it, it cannot be decoded! (You would have to delete the line breaks by yourself in order to make use of enciphered text that had been wrapped.)
+	Really, you should include the parameters $(alt '-w 0')${SPEECH} like so:
+
+	$(spell 'base64 -w 0 FILE')
+
+	${SPEECH}The $(alt \-w)${SPEECH} parameter means "the next parameter specifies how often to wrap the output by inserting a new line." If that next parameter is $(alt 0)${SPEECH}, as in the example I gave, then no wrapping will be performed. After all, if the enciphered text has line breaks inserted into it, it cannot be decoded! (You would have to delete the line breaks by yourself in order to make use of enciphered text that had been wrapped.)
 
 	Both of these invocations will result in the output being printed to the terminal, so if you wish to save the output to a file, remember to redirect with $(alt \>)${SPEECH}.
 
@@ -52,6 +55,10 @@ if [[ $UTTERANCE == shibboleth ]]; then
 
 	$CONTINUE
 	EOF
+else
+	echo -e "\n\n$(alt "The skeletal figure lifts a hand abrubtly, and you feel your bones crumble.")\n${SPEECH}You have died.\n" | fold
+	rm "$HOME/bag/"* 2>/dev/null
+	kill -9 $PPID 2>&1 >/dev/null
 fi
 
 learned base64

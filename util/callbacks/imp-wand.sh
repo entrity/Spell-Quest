@@ -48,3 +48,6 @@ fi
 
 rm "$IMP_BAG/"* >/dev/null
 bash "$HOME/../util/build-flags.sh" > "$FLAGS_FILE"
+if ! lessons | grep 'tab-completion'; then
+	bash "$HOME/cave/Imp.sh"
+fi

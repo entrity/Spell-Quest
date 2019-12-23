@@ -12,10 +12,13 @@ LOCKED_DIRS=(
 # Remove everything
 debug ++Remove lessons
 rm -r "$ROOTDIR/.lessons"* 2>/dev/null
-for arg in "${LOCKED_DIRS[@]}"; do
-	chmod +wrx "$arg"
+find "$ROOTDIR/home" -not -writable 2>/dev/null | while read -r arg; do
+	[[ -e "$arg" ]] && chmod +wrx "$arg"
 done
-rm -r "$ROOTDIR/home" 2>/dev/null
+for arg in "${LOCKED_DIRS[@]}"; do
+	[[ -e "$arg" ]] && chmod +wrx "$arg"
+done
+[[ -e "$ROOTDIR/home" ]] && rm -r "$ROOTDIR/home"
 
 # Make dirs
 debug ++Make dirs

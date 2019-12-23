@@ -5,9 +5,5 @@ if [[ $* =~ -r ]]; then
 fi
 
 __DIR__=$(dirname "$0")
-if (( $RESTART )); then
-	echo REINSTALLING....
-	BASH_ENV="$__DIR__/.bashrc" bash "../util/install.sh"
-fi
-echo STARTING...
-bash --rcfile "$__DIR__/.bashrc"
+echo STARTING... "$@"
+RESTART=$RESTART bash --rcfile "$__DIR__/.bashrc"

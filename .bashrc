@@ -60,9 +60,10 @@ unset color_prompt force_color_prompt
 # Install
 ##############
 
-if ! [[ -e "$__DIR__/home" ]]; then
+if (($RESTART)) || ! [[ -e "$__DIR__/home" ]]; then
 	debug Install
-	bash "util/install.sh"
+	cd "$HOME"
+	bash "../util/install.sh"
 fi
 
 ##############
@@ -70,16 +71,17 @@ fi
 ##############
 
 debug Start
-if [[ -e "$HOME/../skip" ]]; then
+if [[ -e "$HOME/../skip" ]] && [[ -e "$__DIR__/.lessons" ]]; then
 	mkdir -p "$HOME/bag"
 	learned ls
 	grep '[0-9]\{3\}[) -]\{1,2\}[0-9]\{3\}-[0-9]\{4\}' "$HOME/north/forest/path-11/tree-16/spreadsheet.csv" > "$HOME/bag/phone-numbers.csv"
 	grep '[A-Z]\{3\}' "$HOME/north/forest/path-11/tree-16/spreadsheet.csv" > "$HOME/bag/with-capitals.csv"
 	grep 'John' "$HOME/north/forest/path-11/tree-16/spreadsheet.csv" > "$HOME/bag/John.csv"
 	sed -e 's/SALUTARY/INIMICAL/' "$HOME/../backup/north/forest/path-11/tree-16/scroll.txt" > "$HOME/north/forest/path-11/tree-16/scroll.txt"
+	cp "$__DIR__/data/mighty-axe.sh" "$HOME/bag"
+	cp "$__DIR__/data/Lich.sh" "$HOME/cave/tunnel/cavern"
 	cd "$ACADEMYN/Transmutation"
-	# cd "$HOME/cave/tunnel/cavern/calm-pool"
-	cd "$HOME"
+	cd "$HOME/cave/tunnel/cavern"
 elif [[ -e "$__DIR__/.lessons/ls" ]]; then
 	cd "$HOME"
 else

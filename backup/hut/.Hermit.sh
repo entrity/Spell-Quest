@@ -10,6 +10,7 @@ decompose_path () {
 
 speak <<-HEREDOC
 ${SPEECH}
+$(art hooded-wizard.txt)
 So your friends have gone off to that Warty Hogs school to become wizards and witches, have they? What's that? You don't want to learn magic, you just want to be a treasure hunter?
 
 Bah and piffle! You won't go far without a bit of magic of your own, treasure hunter or no! But I suppose you could learn enough to get your treasure hunt on its way at the local magic academy.

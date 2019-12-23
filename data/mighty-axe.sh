@@ -2,7 +2,10 @@
 
 rename () {
 	if [[ ${1,,} =~ ${2,,} ]]; then
-		NEWNAME=$(sed s@^$2\s*@@i <<< "$1")
+		NEWNAME=$(sed s@^$2\\s*@@i <<< "$1")
+		if [[ $1 ~= $NEWNAME ]]; then
+			echo "$1 was renamed to $NEWNAME"
+		fi
 		mv "$1" "$NEWNAME"
 	fi
 }
@@ -13,6 +16,7 @@ if (($#)); then
 			>&2 echo "$(basename "$1") is already open to you. You cannot use it on this target at this time."
 		else
 			chmod +rx "$1"
+			echo "With a mighty blow, $1 is opened"
 			rename "$1" Barricaded
 			rename "$1" Blocked
 			rename "$1" Locked
