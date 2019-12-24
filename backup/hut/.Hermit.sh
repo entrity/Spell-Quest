@@ -27,7 +27,7 @@ You'll have to learn spells of Transmutation, Conjuration, Teleportation, Divina
 
 I'm afraid I can't really teach you a great deal, but I do know charm or two, and I'm handy with an enchantment. Here is your first spell: $(spell ls) is a "look" spell. It lets you look not just in front of you but *anywhere*, even faraway places. Its only limitation is that you have to give the location of where you want to look. Write it down as a first-level Divination spell.
 
-How do you cast it? Just type $(spell ls), followed by a space, then a $(alt path). What's a "path," you ask? A $(alt path) is how people specify the location of a $(alt file) or $(alt directory).
+How do you cast it? Just type $(spell ls), followed by a space, then a $(alt path). What's a "path," you ask? A $(alt path) is how people specify the location of a $(alt file) or $(alt directory). (Some people use the word 'folder' instead of 'directory'.)
 
 Files and directories are distinguished by what they can hold: a $(alt file) holds words, sounds, images, or things of that nature; but a $(alt directory) is like a bag. It can hold files or other directories---or even you!
 
@@ -79,7 +79,7 @@ speak <<-HEREDOC
 \$ $CMD
 $(ls --color=always)
 ${SPEECH}
-Well done! Do you see that list up there? One of the things you can see is my trunk. It's a directory, but there's nothing in it right, now I'm afraid.
+Well done! Do you see that list up there? One of the things you can see is my trunk. It's a directory, but there's nothing in it right now, I'm afraid.
 
 You don't believe me? Feel free to look. Oh, you don't want to look because you don't want to type that long path? Well, usually people don't actually make use of the entire path.
 
@@ -127,23 +127,15 @@ $BRCYAN
 .
 $(pwd)
 $SPEECH_N
-You may think that's not useful, but I shall show you now that it is! The last technique I have to teach you is how to $(alt activate a file). Most files cannot be activated; they just hold information, but some files can be activated as if they were spells. You can recognize them by their color, or you can run $(spell ls) with a $(spell -F) parameter. When you run $(spell ls -F), it will add a $(alt \*) symbol onto the end of files that can be activated. And it will add a $(alt \/) symbol on to the end of directories.
+You may think that's not useful, but I shall show you now that it is! The last technique I have to teach you is how to $(alt activate a file). Most files cannot be activated; they just hold information, but some files can be activated as if they were spells. So how do you activate such a file? You must invoke its path using $(alt at least one directory in the path). So if the file is in your current directory, you can use the $(alt .) token. We'll look at some examples in a minute.
 
-Any of the following will work (and you can come up with other invocations that will work as well):
-$BRCYAN
-ls -F
-ls -F .
-ls . -F
-ls -F "$(pwd)"
-ls "$(pwd)" -F
-$SPEECH_N
+How do you recognize which files can be activated? You can recognize them by their color, or you can run $(spell ls) with a $(spell -F) parameter. When you run $(spell ls -F), it will add a $(alt \*) symbol onto the end of files that can be activated. And it will add a $(alt \/) symbol on to the end of directories.
+
 If you invoke $(spell ls -F) here, you will see:
 $RESET
 $(ls -F --color=always)
 $SPEECH
-You can see that William, that green owl in the corner who is eyeing you carefully, can be activated.
-
-So how do you activate such a file? You must invoke its path using $(alt at least one directory in the path). So if the file is in your current directory, you can use the $(alt .) token. Here are a few of the ways that you can invoke William.sh:
+You can see that William, that green owl in the corner who is eyeing you carefully, can be activated. Here are a few of the ways that you can invoke William.sh:
 $BRGREEN
 ./William.sh
 ../$(basename "$(pwd)")/William.sh
@@ -151,7 +143,7 @@ $(pwd)/William.sh
 $SPEECH_N
 Well, the last thing I have to teach you is a simple spell: $(spell pwd). It is a first-level Divination spell. If you cast it, it will show you your current location.
 
-Now it's time for met to collect mushrooms. Good luck on your lunatick treasure hunt. You should talk to William before you go.
+Now it's time for me to collect mushrooms. Good luck on your lunatick treasure hunt. You should talk to William before you go.
 
 $CONTINUE
 HEREDOC
