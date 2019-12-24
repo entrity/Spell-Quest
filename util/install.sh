@@ -32,7 +32,7 @@ cp -r "$ROOTDIR/backup/"* "$ROOTDIR/home"
 
 # Lock doors
 for arg in "${LOCKED_DIRS[@]}"; do
-	chmod 0 "$arg"
+	chmod -x "$arg"
 done
 
 # Raleigh

@@ -34,6 +34,8 @@ What if you invoke $(spell cd) with no parameters? You'll be transported to your
 
 There's one other handy $(alt technique) for $(spell cd): if you go somewhere that you don't want to be, you can return to the directory which you previously occupied by invoking $(spell cd -). Suppose you accidently cast $(spell cd) and ended up in your home. Well, you could go right back to where you were last by casting $(spell cd -).
 
+You'll probably learn many, many spells and techniques, so... $(alt '<the owl waves a wing in your direction, and you feel a tingle>') ...there! Now you can cast the spell $(spell lessons) at any time, and you will see a list of all the lessons you have learned. When faced with a challenge that you can't figure out, it might help to remind yourself what abilities you have.
+
                            {O,O}
                           ./)_)
 ... Are you still here?     " "
