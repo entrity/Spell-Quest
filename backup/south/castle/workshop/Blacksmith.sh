@@ -8,8 +8,8 @@ tutorial () {
 
 	${SPEECH}How can you write a program for $(alt bash)? Create a new file using $(alt $EDITOR). You can name it whatever you please, but it's customary to end $(alt bash) files with $(alt .sh). What should you write in this file of yours? Any spell invocations you please! Here's an example of what I might write in bash program:
 
-	${RESET}find ~/north -iname '*.txt' > find-output.txt
-	grep '[0-9]' find-output.txt > grep-output.txt
+	${RESET}find ~/north -iname '*.txt' \> find-output.txt
+	grep '[0-9]' find-output.txt \> grep-output.txt
 
 	${SPEECH}Can you see what my program does? It makes a list of all files in the $(alt north) directory which contain at least one numberal in the name and whose name ends in $(alt .txt).
 
@@ -47,19 +47,21 @@ tutorial () {
 
 	This usage of $(spell read) will read one line from the file $(alt myfile.txt) and assign it to a variable named $(alt HERE).
 
-	Now let's build a program that will look for files that whose names match a pattern from parameter $(alt '$1') and then select lines from those files that match the pattern from parameter $(alt '$2):
+	Now let's build a program that will look for files that whose names match a pattern from parameter $(alt '$1') and then select lines from those files that match the pattern from parameter $(alt '$2'):
 
 	${RESET}find ~/north -iname "\$1" > find-output.txt
 	while read found_file; do
-		grep "\$2" "$found_file" > grep-output.txt
-	end < find-output.txt
+	  grep "\$2" "$found_file" > grep-output.txt
+	done < find-output.txt
 
 	${SPEECH}Do you see that we used the $(spell read) spell and also the $(alt '<') redirect? What you might not have expected is the use of $(alt while). The $(alt while) technique allows us to read a line from the file again and again until the end of the file is reached. When you use while, the pattern is:
 
 	${RESET}
-	wnile read VARIABLE_NAME; do
-		...
-	end < INPUT_FILE
+	while read VARIABLE_NAME; do
+	  ...
+	done < INPUT_FILE
+
+	${SPEECH}(The blank spaces which appear at the start of lines inside of the $(alt while ... done) block are optional. You can always put as many blank spaces as you want at the beginning or end of any line. I've just used them here to help me recognize quickly which lines exist inside of a loop.)
 
 	${SPEECH}Do you think you can use these techniques to build a short bash program? Because I want you to do two things for me, using these techniques.
 
@@ -104,13 +106,23 @@ test_sed_task () {
 			if ! diff -q -w "$fpath" <(sed 's/darkness/light/g' "$REFERENCE"); then
 				OK=0
 			fi
-		elif ! cmp "$fpath" "$REFERENCE"
+		elif ! cmp "$fpath" "$REFERENCE"; then
 			OK=0
 		fi
 	done < <(find thisdir/library)
+	if ! (($OK)); then
+		wrap <<-EOF
+		${SPEECH}Hm. That's not quite what I'm looking for. The contents of the library aren't what I expected.
+		EOF
+		return 1
+	fi
 }
 reward () {
+	speak <<-EOF
+	${SPEECH}Well done! As promised, let me tell you something that will help you traverse the swamp:
 
+	The path you must take is four segments long, and the word that will guide the first segment is $(alt the).
+	EOF
 }
 
 NUMERALS_FILE=$HOME/bag/treasury-numerals.txt
