@@ -7,6 +7,11 @@ ROOTDIR=$(canpath "$THISDIR/..")
 
 LOCKED_DIRS=(
 	"$ROOTDIR/home/north/forest/path-5/tree-7/academy-sylphan/Locked Door"
+	"$ROOTDIR/home/south/castle/library"
+	"$ROOTDIR/home/south/castle/treasury"
+	"$ROOTDIR/home/south/castle/workshop"
+	"$ROOTDIR/home/south/castle/tower"
+	"$ROOTDIR/home/south/castle/armory"
 )
 
 # Remove everything

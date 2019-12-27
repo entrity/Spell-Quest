@@ -1,7 +1,7 @@
 __RELFILE__=$BASH_SOURCE # relative file path
 __RELDIR__=$(dirname "$__FILE__") # relative dir path
 
-debug () { ((1)) && echo "++DEBUG>> $*"; }
+debug () { [[ $(whoami) == markham ]] && echo "++DEBUG>> $*"; }
 export -f debug
 
 debug Source .start
@@ -40,6 +40,7 @@ export LEAVE="${RED}Press \"q\" to leave${SPEECH_N} "
 export CONTINUE="${RED}Press \"q\" to continue${SPEECH_N} "
 export UTIL="$__DIR__/util"
 export ACADEMYN="$HOME/north/forest/path-5/tree-7/academy-sylphan"
+export CASTLE="$HOME/south/castle"
 export DATA=$(canpath "$__DIR__/data")
 
 ############
@@ -81,7 +82,7 @@ if [[ -e "$HOME/../skip" ]] && [[ -e "$__DIR__/.lessons" ]]; then
 	cp "$__DIR__/data/mighty-axe.sh" "$HOME/bag"
 	cp "$__DIR__/data/Lich.sh" "$HOME/cave/tunnel/cavern"
 	cd "$ACADEMYN/Transmutation"
-	cd "$HOME/cave/tunnel/cavern"
+	cd "$HOME/south/castle"
 elif [[ -e "$__DIR__/.lessons/ls" ]]; then
 	cd "$HOME"
 else
