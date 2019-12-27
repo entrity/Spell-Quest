@@ -10,7 +10,7 @@ LOCKED_DIRS=(
 	"$ROOTDIR/home/south/castle/library"
 	"$ROOTDIR/home/south/castle/treasury"
 	"$ROOTDIR/home/south/castle/workshop"
-	"$ROOTDIR/home/south/castle/tower"
+	"$ROOTDIR/home/south/castle/locked tower"
 	"$ROOTDIR/home/south/castle/armory"
 )
 
