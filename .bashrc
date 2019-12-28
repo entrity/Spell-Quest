@@ -1,6 +1,8 @@
 __RELFILE__=$BASH_SOURCE # relative file path
 __RELDIR__=$(dirname "$__FILE__") # relative dir path
 
+export MAINPID=$$ # So that this can be killed if the character dies
+
 debug () { [[ $(whoami) == markham ]] && echo "++DEBUG>> $*"; }
 export -f debug
 
@@ -84,7 +86,9 @@ if [[ -e "$HOME/../skip" ]] && [[ -e "$__DIR__/.lessons" ]]; then
 	cp "$__DIR__/data/mighty-axe.sh" "$HOME/bag"
 	cp "$__DIR__/data/Lich.sh" "$HOME/cave/tunnel/cavern"
 	cd "$ACADEMYN/Transmutation"
-	cd "$HOME/south/castle"
+	ln -s '/home/markham/projects/Spell-Quest/home/south/swamp/dGhl/d2F5/aXM=/d2luZGluZw==' "$HOME/swamp-link"
+	cp "$HOME/../data/Gargoyle's head.sh" "$HOME/bag/magic-seed.txt"
+	cd "$HOME/swamp-link"
 elif [[ -e "$__DIR__/.lessons/ls" ]]; then
 	cd "$HOME"
 else

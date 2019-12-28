@@ -24,3 +24,9 @@ export -f art
 # Get canonical path
 canpath () { python -c "import sys, os; print(os.path.realpath(sys.argv[1]))" "$1"; }
 export -f canpath
+# Flash function
+reverse_video () { printf '\e[?5h'; }
+export -f reverse_video
+# Flash function
+normal_video () { printf '\e[?5l'; }
+export -f normal_video

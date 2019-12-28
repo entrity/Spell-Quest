@@ -17,6 +17,7 @@ my_prompt_callback () {
 			case $NEW_FLAG in
 				LICH_BOTTLE) bash "$CBDIR/lich.sh" ;;
 				IMP_WAND) bash "$CBDIR/imp-wand.sh" ;;
+				GARGOYLE_LAIR) bash "$CBDIR/gargoyle.sh" ;;
 			esac
 		done < <(echo -e "$OLD_FLAGS" | diff --changed-group-format='%<' --unchanged-group-format='' "$FLAGS_FILE" -)
 	fi

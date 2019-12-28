@@ -10,8 +10,19 @@ rename () {
 	fi
 }
 
+slay_gargoyle () {
+	cp "$HOME/../data/Gargoyle's head.sh" "$HOME/bag"
+	touch "$HOME/bag/.gargoyle-slain"
+	wrap <<-EOF
+	${CYAN}You swing the mighty axe deftly and succeed in lopping the Gargoyle's horrible head off. You heft the head and then drop it into your bag.
+	EOF
+}
+
 if (($#)); then
-	if [[ -d "$1" ]]; then
+	if [[ $(basename "$1") == Gargoyle.sh ]]; then
+		rm "$1"
+		slay_gargoyle
+	elif [[ -d "$1" ]]; then
 		if [[ -x "$1" ]] && [[ -r "$1" ]]; then
 			>&2 echo "$(basename "$1") is already open to you. You cannot use it on this target at this time."
 		else

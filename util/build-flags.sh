@@ -7,3 +7,7 @@ LICH_BOTTLE="$HOME/cave/tunnel/cavern/calm-pool/lich-bottle.txt"
 
 IMP_WAND="$HOME/cave/imp's-bag/small-wand.txt"
 [[ -f "$IMP_WAND" ]] && echo IMP_WAND
+
+if [[ `pwd` =~ rocky-spire/tip-top ]] && ! [[ -e "$HOME/bag/.gargoyle-slain" ]]; then
+	echo GARGOYLE_LAIR
+fi

@@ -6,6 +6,8 @@ REFERENCE="$HOME/../data/img-for-wyvern.png"
 TARGET='2009-10-26-bobbing-for-mousetraps.png'
 
 tutorial () {
+	[[ -e "$REFERENCE" ]] || wget -O "$REFERENCE" "$IMG_URL" >/dev/null &
+
 	speak <<-EOF
 	$(art wyvern.txt)
 	${SPEECH}Whoosh! Do you dare brave the swamp? Hmph! It is said that fools rush in where angels dare not tread.
@@ -33,8 +35,6 @@ tutorial () {
 
 	$CONTINUE
 	EOF
-
-	[[ -e "$REFERENCE" ]] || wget -O "$REFERENCE" "$IMG_URL" >/dev/null
 
 	learned wget
 	learned curl
