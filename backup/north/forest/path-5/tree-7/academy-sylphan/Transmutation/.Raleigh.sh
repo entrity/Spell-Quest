@@ -113,7 +113,7 @@ main_instruction () {
 
 	To complete this task, you'll need to make use of a spell which allows you to filter lines which match a $(alt pattern) which you get to specify. Here's an example of how to invoke it:
 
-	$(spell 'grep "^[0-9]\{3\}c[ ]+b.$" myfile.txt')
+	$(spell 'grep "^[0-9]\{3\}c[ ]\+b.$" myfile.txt')
 
 	* $(alt grep) is the name of the spell
 
@@ -125,11 +125,11 @@ main_instruction () {
 	
 	* When brackets ($(alt [])) appear, they mean "match *any* of the characters that appear between these brackets." So a regular expression of $(alt '^[abc]$') would match $(alt a) or $(alt b) or $(alt c) but *nothing* else!
 	
-	* When a $(alt '+') follows a pair of brackets, it means "match one or more of these characters." So a regular expression of $(alt '^[abc]+$') would match $(alt a), $(alt aa) $(alt bcca), $(alt ccccc), and many more.
+	* When a $(alt '\+') follows a pair of brackets, it means "match one or more of these characters." So a regular expression of $(alt '^[abc]+$') would match $(alt a), $(alt aa) $(alt bcca), $(alt ccccc), and many more.
 	
 	* When an $(alt '*') follows a pair of brachets, it means "match zero or more of these characters." So a regular expression of $(alt '^[abc]*$') would match any of the lines that $(alt '^[abc]+$') would match, but it would also match an empty line!
 	
-	* The $(alt '+') and $(alt '*') don't have to follow a pair of brackets, though. When they follow an ordinary character, they mean "match one or more (or zero or more) of this character."
+	* The $(alt '\+') and $(alt '*') don't have to follow a pair of brackets, though. When they follow an ordinary character, they mean "match one or more (or zero or more) of this character."
 		
 	* When $(alt -) appears inside a set of brackets and between two other characters it means "match any characters in a range." For example, $(alt '[0-9]') would match any single character between 0 and 9. And $(alt '[a-cD-G3-6]') would match any of the following characters: a, b, c, D, E, F, G, 3, 4, 5, 6.
 	
