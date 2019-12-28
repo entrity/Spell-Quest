@@ -25,9 +25,11 @@ IMGDIR=$(canpath "$__DIR__/util/ascii")
 export FOLD=65
 if [[ $(uname) =~ Linux ]]; then
 	export EDITOR=gedit
+	export IMAGER=eog
 elif [[ $(uname) =~ Darwin ]]; then
 	osascript -e 'tell application "Terminal" to set current settings of front window to first settings set whose name is "Homebrew"'
 	export EDITOR="open -e"
+	export IMAGER="open"
 	ENVSUBST_PATH="$(find /usr/local -name envsubst)"
 	alias envsubst="$ENVSUBST_PATH"
 fi

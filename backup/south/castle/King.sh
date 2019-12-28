@@ -14,7 +14,7 @@ chmod +x "$CASTLE/treasury"
 chmod +x "$CASTLE/workshop"
 
 wrap <<-EOF
-${SPEECH}The king waves a sparkling scepter, and you hear the sound of bolts clicking open in locks.
+${SPEECH}The king waves a sparkling scepter, and you hear the sound of bolts clicking open in some of the locks.
 
-The king looks nervously at the door to the $(alt tower), and a glint of appears in his eye.
+The king looks nervously at the door to the $(alt tower), and a glint of concern appears in his eye.
 EOF
