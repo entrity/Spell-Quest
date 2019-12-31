@@ -159,6 +159,12 @@ main_instruction () {
 
 	learned $EDITOR
 	learned grep
+	learned '(regex) []'
+	learned '(regex) \{\}'
+	learned '(regex) *'
+	learned '(regex) \+'
+	learned '(regex) .'
+	learned '(regex) [-]'
 }
 cleanup () {
 	speak <<-HEREDOC

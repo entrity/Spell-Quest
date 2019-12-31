@@ -21,7 +21,7 @@ Have you noticed that file names tend to end with a period, followed by a few ch
 
 Conventionally, a $(alt .txt) file contains text and a $(alt .sh) file contains a shell script and a $(alt .html) file contains a web page and so on. But here's the secret: file extensions can be whatever you want.
 
-You could make a shell script named $(alt myscript.html). You could make a text file named $(alt mytext.sh). You could make an image file named $(alt myimage.silly-nonsense).
+You could make a shell script named $(alt myscript.html). You could make a text file named $(alt mytext.sh). You could make an image file named $(alt myimage.silly-nonsense). You can even make a file with no extension at all! Or even a file that *only* has an extension!
 
 That's all I know! Go in safety!
 
