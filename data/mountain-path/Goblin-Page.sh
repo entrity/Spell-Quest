@@ -2,6 +2,9 @@
 
 tutorial () {
 	speak <<-EOF
+	${SPEECH}
+	Wow, you've traveled a long way! Have you thought of making a link between here and your $(alt '$HOME')? I mean, you can if you want to. It's not really something you have to do.
+
 	You've probably learned a couple of ways to look at the contents of files. Have you learned $(spell cat) and $(spell "$EDITOR")? There's a convenient spell that's perhaps a midpoint between these two very different options: $(spell less)
 
 	In fact: $(spell less) is the spell I'm using to talk to you right now. It's the spell that almost everyone has used to talk to you so far. It allows you to press $(alt UP) and $(alt DOWN) and $(alt q).
@@ -16,11 +19,17 @@ tutorial () {
 
 	$(spell 'find . | less')
 
+	But you don't really have to do it. I mean, you can if you want to.
+
 	$CONTINUE
 	EOF
 
 	learned less
 	learned man
+
+	wrap <<-EOF
+	${SPEECH}Well, he was an unusual character. Will go press on into the mountain?
+	EOF
 }
 
 tutorial
