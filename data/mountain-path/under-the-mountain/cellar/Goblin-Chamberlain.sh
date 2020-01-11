@@ -21,9 +21,9 @@ tutorial () {
 
 	$(spell grep -A 3 somefile.txt)
 
-	When you use the $(alt '-A') or $(alt '-B') parameter, $(spell grep) will output a line consisting of only $(alt '--') between each match. So I want you to do a little bit of extra work to remove these lines. $(red But) you can't just use $(alt '--') as a parameter for $(spell grep)! Some spells, including $(sell grep), recognize $(alt '--') as a special parameter which means "all the parameters before this are optional, and all parameters after this are required." So you can invoke $(spell 'grep -- --').
+	When you use the $(alt '-A') or $(alt '-B') parameter, $(spell grep) will not only output the lines you want but will $(red also) output a line consisting of only $(alt '--') between each match. So I want you to do a little bit of extra work to remove these lines. $(red But) you can't just use $(alt '--') as a parameter for $(spell grep)! Some spells, including $(spell grep), recognize $(alt '--') as a special parameter which means "all the parameters before this are optional, and all parameters after this are required." So you to use $(alt '--') as a parameter, you can invoke $(spell 'grep -- --'). (But $(spell 'grep -- --') is not quite the command you want to use.)
 
-	I want you to only find the lines that hold the names of the barrels. Don't include the lists of ingredients! Please pipe the results into me the next time you activate me.
+	I want you to only find the lines that hold the names of the barrels. Don't include the lists of ingredients! And don't include the lines that consist of only $(alt '--')! Please pipe the results into me the next time you activate me.
 
 	Do you need a hint? Pipe a wrong answer into me, and I'll give you a hint.
 
@@ -41,12 +41,18 @@ tutorial () {
 }
 reward () {
 	wrap <<-EOF
-	${SPEECH}Ah! Very good. In return for your service, I award you this: a 
+	${SPEECH}
+	Ah! Very good. In return for your service, I award you this: a $(alt carbuncle)!
+
+	${RESET}The goblin slips a round, shining stone into your bag
 	EOF
+	mkdir -p "${HOME}/bag"
+	cp "${DATA}/carbuncle" "${HOME}/bag"
 }
 mistake () {
 	wrap <<-EOF
-	${SPEECH}No, no, that's not it. You should be able to accomplish this task in a single command using pipes to connect $(alt three) invocations of $(spell grep).
+	${SPEECH}
+	No, no, that's not it. You should be able to accomplish this task in a single command using pipes to connect $(alt three) invocations of $(spell grep).
 
 	For the first of the $(spell grep) invocations, you'll need to use one of the parameters that I taught you. For the others, you can use one (or none) of the parameters you learned from other instructors.
 	EOF
@@ -55,9 +61,9 @@ mistake () {
 if [[ -t 0 ]]; then
 	tutorial
 else
-	CORRECT=$(grep -B 1 saffron "$(thisdir)/barrels.txt" | grep -v saffron)
+	CORRECT=$(grep -B 1 saffron "$(thisdir)/barrels.txt" | grep -v saffron | grep -v -- --)
 	read -d '' STREAM
-	if [[ $STREAM == $CORRECT ]]; then
+	if >/dev/null diff -w -q <(echo -e "$CORRECT") <(echo -e "$STREAM"); then
 		reward
 	else
 		mistake
