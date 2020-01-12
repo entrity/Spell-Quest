@@ -67,8 +67,8 @@ unset color_prompt force_color_prompt
 
 if (($RESTART)) || ! [[ -e "$__DIR__/home" ]]; then
 	debug Install
-	cd "$HOME"
-	bash "../util/install.sh"
+	cd $(dirname "$BASH_SOURCE")
+	bash "util/install.sh"
 fi
 
 ##############
@@ -88,7 +88,8 @@ if [[ -e "$HOME/../skip" ]] && [[ -e "$__DIR__/.lessons" ]]; then
 	cd "$ACADEMYN/Transmutation"
 	ln -s '/home/markham/projects/Spell-Quest/home/south/swamp/dGhl/d2F5/aXM=/d2luZGluZw==' "$HOME/swamp-link"
 	cp "$HOME/../data/Gargoyle's head.sh" "$HOME/bag/magic-seed.txt"
-	cd "$HOME/swamp-link"
+	cd $(readlink "$HOME/swamp-link")
+	bash $HOME/bag/magic-seed.txt
 elif [[ -e "$__DIR__/.lessons/ls" ]]; then
 	cd "$HOME"
 else
