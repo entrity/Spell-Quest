@@ -2,6 +2,8 @@
 
 tutorial () {
 	speak <<-EOF
+
+	$(art mountain-1.txt)
 	${SPEECH}
 	Wow, you've traveled a long way! Have you thought of making a link between here and your $(alt '$HOME')? I mean, you can if you want to. It's not really something you have to do.
 

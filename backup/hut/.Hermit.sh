@@ -10,7 +10,8 @@ decompose_path () {
 
 speak <<-HEREDOC
 ${SPEECH}
-$(art hooded-wizard.txt)
+
+$(art hermit.txt)
 ${RESET}You can press the up and down arrow keys or PageUp and PageDown to scroll through what I have to say.${SPEECH}
 
 So your friends have gone off to that Warty Hogs school to become wizards and witches, have they? What's that? You don't want to learn magic, you just want to be a treasure hunter?
