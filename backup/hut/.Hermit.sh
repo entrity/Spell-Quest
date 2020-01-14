@@ -1,3 +1,5 @@
+shopt -s expand_aliases
+
 decompose_path () {
 	PTH="$(pwd)"
 	while [[ -n "$PTH" ]]; do
@@ -9,10 +11,10 @@ decompose_path () {
 }
 
 speak <<-HEREDOC
-${SPEECH}
 
-$(art hermit.txt)
 ${RESET}You can press the up and down arrow keys or PageUp and PageDown to scroll through what I have to say.${SPEECH}
+${SPEECH}
+$(art hermit.txt)
 
 So your friends have gone off to that Warty Hogs school to become wizards and witches, have they? What's that? You don't want to learn magic, you just want to be a treasure hunter?
 
@@ -61,9 +63,7 @@ If you invoke $(spell ls) with no paramters, you will just look at your current 
 
 $(spell ls)
 
-That's pretty easy. Try it out now.
-
-${CONTINUE}
+That's pretty easy. Try it out now. ${CONTINUE}
 HEREDOC
 
 echo -e "$SPEECH\nDo as the old hermit said: invoke $(spell ls) with no parameters. Remember to press $(alt Enter) or $(alt Return) after $(spell ls).\n$RESET" | wrap
