@@ -12,7 +12,10 @@ decompose_path () {
 
 speak <<-HEREDOC
 
-${RESET}You can press the up and down arrow keys or PageUp and PageDown to scroll through what I have to say.${SPEECH}
+${RESET}
+You might wish to maximize this window. You can also increase the text size by use of the menu.
+
+You can press the $(alt up)${RESET} and $(alt down)${RESET} arrow keys or $(alt PageUp)${RESET} and $(alt PageDown)${RESET} or $(alt u)${RESET} and $(alt d)${RESET} to scroll through what I have to say.${SPEECH}
 ${SPEECH}
 $(art hermit.txt)
 
