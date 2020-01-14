@@ -24,3 +24,5 @@ alias gs='git status'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
+
+shopt -s expand_aliases

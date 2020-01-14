@@ -1,4 +1,4 @@
-shopt -s expand_aliases
+. "$HOME/../.start/aliases.sh"
 
 decompose_path () {
 	PTH="$(pwd)"
