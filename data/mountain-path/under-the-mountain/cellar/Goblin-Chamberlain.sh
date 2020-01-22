@@ -42,12 +42,12 @@ tutorial () {
 reward () {
 	wrap <<-EOF
 	${SPEECH}
-	Ah! Very good. In return for your service, I award you this: a $(alt carbuncle)!
+	Ah! Very good. In return for your service, I award you this: a $(alt yellow mushroom)!
 
-	${RESET}The goblin slips a round, shining stone into your bag
+	${RESET}The goblin slips a mushroom into your bag. It's very pungent, and it leaves traces of a yellow dust on everything it touches.
 	EOF
 	mkdir -p "${HOME}/bag"
-	cp "${DATA}/carbuncle" "${HOME}/bag"
+	cp "${DATA}/yellow-mushroom" "${HOME}/bag"
 }
 mistake () {
 	wrap <<-EOF
