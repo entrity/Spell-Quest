@@ -40,3 +40,20 @@ cd Spell-Quest || cd $HOME/Downloads/Spell-Quest-master
 * redirects
 * for loops (with seq)
 * ./../~
+
+### BMP
+
+32-bit has bgra pixels
+
+```
+ffmpeg -i src.png dst.bmp
+```
+
+https://commons.wikimedia.org/wiki/Category:Drawings_of_unicorns
+https://en.wikipedia.org/wiki/BMP_file_format
+
+```
+# Get bytes 10-13 as uint. it should be the offset of the bmp body
+xxd -s 10 
+od -j 10 -N 4 -t d4 # unsigned 4-byte int, skip ahead 10 bytes
+```
