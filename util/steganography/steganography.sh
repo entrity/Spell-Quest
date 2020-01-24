@@ -23,8 +23,7 @@ lsb_to_bin () { # extract LSB from every byte, print a new binary string from al
 	done
 }
 bin_to_msg () {
-	while read -r -n 8 BINBITS; do
-		BINCHAR=$(rev <<< $BINBITS)
+	while read -r -n 8 BINCHAR; do
 		if [[ ${#BINCHAR} -eq 8 ]]; then
 			INT=$(echo "ibase=2; $BINCHAR" | bc)
 			if (($INT)); then
@@ -37,5 +36,3 @@ bin_to_msg () {
 		fi
 	done
 }
-
-[[ -e "m.bmp" ]] && read_msg "m.bmp"

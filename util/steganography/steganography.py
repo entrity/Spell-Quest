@@ -15,26 +15,6 @@ for i in `seq 256` do; printf "\x00" >> zeroes.bin; done
 import random
 import struct, sys
 
-def char_to_bytes(ch, outfile):
-	for b in range(7,-1,-1):
-		lsb = (ord(ch) & (1 << b)) >> b
-		r = random.randint(0,255)
-		if lsb == 0:
-			out = r & 254
-		else:
-			out = r | 1
-		outfile.write(struct.pack('<B', out))
-		sys.stdout.write('%d' % lsb)
-		
-def demo():
-	with open('bypy.tmp','wb') as f:
-		for ch in 'Oh, boy!':
-			c(ch, f)
-	print()
-
-'''
----------------------------------------
-'''
 
 CHUNK_SIZE = 2**11
 
@@ -62,9 +42,9 @@ class Embedder(object):
 			for i in range(7,-1,-1):
 				bit = (byte & (1 << i))
 				if bit:
-					octet[i] |= 1
+					octet[7-i] |= 1
 				else:
-					octet[i] &= 254
+					octet[7-i] &= 254
 
 	def _octet_callback(self, octet):
 		self._embed_char(octet)
@@ -78,7 +58,7 @@ class Reader(object):
 	def _octet_callback(self, octet):
 		byte = 0
 		for i in range(8):
-			if (octet[i] & 1):
+			if (octet[7-i] & 1):
 				byte |= (1 << i)
 		if byte == 0:
 			sys.stdout.buffer.flush()
