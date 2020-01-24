@@ -12,7 +12,10 @@ wrap () { python "$UTIL/my_formatter.py" $(tput cols); }
 export -f wrap
 speak () { wrap | less -r; }
 export -f speak
-learned () { touch "$HOME/../.lessons/$*"; }
+learned () {
+	printf -v LESSON "%-24s (from $(basename "$0"))" "$*"
+	touch "$HOME/../.lessons/$LESSON"
+}
 export -f learned
 lessons () { ls -1 "$HOME/../.lessons" | sort --version-sort; }
 export -f lessons
