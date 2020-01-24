@@ -8,7 +8,7 @@ alt () { printf "${CYAN}${*}${SPEECH_N}"; }
 export -f alt
 red () { printf "${RED}${*}${SPEECH_N}"; }
 export -f red
-wrap () { python "$UTIL/my_formatter.py"; }
+wrap () { python "$UTIL/my_formatter.py" $(tput cols); }
 export -f wrap
 speak () { wrap | less -r; }
 export -f speak

@@ -1,6 +1,6 @@
 import sys, re
 
-WIDTH = 65
+WIDTH = min(65, int(sys.argv[1]) if (len(sys.argv) > 1) else 65)
 HANGING_INDENT = 4
 
 class Line(object):
