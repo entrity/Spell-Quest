@@ -132,7 +132,13 @@ tutorial_2 () {
 
 	wrap <<-EOF
 	
-	${SPEECH}Wow. You have your work cut out for you. You might need to talk to Tertius again and take notes on what he said. There's too much to repeat here.
+	${SPEECH}Wow, you have a lot to do!
+
+	1. Use a spell from the Path of Binary to convert the contents of the file to bit-strings.
+	2. Take only the last bit from each of the bit-strings.
+	3. Save these bits to a temporary file. Call your file $(alt bitstrings.txt) and save it in this directory.
+
+	Then talk with Tertius again.
 	EOF
 }
 tutorial_3 () {
@@ -165,13 +171,23 @@ tutorial_3 () {
 
 	wrap <<-EOF
 	
-	${SPEECH}
+	${SPEECH}Tertius said you should do the following in a $(alt while) loop:
+
+	1. Read eight characters from your temporary file. These constitue a new bit-string.
+	2. Convert the new bit-string into an ascii character
+	3. Output the ascii character
+
+	And stop when you get a bit-string of $(alt 00000000).
 	EOF
 }
 reward () {
 	wrap <<-EOF
 	
-	${SPEECH}You've saved me!
+	${SPEECH}Oh, thank you, thank you! I feel myself again. You have earned this secret, to be sure!
+
+	The secret is that $(alt a.bmp) also contains a hidden message, but its message has been $(alt base-64 encoded). Did you ever imagine that you could make a hidden message more hidden? Can you imagine using something even stronger than base-64 encoding, such as encryption, to conceal your information?
+
+	Do you think you can use what you've learnt so far to extract the message from $(alt a.bmp)?
 	EOF
 }
 
