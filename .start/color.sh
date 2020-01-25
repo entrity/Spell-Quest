@@ -2,7 +2,7 @@
 # Color
 ###########
 
-export BRBLUE==$'\033[1;34m'
+export BRBLUE=$'\033[1;34m'
 export BRGREEN=$'\033[1;32m'
 export BRCYAN=$'\033[1;36m'
 export BRMAGENTA=$'\033[1;35m'
