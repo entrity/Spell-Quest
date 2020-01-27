@@ -17,6 +17,8 @@ You might wish to maximize this window. You can also increase the text size by u
 
 You can press the $(alt up)${RESET} and $(alt down)${RESET} arrow keys or $(alt PageUp)${RESET} and $(alt PageDown)${RESET} or $(alt u)${RESET} and $(alt d)${RESET} to scroll through what I have to say.${SPEECH}
 ${SPEECH}
+
+The normal way to stop someone talking is to press $(red q). If you end up pressing an unexpected key and can't get away from someone who's talking to you, try pressing $(red Escape) and/or $(red 'Ctrl+c') once or twice, then press $(red q).
 $(art hermit.txt)
 
 So your friends have gone off to that Warty Hogs school to become wizards and witches, have they? What's that? You don't want to learn magic, you just want to be a treasure hunter?
