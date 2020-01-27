@@ -13,7 +13,9 @@ tutorial () {
 
 	${SPEECH}Can you see what my program does? It makes a list of all files in the $(alt north) directory which contain at least one numberal in the name and whose name ends in $(alt .txt).
 
-	How can you trigger the bash program you've written? You invoke the spell $(spell bash) with the path to your program as the first parameter. Suppose you have written a program and it is located in the same directory as you and is named $(alt my-program.sh). Just invoke the following:
+	A program that does not need to be compiled is called a $(alt script). All programs written in the language of bash are scripts. All programs in Python, ruby, Javascript, and other languages are also scripts.
+
+	How can you trigger a bash which script you've written? You invoke the spell $(spell bash) with the path to your program as the first parameter. Suppose you have written a script and it is located in the same directory as you and is named $(alt my-program.sh). Just invoke the following:
 
 	$(spell bash my-program.sh)
 
@@ -63,6 +65,8 @@ tutorial () {
 
 	${SPEECH}(The blank spaces which appear at the start of lines inside of the $(alt while ... done) block are optional. You can always put as many blank spaces as you want at the beginning or end of any line. I've just used them here to help me recognize quickly which lines exist inside of a loop.)
 
+	Sometimes when writing a loop, we end writing a program that takes longer than expected (or that never ends at all). If you invoke a spell in your terminal and you can't invoke any more spells because you're waiting on the first one to finish executing, you can dispell it by pressing $(alt 'Ctrl+c'). You can dispell magic whether it is from your bash script or from a spell created by another (for instance, $(spell grep)).
+
 	${SPEECH}Do you think you can use these techniques to build a short bash program? Because I want you to do two things for me, using these techniques.
 
 	First, I want you to find all files and directories within the treasury whose names include three or more numerals (adjacent or not). Please collect these names into a file in your bag called $(alt treasury-numerals.txt)
@@ -76,9 +80,10 @@ tutorial () {
 
 	learned read
 	learned '(technique) variables'
-	learned '(technique) bash programs'
+	learned '(technique) bash scripts'
 	learned '(technique) <'
 	learned '(technique) while'
+	learned '(technique) Ctrl+c'
 
 	wrap <<-EOF
 		${SPEECH}Better to do as the Blacksmith says:
