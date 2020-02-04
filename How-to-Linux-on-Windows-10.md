@@ -39,6 +39,6 @@ cp /mnt/c/Users/Myself/Documents/foo.docx foo.docx
 
 ### MySQL
 This doesn't start up automatically when running Linux as a subsystem in Windows, so invoke the following:
-``bash
+```bash
 sudo /etc/init.d/mysqld start
 ```
