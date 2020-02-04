@@ -20,7 +20,9 @@ After having installed Linux according to the instructions above, you can run Li
 
 This will open a command line interface. You will only be able to run command-line programs from this Linux subsystem.
 
-## Copying/moving files between Linux and Windows
+## Erratat
+
+### Copying/moving files between Linux and Windows
 
 If you want to copy files into or from your Linux subsystem, the best option is to use the Linux command line (no drag-and-drop). (Drag-and-drop is actually an option for moving files _out_ of the Linux subsystem and into the Windows environment, but in the other direction, the implementation is highly flawed.)
 
@@ -33,4 +35,10 @@ cp myfile.txt /mnt/c/Users/Myself/Desktop/myfile.txt
 
 # Copy a file from Windows to Linux
 cp /mnt/c/Users/Myself/Documents/foo.docx foo.docx
+```
+
+### MySQL
+This doesn't start up automatically when running Linux as a subsystem in Windows, so invoke the following:
+``bash
+sudo /etc/init.d/mysqld start
 ```
