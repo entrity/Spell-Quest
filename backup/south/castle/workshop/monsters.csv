@@ -1,0 +1,160 @@
+Name,ChallengeRating,ChallengeXP,ACType
+Adult Red Dragon,17,18000,natural armor
+Stone Golem,10,5900,natural armor
+Fire Giant,9,5000,plate
+Hydra,8,3900,natural armor
+Frost Giant,8,3900,patchwork armor
+Young Green Dragon,8,3900,natural armor
+Tyrannosaurus Rex,8,3900,natural armor
+Giant Ape,7,2900,
+Cyclops,6,2300,natural armor
+Medusa,6,2300,natural armor
+Mammoth,6,2300,natural armor
+Chimera,6,2300,natural armor
+Wyvern,6,2300,natural armor
+Earth Elemental,5,1800,natural armor
+Giant Shark,5,1800,natural armor
+Water Elemental,5,1800,natural armor
+Hill Giant,5,1800,natural armor
+Fire Elemental,5,1800,
+Triceratops,5,1800,natural armor
+Flesh Golem,5,1800,
+Air Elemental,5,1800,
+Giant Crocodile,5,1800,natural armor
+Troll,5,1800,natural armor
+Elephant,4,1100,natural armor
+Banshee,4,1100,
+Ghost,4,1100,
+Flameskull,4,1100,
+Killer Whale,3,700,natural armor
+Minotaur,3,700,natural armor
+Winter Wolf,3,700,natural armor
+Ankylosaurus,3,700,natural armor
+Manticore,3,700,natural armor
+Owlbear,3,700,natural armor
+Werewolf,3,700,natural armor
+Mummy,3,700,natural armor
+Doppelganger,3,700,
+Basilisk,3,700,natural armor
+Giant Scorpion,3,700,natural armor
+Yeti,3,700,natural armor
+Hell Hound,3,700,natural armor
+Wight,3,700,studded leather
+Spectator,3,700,natural armor
+Phase Spider,3,700,natural armor
+Plesiosaurus,2,450,natural armor
+Giant Constrictor Snake,2,450,
+Awakened Tree,2,450,natural armor
+Griffon,2,450,
+Pegasus,2,450,
+Ogre,2,450,hide armor
+Gargoyle,2,450,natural armor
+Saber-Toothed Tiger,2,450,
+Allosaurus,2,450,natural armor
+Nothic,2,450,natural armor
+Centaur,2,450,
+Hunter Shark,2,450,natural armor
+Rhinoceros,2,450,natural armor
+Ochre Jelly,2,450,
+Giant Elk,2,450,natural armor
+Polar Bear,2,450,natural armor
+Giant Boar,2,450,natural armor
+Swarm of Poisonous Snakes,2,450,
+Grick,2,450,natural armor
+Giant Octopus,1,200,
+Giant Hyena,1,200,
+Death Dog,1,200,
+Giant Toad,1,200,
+Harpy,1,200,
+Dire Wolf,1,200,natural armor
+Tiger,1,200,
+Brown Bear,1,200,natural armor
+Animated Armor,1,200,natural armor
+Swarm of Quippers,1,200,
+Bugbear,1,200,hide armor, shield
+Giant Eagle,1,200,
+Giant Spider,1,200,natural armor
+Lion,1,200,
+Ghoul,1,200,
+Giant Vulture,1,200,
+Hippogriff,1,200,
+Satyr,0,5,100,leather armor
+Cockatrice,0,5,100,
+Worg,0,5,100,natural armor
+Swarm of Insects,0,5,100,natural armor
+Gnoll,0,5,100,hide armor, shield
+Reef Shark,0,5,100,natural armor
+Lizardfolk,0,5,100,natural armor, shield
+Ape,0,5,100,
+Black Bear,0,5,100,natural armor
+Warhorse,0,5,100,
+Giant Goat,0,5,100,natural armor
+Crocodile,0,5,100,natural armor
+Giant Sea Horse,0,5,100,natural armor
+Orc,0,5,100,hide armor
+Giant Wasp,0,5,100,
+Hobgoblin,0,5,100,chain mail, shield
+Swarm of Ravens,0,25,50,
+Swarm of Rats,0,25,50,
+Swarm of Bats,0,25,50,
+Blink Dog,0,25,50,
+Giant Bat,0,25,50,
+Zombie,0,25,50,
+Giant Owl,0,25,50,
+Axe Beak,0,25,50,
+Giant Lizard,0,25,50,natural armor
+Draft Horse,0,25,50,
+Giant Frog,0,25,50,
+Flying Sword,0,25,50,natural armor
+Panther,0,25,50,
+Pteranodon,0,25,50,natural armor
+Skeleton,0,25,50,armor scraps
+Giant Badger,0,25,50,
+Constrictor Snake,0,25,50,
+Elk,0,25,50,
+Riding Horse,0,25,50,
+Giant Poisonous Snake,0,25,50,
+Giant Wolf Spider,0,25,50,
+Wolf,0,25,50,natural armor
+Boar,0,25,50,natural armor
+Goblin,0,25,50,leather armor, shield
+Giant Centipede,0,25,50,natural armor
+Camel,0,125,25,
+Giant Crab,0,125,25,natural armor
+Merfolk,0,125,25,
+Mule,0,125,25,
+Pony,0,125,25,
+Giant Weasel,0,125,25,
+Giant Rat,0,125,25,
+Blood Hawk,0,125,25,
+Kobold,0,125,25,
+Flying Snake,0,125,25,
+Mastiff,0,125,25,
+Twig Blight,0,125,25,natural armor
+Stirge,0,125,25,natural armor
+Poisonous Snake,0,125,25,
+Awakened Shrub,0,10,
+Hyena,0,10,
+Vulture,0,10,
+Deer,0,10,
+Goat,0,10,
+Giant Fire Beetle,0,10,natural armor
+Jackal,0,10,
+Eagle,0,10,
+Octopus,0,10,
+Baboon,0,10,
+Badger,0,10,
+Cat,0,10,
+Crab,0,10,natural armor
+Lizard,0,10,
+Hawk,0,10,
+Quipper,0,10,
+Weasel,0,10,
+Bat,0,10,
+Raven,0,10,
+Spider,0,10,
+Owl,0,10,
+Frog,0,0,
+Sea Horse,0,0,
+Scorpion,0,10,natural armor
+Rat,0,10,
