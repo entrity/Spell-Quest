@@ -5,15 +5,15 @@
 You have two options for downloading:
 
 1. Save and then unzip the file at https://github.com/entrity/Spell-Quest/archive/master.zip
-2. Use git: `git clone --depth 1 git@github.com:entrity/Spell-Quest.git`
+2. In a terminal: `git clone --depth 1 git@github.com:entrity/Spell-Quest.git`
 
-### Mac OS
+### Running on Mac OS
 
 Double-click the `start.command` file (or the `restart.command` file, since they both do the same thing on your first execution).
 
 If this doesn't work because of a lack of permissions to execute a file downloaded from the internet, open a **Terminal** (from your Applications), then follow the instructions listed under **Linux** below.
 
-### Linux
+### Running on Linux
 
 In your terminal:
 
