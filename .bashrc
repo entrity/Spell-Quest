@@ -80,9 +80,11 @@ if [[ -e "$HOME/../skip" ]] && [[ -e "$__DIR__/.lessons" ]]; then
 	cp "$HOME/../data/Gargoyle's head.sh" "$HOME/bag/magic-seed.txt"
 	cd $(readlink "$HOME/swamp-link")
 	bash $HOME/bag/magic-seed.txt
+	# cp -r "$DATA/hattifattener-academy" "$HOME"
+	# cd "$HOME/hattifattener-academy"
 elif [[ -e "$__DIR__/.lessons/ls" ]]; then
 	cd "$HOME"
 else
 	cd "$HOME/hut"
-	bash "./.Hermit.sh"
+	bash "./Hermit.sh"
 fi

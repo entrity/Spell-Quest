@@ -55,6 +55,7 @@ You should try it. Gumpy seems very eager for you to look in his file. Invoke $(
 
 EOF
 
-learned echo
+learned 'echo'
+learned 'cat'
 learned '(technique) >'
 learned '(technique) >>'

@@ -35,22 +35,22 @@ $(spell mv -n Cupboard/bucket Cupboard/rag) ...now the bucket has been changed i
 
 $(spell mv -n Closet/broom .) ...now the broom is here in this directory instead of in the Closet. What fun! I could do this all day!
 
-Wait a moment! I hear footsteps. I had better go. Just shut this window behind me, and don't tell Raleigh that I was here, alright?
+$([[ -e .Raleigh.sh ]] && echo "Wait a moment! I hear footsteps. If Raleigh asks, I was just cleaning up.")
 
 $CONTINUE
 HEREDOC
 
-wrap <<HEREDOC
-$SPEECH
-Fletcher has just jumped out the window. And a professorial-looking character has just entered the room.
-HEREDOC
+if [[ -e .Raleigh.sh ]]; then
+	wrap <<-EOF
+	$SPEECH
+	A professorial-looking character has just entered the room. Fletcher seems to have calmed down much.
+	EOF
 
-if [[ $# -eq 0 ]]; then
 	THISDIR=$(thisdir)
 	mv "$THISDIR/Closet/broom" "$THISDIR" 2>/dev/null
 	mv "$THISDIR/Closet/bucket" "$THISDIR/Cupboard/rag" 2>/dev/null
-	mv "$0" "$(dirname "$0")/.$(basename "$0")" 2>/dev/null
 	mv "$THISDIR/.Raleigh.sh" "$THISDIR/Raleigh.sh" 2>/dev/null
 fi
 
-learned mv
+learned 'mv'
+learned 'mv -n'

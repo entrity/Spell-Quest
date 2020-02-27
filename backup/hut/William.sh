@@ -46,4 +46,5 @@ HEREDOC
 
 echo -e "$SPEECH_N\nYou should follow William's advice. Invoke $(spell cd ../north)\nDon't forget that you can identify special files with $(spell ls -F)"
 
-learned cd
+learned 'cd'
+learned 'cd -'

@@ -1,8 +1,16 @@
 #!/bin/bash
 
-trim_whitespace () {
-	perl -nle 'print $& while m{\S.*\S}g' "$1" | tr -s ' '
+prompt_to_repeat_main_text () {
+	echo -n "$(alt 'Do you want me to repeat my ealier instructions? [y/N]') "
+	read -n 1 DO_REPEAT
+	echo
+	if [[ $DO_REPEAT =~ y|Y ]]; then
+		clear
+		main_text | speak
+		main_endslate
+	fi
 }
+
 check_csv () {
 	local FILE="$HOME/bag/$1.csv"
 	local GOAL="$UTIL/Raleigh/$1.csv"
@@ -13,14 +21,16 @@ check_csv () {
 
 		Please talk to me again when you think you have all the files I need.
 		HEREDOC
+		prompt_to_repeat_main_text
 		return 1
-	elif ! >/dev/null cmp "$FILE" "$GOAL"; then
+	elif ! >/dev/null diff -q -B -w "$FILE" "$GOAL"; then
 		wrap <<-HEREDOC
 		${SPEECH}
 		What? Well, your $(alt "$1.csv") file isn't quite what I expected. Have you tried looking into the contents of your "$1.csv" file to see if they look correct?
 
 		Did you talk to $(alt Gumpy)? He's been bragging that he knows a $(alt technique) for transferring the output of a $(spell grep) invocation into a file. That could be useful.
 		HEREDOC
+		prompt_to_repeat_main_text
 		return 1
 	fi
 }
@@ -29,13 +39,15 @@ check_scroll_edit () {
 	local SCROLL_PATH="north/forest/path-11/tree-16/scroll.txt"
 	ls "$BACKUPS/$SCROLL_PATH"
 	local SCROLL_GOAL=$(sed -e 's/SALUTARY/INIMICAL/' "$BACKUPS/$SCROLL_PATH")
-	if ! cmp <(trim_whitespace <(echo -e "$SCROLL_GOAL")) <(trim_whitespace "$HOME/$SCROLL_PATH"); then
+	if ! 2>/dev/null diff -q -B -w "$HOME/$SCROLL_PATH" - <<<"$SCROLL_GOAL"; then
 		wrap <<-HEREDOC
 		${SPEECH}
 		Hm. Wait one minute while I gaze into my crystal ball...
 
 		Ehm. It seems the changes you made to the scroll were not as I wished. Did you remember to $(alt save) the file before exiting the text editor?
+
 		HEREDOC
+		prompt_to_repeat_main_text
 		return 1
 	fi
 }
@@ -51,7 +63,7 @@ get_bag () {
 
 	$(red Press q to leave)
 	HEREDOC
-	echo -e "${SPEECH}\nBetter to do as he says. Do you remember how to move upward a level? That's where Jaggers is, and Jaggers can tell you how to make a bag in your home directory."
+	echo -e "${SPEECH}\nBetter to do as he says. Do you remember how to move upward a level? $(spell cd ..) That's where Jaggers is, and Jaggers can tell you how to make a bag in your home directory."
 }
 final_instruction () {
 	speak <<-HEREDOC
@@ -74,19 +86,19 @@ final_instruction () {
 
 	${SPEECH}Oh, and you must use the magic word $(alt shibboleth). No go, go on your quest, and mind you don't fall into any trouble.
 
-	$(red Press q to leave)
+	$CONTINUE
 	HEREDOC
 
 	cp "$HOME/../data/lich-bottle.txt" "$HOME/bag"
-	echo ok
-}
-main_instruction () {
-	speak <<-HEREDOC
+
+	wrap <<-EOF
 	${SPEECH}
-	Thank you. It feels much calmer in here now.
-
-	So you're a new student, are you? ---Oh? You're not a new student? Oh, you won't stay? Oh, I see. I suppose you have plans to enter the more prestigious $(alt Hattifattener Academy) south of here. Well, I warn you, they won't have you if you can't pass their tests.
-
+	You're really accumulating some inventory. Have a look inside your bag at any time with $(spell 'ls ~/bag')
+	EOF
+}
+main_text () {
+	cat <<-HEREDOC
+	${SPEECH}
 	I can tell you something that will aid you in those tests if you're interested. But I'll need you to do something for me first: there's an unruly miscreant who lives in the forest, and I want you to do something about it.
 
 	He keeps a little box in a hollow tree, and in that box should lie a scroll and a book. I want you to do two things: first open the scroll and alter its contents. Second, I want you extract some information from the book. I can teach you how to do both these tasks.
@@ -130,12 +142,14 @@ main_instruction () {
 	* When an $(alt '*') follows a pair of brachets, it means "match zero or more of these characters." So a regular expression of $(alt '^[abc]*$') would match any of the lines that $(alt '^[abc]+$') would match, but it would also match an empty line!
 	
 	* The $(alt '\+') and $(alt '*') don't have to follow a pair of brackets, though. When they follow an ordinary character, they mean "match one or more (or zero or more) of this character."
-		
+
 	* When $(alt -) appears inside a set of brackets and between two other characters it means "match any characters in a range." For example, $(alt '[0-9]') would match any single character between 0 and 9. And $(alt '[a-cD-G3-6]') would match any of the following characters: a, b, c, D, E, F, G, 3, 4, 5, 6.
 	
 	* When curly braces $(alt '\{\}') appear, they work like a $(alt \+) or $(alt \*), except that they mean "match exactly the number of repetitions specified by the numbers inside the curly braces." For instance, $(alt '[a-z]\{4\}') means "match exactly four characters between a and z." You can actually specify multiple numbers, separated by commas or joined by a hypen: $(alt '[a-z]\{2,4\}') means "match 2 or 4 characters between a and z," and $(alt '[a-z]\{3-5\}') means "match anywhere between 3 and 5 characters between a and z."
 	
-	* The $(alt .) character has a special meaning in a regular expression. It is a wild card which means "exactly one of any character." 
+	* The $(alt .) character has a special meaning in a regular expression. It is a wild card which means "exactly one of any character."
+
+	* The $(alt '^') character means "start matching from the beginning of each input line," and $(alt '$') means "match up to the end of the input line." So $(alt '^foo') could match any line beginning with 'foo', and $(alt 'foo$') could match any line ending with 'foo', but $(alt foo) could match any line containing 'foo'.
 
 	With a little bit of practice, regular expressions aren't too hard to write, but they *can* be pretty difficult to read. Don't feel discouraged if you can't interpret the example I gave above.
 
@@ -145,7 +159,8 @@ main_instruction () {
 
 	$CONTINUE
 	HEREDOC
-
+}
+main_endslate () {
 	wrap <<-EOF
 	$SPEECH
 	Do you remember how to get to the edge of the forest? You could try either of the following:
@@ -166,33 +181,61 @@ main_instruction () {
 	learned '(regex) .'
 	learned '(regex) [-]'
 }
-cleanup () {
-	speak <<-HEREDOC
+main_instruction () {
+	(cat <<-EOF
 	${SPEECH}
-	Ah! Can it be a student? --Oh! Who made this mess?
+	Thank you. It feels much calmer in here now.
 
-	No, no use trying to explain. You'll have to clean it up at once, and I will teach not a single charm until you've put everything back as it should be.
+	So you're a new student, are you? ---Oh? You're not a new student? Oh, you won't stay? Oh, I see. I suppose you have plans to enter the more prestigious $(alt Hattifattener Academy) south of here. Well, I warn you, they won't have you if you can't pass their tests.
+	EOF
+	main_text) | speak
+	main_endslate
+}
+cleanup_checks () {
+	[[ -e Closet/broom ]] || echo $(alt '* There should be a broom in the Closet.')
+	ls Cupboard | while read -r F; do
+		echo $(alt "* There should be no $F in the Cupboard.")
+	done
+	[[ -e Closet/bucket ]] || echo $(alt '* There should be a bucket in the Closet.')
+}
+cleanup () {
+	(
+		cat <<-EOF
+		${SPEECH}
+		Ah! Can it be a student? --Oh! Who made this mess?
 
-	$(alt The broom belongs in the Closet. And that rag in the Cupboard should be a bucket in the Closet.)
+		No, no use trying to explain. You'll have to clean it up at once, and I will teach not a single charm until you've put everything back as it should be.
 
-	Talk to me again after you've fixed this mess.
-
-	$(red Press q to leave)
-	HEREDOC
-
-	wrap <<-EOF
-		${SPEECH}The broom belongs in the Closet. And that rag which is currently in the Cupboard should be transformed into a bucket in the Closet. You probably need to use $(spell mv).
 		EOF
+		cleanup_checks
+		cat <<-EOF
+
+		Talk to me again after you've fixed this mess.
+
+		$CONTINUE
+		EOF
+		) | wrap
+}
+fill_bag () {
+	cp "$UTIL/Raleigh/John.csv" ~/bag
+	cp "$UTIL/Raleigh/with-capitals.csv" ~/bag
+	cp "$UTIL/Raleigh/phone-numbers.csv" ~/bag
 }
 
-if ! [[ -e "$HOME/bag" ]]; then
+if [[ $1 == 2 ]]; then
+	main_instruction
+elif ! [[ -e "$HOME/bag" ]]; then
 	get_bag
-elif [[ -e "$HOME/bag/John.csv" ]]; then
+elif [[ $1 == 3 ]] || [[ -e "$HOME/bag/John.csv" ]]; then
 	if check_csv John && check_csv with-capitals && check_csv phone-numbers && check_scroll_edit; then
 		final_instruction
 	fi
-elif [[ -e Closet/broom ]] && [[ -e Closet/bucket ]] && [[ -e Closet/mop ]]; then
-	main_instruction
-else
+elif [[ $1 == 4 ]]; then
+	final_instruction
+elif [[ $1 == 5 ]]; then
+	fill_bag
+elif [[ $(cleanup_checks) ]]; then
 	cleanup
+else
+	main_instruction
 fi
