@@ -17,7 +17,7 @@ The double quote symbol $(alt '"') won't work because the double quote at the st
 
 But you can still reference this box by using a special technique, called an $(alt escape characater). The $(alt escape character) is the $(alt \\) symbol. When the $(alt \\) symbol appears in a string of text, it means, "The next symbol should be interpreted as part of the text."
 
-You've already seen how some characters may be interpreted as special controls instead of text: the space character is used to mean, "That's the end of the command or the parameter; what comes after the space is a new and different parameter." You've seen how quotation marks can be used to mean, "Everything inside of this quotation is a single parameter."
+You've already seen how some characters may be interpreted as special controls instead of text: the $(alt space) character is used to mean, "That's the end of the command or the parameter; what comes after the space is a new and different parameter." You've seen how $(alt quotation marks) can be used to mean, "Everything inside of this quotation is a single parameter."
 
 So to get into the box, I invoke:
 

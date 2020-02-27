@@ -3,7 +3,11 @@
 IMP_BAG="$HOME/cave/imp's-bag/"
 IMP_WAND="$IMP_BAG/small-wand.txt"
 
-read -r CONTENT < "$IMP_WAND"
+if [[ -e "$IMP_WAND" ]]; then
+	read -r CONTENT < "$IMP_WAND"
+else
+	CONTENT=
+fi
 
 if [[ ${CONTENT,,} =~ salutary ]]; then
 	mkdir -p "$HOME/bag"
@@ -25,10 +29,14 @@ if [[ ${CONTENT,,} =~ salutary ]]; then
 	
 	${RESET}With a deft blow, Skeleton.tmp is sundered.
 
-	${SPEECH}You see? But the primary use most travelers have for a mighty axe is to break down locked doors.
+	${SPEECH}You see? But the primary use most travelers have for a mighty axe is to $(alt break down locked doors).
 
 	$CONTINUE
 	EOF
+
+	if ! lessons | grep -q 'tab-completion'; then
+		bash "$HOME/cave/Imp.sh"
+	fi
 elif [[ ${CONTENT,,} =~ inimical  ]]; then
 	wrap <<-EOF
 	${SPEECH}What's this? INIMICAL? Ooh! I'll fix you!
@@ -36,18 +44,14 @@ elif [[ ${CONTENT,,} =~ inimical  ]]; then
 	${RESET}The imp raises his hands above his head and twiddles his fingers as if tickling an invisible cloud. Your bag bursts into flames. A second later it crumbles to cinders and falls to the ground, everything within it lost.
 	EOF
 
-	rm -r "$HOME/bag"
+	2>/dev/null rm -r "$HOME/bag"
 else
 	wrap <<-EOF
 	${SPEECH}What's this? $(alt '[sniff]'). It appears to be a false wand. This means nothing to me.
 
 	${RESET}The Imp snaps the small wand over his knee and casts the pieces aside, then scowls.
 	EOF
-
 fi
 
-rm "$IMP_BAG/"* >/dev/null
+2>/dev/null rm "$IMP_BAG/"*
 bash "$HOME/../util/build-flags.sh" > "$FLAGS_FILE"
-if ! lessons | grep 'tab-completion'; then
-	bash "$HOME/cave/Imp.sh"
-fi
