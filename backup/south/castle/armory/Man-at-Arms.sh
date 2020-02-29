@@ -2,6 +2,7 @@
 
 tutorial () {
 	speak <<-EOF
+	${SPEECH}
 	Have you ever seen an axe as fine as this? I'll wager you haven't!
 
 	Oh, you're hear for magic training, aren't you? Well, let me tell you about a special term that will help you understand the spells you've been casting: $(alt '$PATH')
@@ -10,7 +11,9 @@ tutorial () {
 
 	${RESET}$PATH
 
-	${SPEECH}That's a list of paths, separated with the $(alt ':') symbol. When you invoke a spell, in most cases, that spell is actually an activate-able file which resides somewhere in the world. But where? Well, the command-line interpreter searches all of the directories in $(alt '$PATH'), and as soon as it finds a file of a matching name, it activates that file!
+	${SPEECH}That's a list of paths, separated with the $(alt ':') symbol.
+
+	Almost any spell that you might invoke is actually an activate-able file which resides somewhere in the world. But where? Well, the command-line interpreter searches all of the directories in $(alt '$PATH'), and as soon as it finds an activate-able file of a matching name, it activates that file!
 
 	For example, $(spell find) is a file located at $(alt $(which find)). How did I know that? I used the spell $(spell type). Watch this:
 
@@ -21,11 +24,11 @@ tutorial () {
 
 	${SPEECH}Isn't that something? Usually, you have to specify at least one directory to activate a file, as in the example $(spell '~/bag/mighty-axe.sh') or $(spell ./Man-at-Arms.sh), but if the file you want to activate is in one of your $(alt '$PATH') directories, then you don't need to specify any directories.
 
-	Well, not all spells exist as files in your $(alt '$PATH'). There are three common kinds of spell:
+	In truth, not all spells exist as files in your $(alt '$PATH'). There are three common kinds of spell:
 
 	1. Files in your $(alt '$PATH') that can be activated
 
-	2. Commands that interpreted directly by the command-line interpreter, such as $(spell echo). (There aren't many of these. When you invoke $(spell type) for such a spell, it will identify these by saying, "$(alt ...is a shell builtin).")
+	2. Commands that are interpreted directly by the command-line interpreter, such as $(spell echo). (There aren't many of these. When you invoke $(spell type) for such a spell, it will identify these by saying, "$(alt ...is a shell builtin).")
 
 	3. Aliases: these are shortcuts that you create yourself. What? You don't know how to make such a shortcut? I'll have to teach you before I send you on your way.
 
@@ -46,9 +49,9 @@ tutorial () {
 
 	$(spell '. my-aliases')
 
-	(If you've learned about $(alt variables) already, I should tell you that you can also put $(alt variables) into a file and then $(alt source) that file! Or you can put $(alt aliases) and $(alt variables) into the same file!)
+	(If you've learned about $(alt variables) already, I should tell you that you can also define $(alt variables) in a file and then $(alt source) that file! Or you can put $(alt aliases) and $(alt variables) into the same file!)
 
-	That's all I have to teach you. But if you can demonstrate your skills, then I'll tell you a secret that will help you traverse the swamp. I want you to to and then speak to me again, $(alt but provide 3 parameters when you speak to me).
+	That's all I have to teach you. But if you can demonstrate your skills, then I'll tell you a secret that will help you traverse the swamp. I want you to try out the $(spell type) and $(spell alias) spells and then speak to me again, $(alt but provide 3 parameters when you speak to me).
 
 	1. I want your first parameter to be any spell you know which is an activatable file
 	2. I want your second paramter to be any spell you know which is a shell builtin.
@@ -83,21 +86,37 @@ is_file () {
 	return $?
 }
 
+prompt_for_instruction () {
+	echo
+	if prompt_no "Do you want me to repeat my instruction?"; then
+		tutorial		
+	fi
+}
+
 if (($#)); then
 	shopt -s expand_aliases
 	. "$(thisdir)/bash_aliases"
 	if ! is_file "$1"; then
 		wrap <<-EOF
 		${SPEECH}Hm. That first parameter is not correct. I'm looking for a spell which is actually a $(alt file).
+
+		You said ${1:-nothing}, and $(spell type) reveals:
 		EOF
+		type $1
 	elif ! is_shell_builtin "$2"; then
 		wrap <<-EOF
 		${SPEECH}Hm. That second parameter is not correct. I'm looking for a spell which is actually a $(alt shell builtin).
+
+		You said ${2:-nothing}, and $(spell type) reveals:
 		EOF
+		type $2
 	elif ! is_alias "$3"; then
 		wrap <<-EOF
 		${SPEECH}Hm. That third parameter is not correct. I'm looking for a spell which is actually an $(alt alias).
+
+		You said ${3:-nothing}, and after I source $(alt bash_aliases), $(spell type) reveals:
 		EOF
+		type $3
 	else
 		wrap <<-EOF
 		${SPEECH}You did it! As promised, here is something to help you through the swamp:
