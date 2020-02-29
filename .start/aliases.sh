@@ -20,6 +20,7 @@ else
 	>&2 echo "ERR: Unrecognized Operating System: $(uname)"
 fi
 
+alias ll='ls -l'
 alias gs='git status'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'

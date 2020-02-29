@@ -34,8 +34,16 @@ if [[ ${CONTENT,,} =~ salutary ]]; then
 	$CONTINUE
 	EOF
 
+	wrap <<-EOF
+	${SPEECH}
+	There is now a mighty axe in your bag. Apparently, you can sunder creatures or locked doors with it.
+	EOF
+
 	if ! lessons | grep -q 'tab-completion'; then
-		bash "$HOME/cave/Imp.sh"
+		wrap <<-EOF
+		${SPEECH}
+		It looks as if the Imp has more to say. Try talking to him when you're ready.
+		EOF
 	fi
 elif [[ ${CONTENT,,} =~ inimical  ]]; then
 	wrap <<-EOF

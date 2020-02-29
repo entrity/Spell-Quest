@@ -33,3 +33,12 @@ export -f reverse_video
 # Flash function
 normal_video () { printf '\e[?5l'; }
 export -f normal_video
+# Prompt with a default of no
+prompt_no () {
+	echo -n "$1 [y/N] "
+	read -n1 CHOICE
+	echo
+	[[ $CHOICE =~ y|Y ]]
+	return $?
+}
+export -f prompt_no
