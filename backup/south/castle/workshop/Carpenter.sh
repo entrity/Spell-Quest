@@ -41,8 +41,15 @@ tutorial () {
 	EOF
 }
 
+prompt_repeat () {
+	echo
+	if prompt_no "Do you want me to repeat my instruction?"; then
+		tutorial
+	fi
+}
+
 check_work () {
-	if cut -d , -f 4 monsters.csv | cut -c 5 | 2>&1 >/dev/null diff -q extract.txt -; then
+	if cut -d , -f 4 monsters.csv | cut -c 5 | 2>&1 >/dev/null diff -qwB extract.txt -; then
 		wrap <<-EOF
 
 		${SPEECH}Aha! Well done! You are ready to cut your way out of any situation! I wish you speed on your quest!
@@ -57,6 +64,7 @@ check_work () {
 
 if [[ -e extract.txt ]]; then
 	check_work
+	prompt_repeat
 else
 	tutorial
 fi

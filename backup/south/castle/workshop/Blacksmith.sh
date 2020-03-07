@@ -98,7 +98,7 @@ tutorial () {
 prompt_repeat () {
 	echo
 	if prompt_no "Do you want me to repeat my instruction?"; then
-		tutorial		
+		tutorial
 	fi
 }
 test_numerals_task () {
