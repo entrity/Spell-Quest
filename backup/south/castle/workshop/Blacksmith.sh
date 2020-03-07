@@ -4,24 +4,26 @@ tutorial () {
 	speak <<-EOF
 	${SPEECH}You appear to be an accomplished adventurer! But I bet you don't have much experience writing programs for $(alt bash). What's $(alt bash), you ask? Why, this environment in which you've been casting your spells is named $(alt bash)!
 
-	${CYAN}You don't need to know this, but "${SPEECH}bash${CYAN}" is short for "Bourne Again Shell." Why is it called that? Because it is the successor to the "Bourne Shell." What's a shell? It means a "command interpreter" on a computer.
+	${CYAN}You don't need to know this, but "${SPEECH}bash${CYAN}" is short for "Bourne Again Shell." Why is it called that? Because it is the successor to the "Bourne Shell." What's a shell? "Shell" means a "command interpreter" on a computer.
 
-	${SPEECH}How can you write a program for $(alt bash)? Create a new file using $(alt $EDITOR). You can name it whatever you please, but it's customary to end $(alt bash) files with $(alt .sh). What should you write in this file of yours? Any spell invocations you please! Here's an example of what I might write in bash program:
+	${SPEECH}How can you write a program for $(alt bash)? Create a new file using $(alt $EDITOR). You can name it whatever you please, but it's customary to make $(alt bash) files end with $(alt .sh). What should you write in this file of yours? Any spell invocations you please! Give each invocation its own line. (Unless you're using pipes to connect one invocation to another. Have your learnt about pipes from the Plumber yet?) You're welcome to add additional blank lines or blank spaces where you like if you think it makes your program file easier to read.
+
+	Here's an example of what I might write in bash program:
 
 	${RESET}find ~/north -iname '*.txt' \> find-output.txt
 	grep '[0-9]' find-output.txt \> grep-output.txt
 
-	${SPEECH}Can you see what my program does? It makes a list of all files in the $(alt north) directory which contain at least one numberal in the name and whose name ends in $(alt .txt).
+	${SPEECH}Can you see what my program does? The first line makes a list of all files in the $(alt north) directory which end in $(alt .txt). And the next line narrows this list down to filenames that include at least one numeral. The output gets written to a file named $(alt grep-output.txt).
 
-	A program that does not need to be compiled is called a $(alt script). All programs written in the language of bash are scripts. All programs in Python, ruby, Javascript, and other languages are also scripts.
+	A program that does not need to be compiled is called a $(alt script). All programs written in the language of bash are scripts. All programs in Python, Ruby, and Javascript are also scripts.
 
 	How can you trigger a bash which script you've written? You invoke the spell $(spell bash) with the path to your program as the first parameter. Suppose you have written a script and it is located in the same directory as you and is named $(alt my-program.sh). Just invoke the following:
 
 	$(spell bash my-program.sh)
 
-	You probably wonder if it's possible to activate a bash script by calling $(spell ./my-program.sh). Indeed, there is a way, but I haven't learnt it. Perhaps someone else on your journey shall teach it to you.
+	You probably wonder if it's possible to activate a bash script by calling $(spell ./my-program.sh). Indeed, I have heard tell of a change that you can make to your script files to make this possible, but I haven't learnt it. Perhaps someone else on your journey shall teach it to you.
 
-	Did you know that it is possible to provide parameters to your program, just as you would to many a spell? But how can you make use of these perameters within your program? In your bash file, you can refer to the first parameter as $(alt '$1'). The second parameter is called $(alt '$2'); the third is $(alt '$3'), and so on. Let's change my script from above to make use of parameters:
+	Did you know that it is possible to provide parameters to your bash script, just as you would to many a spell? But how can you make use of these perameters within your program? In your bash file, you can refer to the first parameter as $(alt '$1'). The second parameter is called $(alt '$2'); the third is $(alt '$3'), and so on. Let's change my script from above to make use of parameters:
 
 	${RESET}find ~/north -iname "\$1" > find-output.txt
 	grep "\$2" find-output.txt > grep-output.txt
@@ -32,14 +34,14 @@ tutorial () {
 
 	Think about it: using parameters in your script means that you can make a very complicated program but apply it to many different situations.
 
-	I'll let you go in a bit, but before I do, give heed and let me show you a way to search for files matching a name *and* matching certain content. To do this, we're going to want to make and use $(alt variables). What's a variable? It's a placeholder, which can hold one piece of information.
+	I'll let you go in a bit, but before I do, give heed and let me show you a way to search for files matching a name *and* matching certain content. To do this, we're going to want to make and use $(alt variables). What's a variable? It's a placeholder, which is identified by a name of your choosing and which holds a single piece of information. We can give a variable most any name, provided that it begins with a letter and contains no special characters (except $(alt _)).
 
-	There are two common ways to create a variable. We can give a variable most any name, provided that it begins with a letter and contains no special characters (except $(alt _)). Let's suppose we've decided to create a variable named $(alt HERE), then $(spell echo) its value:
+	There are two common ways to create a variable. Let's suppose we've decided to create a variable named $(alt HERE), then $(spell echo) its value:
 
 	${RESET}HERE=/home/someguy/Documents/journal/2011/11/11
 	echo \$HERE
 
-	${SPEECH}Notice that when we *set* a variable, we just use its name, but when we *use* the variable, we prepend a $(alt '$') before it.
+	${SPEECH}Notice that when we *set* a variable, we just use its name, but when we *use* the variable, we prepend a $(alt '$') to it.
 
 	Another way to set a variable is the $(spell read) spell:
 
@@ -52,14 +54,14 @@ tutorial () {
 	Now let's build a program that will look for files that whose names match a pattern from parameter $(alt '$1') and then select lines from those files that match the pattern from parameter $(alt '$2'):
 
 	${RESET}find ~/north -iname "\$1" > find-output.txt
+
 	while read found_file; do
-	  grep "\$2" "$found_file" > grep-output.txt
+	  grep "\$2" "\$found_file" >> grep-output.txt
 	done < find-output.txt
 
 	${SPEECH}Do you see that we used the $(spell read) spell and also the $(alt '<') redirect? What you might not have expected is the use of $(alt while). The $(alt while) technique allows us to read a line from the file again and again until the end of the file is reached. When you use while, the pattern is:
 
-	${RESET}
-	while read VARIABLE_NAME; do
+	${RESET}while read VARIABLE_NAME; do
 	  ...
 	done < INPUT_FILE
 
@@ -93,41 +95,49 @@ tutorial () {
 		2. Modify every book in the library whose title includes the word $(alt star), replacing every occurence of the word $(alt darkness) with $(alt light). (This may require a third-level spell. Have you learned any of those yet?)
 	EOF
 }
+prompt_repeat () {
+	echo
+	if prompt_no "Do you want me to repeat my instruction?"; then
+		tutorial		
+	fi
+}
 test_numerals_task () {
-	if cmp "$NUMERALS_FILE" "$HOME/../data/bag/treasury-numerals.txt" >dev/null; then
+	local GOAL_FILE="$HOME/../data/bag/treasury-numerals.txt"
+	if sed 's@^.*/@@' "$NUMERALS_FILE" | sort | diff -q -w -B "$GOAL_FILE" - 2>/dev/null; then
 		return 0
 	else
 		wrap <<-EOF
 		${SPEECH}Hm. That's not quite what I'm looking for. I see you have a $(alt numerals-file.txt) file in your bag, but its contents are not what I expected.
 		EOF
+		prompt_repeat
 		return 1
 	fi
 }
 test_sed_task () {
-	local OK=1
-	while read -r fpath; do
+	find "$(thisdir)/../library" -type f | while read -r fpath; do
 		local REFERENCE=$HOME/../backup/south/castle/library/$(basename "$fpath")
 		if [[ $fpath =~ star ]]; then
-			if ! diff -q -w "$fpath" <(sed 's/darkness/light/g' "$REFERENCE"); then
-				OK=0
-			fi
-		elif ! cmp "$fpath" "$REFERENCE"; then
-			OK=0
+			sed 's/darkness/light/g' "$REFERENCE" | >/dev/null diff -B -q -w "$fpath" -
+		else
+			>/dev/null diff -B -q -w "$fpath" "$REFERENCE"
 		fi
-	done < <(find thisdir/library)
-	if ! (($OK)); then
-		wrap <<-EOF
-		${SPEECH}Hm. That's not quite what I'm looking for. The contents of the library aren't what I expected.
-		EOF
-		return 1
-	fi
+		if (($?)); then
+			wrap <<-EOF
+			${SPEECH}Hm. The state of the library is not quite what I'm expecting. For instance, the contents of $(alt $(basename "$fpath")) are not what I need.
+
+			If you need to, you can reset the library to its original state by activating the $(alt humming-hourglass).
+			EOF
+			return 1
+		fi
+	done
 }
 reward () {
-	speak <<-EOF
+	wrap <<-EOF
 	${SPEECH}Well done! As promised, let me tell you something that will help you traverse the swamp:
 
 	The path you must take is four segments long, and the word that will guide the first segment is $(alt the).
 	EOF
+	prompt_repeat
 }
 
 NUMERALS_FILE=$HOME/bag/treasury-numerals.txt
