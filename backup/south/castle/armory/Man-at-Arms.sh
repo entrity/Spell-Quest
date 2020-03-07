@@ -103,6 +103,7 @@ if (($#)); then
 		You said ${1:-nothing}, and $(spell type) reveals:
 		EOF
 		type $1
+		prompt_for_instruction
 	elif ! is_shell_builtin "$2"; then
 		wrap <<-EOF
 		${SPEECH}Hm. That second parameter is not correct. I'm looking for a spell which is actually a $(alt shell builtin).
@@ -110,6 +111,7 @@ if (($#)); then
 		You said ${2:-nothing}, and $(spell type) reveals:
 		EOF
 		type $2
+		prompt_for_instruction
 	elif ! is_alias "$3"; then
 		wrap <<-EOF
 		${SPEECH}Hm. That third parameter is not correct. I'm looking for a spell which is actually an $(alt alias).
@@ -117,6 +119,7 @@ if (($#)); then
 		You said ${3:-nothing}, and after I source $(alt bash_aliases), $(spell type) reveals:
 		EOF
 		type $3
+		prompt_for_instruction
 	else
 		wrap <<-EOF
 		${SPEECH}You did it! As promised, here is something to help you through the swamp:
