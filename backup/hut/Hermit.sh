@@ -17,7 +17,7 @@ You might wish to maximize this window. You can also increase the text size by u
 
 You can press the $(alt up)${RESET} and $(alt down)${RESET} arrow keys or $(alt PageUp)${RESET} and $(alt PageDown)${RESET} or $(alt u)${RESET} and $(alt d)${RESET} to scroll through what I have to say.
 
-You will speak with many people on this quest. The normal way to stop someone talking is to press $(red q)${RESET}. If you end up pressing an unexpected key and can't get away from someone who's talking to you, try pressing $(red Escape)${RESET} and/or $(red 'Ctrl+c')${RESET} once or twice, then press $(red q)${RESET}.
+You will speak with many people on this quest. The normal way to stop someone talking is to press $(red q)${RESET}. If you end up pressing an unexpected key and can't get away from someone who's talking to you, try pressing $(red Escape)${RESET} and/or $(red 'Ctrl+c')${RESET} once or twice, then press $(red q)${RESET}. (You might need to press $(read Backspace) a few times too, if you find that you've started entering text in the bottom left corner.)
 ${SPEECH}
 EOF
 

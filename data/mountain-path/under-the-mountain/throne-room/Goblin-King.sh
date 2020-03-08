@@ -23,9 +23,9 @@ tutorial () {
 	    grep "\$MYVAR" some-file.txt
 	done${SPEECH_N}
 
-	The format is $(spell 'for ... in ...; do ... done'). I could put whatever invocations I wished within the $(alt for) loop. In that respect, it's just like a $(alt while) loop. The $(alt for) loop executes once for each of the parameters that appear between $(alt in) and $(alt ;).
+	The format is $(spell 'for VARIABLE_NAME in PARAMETER_LIST; do ... done'). I could put whatever invocations I wished within the $(alt for) loop. In that respect, it's just like a $(alt while) loop. The $(alt for) loop executes once for each of the parameters that appear between $(alt in) and $(alt ';').
 
-	When you want to loop over very many things, such as all of the zip codes that begin $(alt 957--), it's not convenient to actually write out all of the parameters for the $(alt for) loop. Instead, it's better to put a $(alt subshell) between $(alt in) and $(alt ;).
+	When you want to loop over very many things, such as all of the zip codes that begin $(alt 957--), it's not convenient to actually write out all of the parameters for the $(alt for) loop. Instead, it's better to put a $(alt subshell) between $(alt in) and $(alt ';').
 
 	One spell that is useful to invoke within a $(alt subshell) for a $(alt for) loop is $(spell seq). Its name, if you haven't guessed, is short for 'sequence'. It outputs all the numbers that belong in the sequence which its parameters define. For instance:
 
@@ -35,20 +35,22 @@ tutorial () {
 	12
 	13${SPEECH}
 
-	Suppose that I wanted to grep all the numbers between 8 and 800, with zero-padding. I might invoke the following:
+	Suppose that I wanted to grep all the numbers between 8 and 800, with 'zero-padding'. I might invoke the following:
 
 	${SPELL}for NUMBER in \$(seq 8 800); do
 	  printf -v ZERO_PADDED_NUMBER "%03d" \$NUMBER
 	  grep \$ZERO_PADDED_NUMBER some-file.txt
 	done${SPEECH_N}
 
-	It's just that easy.
+	It's just that easy. ...But writing a $(alt for) loop is, I suppose, more work than invoking a simple spell. You should probably write a bash script and execute it. Have you learned how to use ${EDITOR}?
 
 	Now the task I have set before you comes into focus... You'll need to use a $(alt for) loop to download the page $(alt 'https://www.amazon.com/ulp/ajax/find-pickup-points?zipcode=95746&isZipcodeRequest=true&ref=ulp_zip_95746'), but you'll need to substitute the zip code which you want to check for the zip codes that appear in that example web address.
 
-	Go ahead and try this for the example zip code $(alt 95746). Then look at the result so that you can see what a failure looks like.
+	You probably think that single quotes ($(alt "'")) are just like double quotes ($(alt '"')), but there's a difference: variables can be used inside of double quotes but not inside of single quotes. Can you see how this matters in your present task? Suppose you were to use a variable named $(alt ZIP) for your five-digit zip code. You could write $(alt '"https://www.amazon.com/ulp/ajax/find-pickup-points?zipcode=$ZIP&isZipcodeRequest=true&ref=ulp_zip_$ZIP"'), and it would be evaluated as $(alt '"https://www.amazon.com/ulp/ajax/find-pickup-points?zipcode=95746&isZipcodeRequest=true&ref=ulp_zip_95746"'), but if you were to write $(alt "'https://www.amazon.com/ulp/ajax/find-pickup-points?zipcode=\$ZIP&isZipcodeRequest=true&ref=ulp_zip_\$ZIP'"), it would be evaluated as $(alt "'https://www.amazon.com/ulp/ajax/find-pickup-points?zipcode=\$ZIP&isZipcodeRequest=true&ref=ulp_zip_\$ZIP'").
 
-	In your $(alt for) loop, after downloading a single web response, you'll need to check whether it matches the failure response for 95746. You could use $(alt grep) with $(alt \-v) for this because that will only output lines that _don't_ match the failure. That is what I require.
+	Just think: your bash script will execute 100 web requests (from 95700 to 95799). That could take a couple of minutes to perform. Before piping the output to me, you had better give it a try with no pipe and manually inspect the output so that you have a sense of what successes and failures look like. Go ahead and try this for the example zip code $(alt 95746). Then look at the result so that you can see what a failure looks like.
+
+	In your $(alt for) loop, you could use $(spell grep) with a regular expression to match successes, or you could use $(spell grep) with $(alt '-v') with a regular expression to filter out failures.
 
 	$CONTINUE
 	EOF
@@ -69,6 +71,8 @@ mistake () {
 	${SPEECH}
 
 	No, no, no. This is not correct. You can try again if you like.
+
+	Speak to me without a pipe if you desire me to issue my instruction again.
 	EOF
 }
 reward () {

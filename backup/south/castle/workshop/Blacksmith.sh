@@ -136,6 +136,8 @@ reward () {
 	${SPEECH}Well done! As promised, let me tell you something that will help you traverse the swamp:
 
 	The path you must take is four segments long, and the word that will guide the first segment is $(alt the).
+
+	...Say, if you mean to pick your way through the swamp, you might it helpful to write a little bash script and keep it in your bag. It's not indispensible, but it could save you some work. What should the script do? Well, I'll leave that question to you.
 	EOF
 	prompt_repeat
 }
