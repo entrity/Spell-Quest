@@ -5,6 +5,12 @@ trap '' SIGINT
 CAVERN="$HOME/cave/tunnel/cavern"
 POOL="$CAVERN/calm-pool"
 
+init_lich() {
+	cp "$HOME/../data/Lich.sh" "$CAVERN"
+	ln "$CAVERN/Lich.sh" "$POOL/Lich.sh"
+	ln "$CAVERN/Lich.sh" "$CAVERN/../Lich.sh"
+	ln "$CAVERN/Lich.sh" "$CAVERN/../../Lich.sh"
+}
 bad_bottle () {
 	wrap <<-EOF
 	${CYAN}
@@ -14,14 +20,14 @@ bad_bottle () {
 	EOF
 }
 safe () {
-	cp "$HOME/../data/Lich.sh" "$CAVERN"
+	init_lich
 	wrap <<-EOF
 	${CYAN}
 	The calm pool is too distant for you to hear the sound of your bottle entering the water, but within seconds of casting your spell, a thick, black miasma pours silently from the mouth of the cave, blotting the sky for several seconds. Then it is gone.
 	EOF
 }
 blinded () {
-	cp "$HOME/../data/Lich.sh" "$CAVERN"
+	init_lich
 	speak <<-EOF
 	${CYAN}
 	You unstopper the ground-glass bottle and tilt it to pour its contents into the calm pool. No sooner does the falling liquid touch the pool's surface than it erupts into a frothing furor. You drop the bottle in surprise, and a cloud of black miasma bursts from the pool. It fills your eyes, your nostrils, your mouth. Uncounted time passes, then all is still once more, but you can scarcely see.
