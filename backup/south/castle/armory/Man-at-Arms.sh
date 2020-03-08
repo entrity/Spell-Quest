@@ -89,7 +89,7 @@ is_file () {
 prompt_for_instruction () {
 	echo
 	if prompt_no "Do you want me to repeat my instruction?"; then
-		tutorial		
+		tutorial
 	fi
 }
 

@@ -5,6 +5,18 @@ IMG_URL='http://eqcomics.com/comics/2009-10-26-bobbing-for-mousetraps.png'
 REFERENCE="$HOME/../data/img-for-wyvern.png"
 TARGET='2009-10-26-bobbing-for-mousetraps.png'
 
+colora () { echo -e -n "\033[31m$*${SPEECH}"; }
+colorb () { echo -e -n "\033[32m$*${SPEECH}"; }
+colorc () { echo -e -n "\033[34m$*${SPEECH}"; }
+
+check_installation () {
+	if >/dev/null 2>&1 type $1; then
+		echo -n "you have $(spell $1) installed."
+	else
+		echo -n "you do _not_ have $(spell $1) installed."
+	fi
+}
+
 tutorial () {
 	[[ -e "$REFERENCE" ]] || wget -O "$REFERENCE" "$IMG_URL" >/dev/null &
 
@@ -20,11 +32,11 @@ tutorial () {
 
 	What's that you say? You don't know either of these spells? These are first-level Conjuration spells. Have you heard of the abundance of lore which swirls around the aether? Oh, I see, you know it by the name $(alt internet).
 
-	These two spells are used for drawing this lore from the $(alt internet). They can perform the same tasks, but $(spell curl) is generally favoured for outputting the information into your terminal, and $(spell wget) is generally favoured for saving the information to a file. However, you might prefer to base any decision of which one to use on which one is already installed on your device: $(spell curl) tends to be pre-installed on MacOS devices, and $(spell wget) tends to be pre-installed on Linux devices.
+	These two spells are used for drawing this lore from the $(alt internet). They can perform the same tasks. Let me have a look at you... Alright, I discern that $(check_installation curl) And... $(check_installation wget)
 
 	An important distinction between the two spells is how they deal with compressed (zipped) content. $(spell wget) will automatically unzip it for you, but if $(spell curl) receives zipped content, you'll have to add the $(alt '--compressed') parameter to tell $(spell curl) that its content is compressed and that it should unzip it for you.
 
-	Let's suppose that you want to download a file from the $(alt internet) because that simplifies things. (You can always $(spell cat) it if you want it printed to the terminal, and you can always $(spell rm) it when you are finished with it.) Let's suppose that the address you want to download is $PAGE_URL.
+	Let's suppose that you want to download a file from the $(alt internet). Let's suppose that the address you want to download is $(alt "$PAGE_URL").
 
 	Here's how you do it with $(spell wget):
 	$(spell "wget '$PAGE_URL'")
@@ -35,16 +47,28 @@ tutorial () {
 
 	For $(spell wget), you don't have to specify a filename for the downloaded file because $(spell wget) will assume you want to use the same name as appears at the end of the web address. If you want to specify a name for the file, though, you can use the parameter $(alt '--output-document'), which works just like $(spell curl)'s $(alt '--output') parameter.
 
-	...Do you know how a web page works? A webpage file consists of a lot of text which specifies what colors and images and styles to use. I'll need you to fetch the page at $(alt $PAGE_URL) and then look through it for the address of the image which I desire. That text of that webpage's file surely holds many, many web addresses, but there should only be one which meets the following specifications:
+	...Do you know how a web page works? A webpage file consists of a lot of text which specifies what colors and images and styles to use. I'll need you to fetch the page at $(alt $PAGE_URL) and then look through it for the address of the image which I desire. The content of that webpage file you are going to download surely holds many, many web addresses, but there should only be one which meets the following specifications:
 
 	* It includes the text $(alt /comics/)
 	* Immediately after $(alt /comics/), it has a date in the format $(alt YYYY-MM-DD)
 
 	The image's address should be enclosed with quotation marks. That's how you'll know where the address starts and where it ends. Then you must cast a spell to fetch the image and save it as a file. But there's one thing more you must know:
 
-	If you encounter an address which begins with $(alt /) or $(alt //), it is not immediately usable. You must prepend something to it. Addresses should begin $(alt http://) or $(alt https://). I know not the difference between, the two, though perhaps someone else on your journey might. I suggest trying them both; surely one is bound to succeed!
+	If you encounter an address which begins with $(alt /) or $(alt //), it is not immediately usable. You must prepend something to it. Let's parse the address we examined earlier:
 
-	Please save the file with the name that matches the base name of the image's web address (that is to say, the last level of the path).
+	$(colora http)://$(colorb eqcomics.com)$(colorc /2009/10/26/bobbing-for-mousetraps)
+
+	The $(colora first part) is the $(alt protocol). The two most common protocols are $(alt http) and $(alt https). I know not the difference between the two, though perhaps someone else on your journey might. I suggest trying them both; surely one of the two is bound to succeed!
+
+	The $(colorb second part) is the $(alt domain). It tells you what $(alt site) you are visiting.
+
+	The $(colorc last part) is the $(alt path). It tells you which $(alt page) within the site you are viewing.
+
+	Can you figure out what $(alt protocol) to prepend to an address that begins $(alt //) if you encounter the address at $(alt "$PAGE_URL")?
+
+	Can you figure out what $(alt protocol) and $(alt domain) to prepend to an address that begins $(alt /) if you encounter the address at $(alt "$PAGE_URL")?
+
+	When you download the image file that I request, please save it with the name that matches the base name of the image's web address (that is to say, the last level of the path).
 
 	Can you do this? Once you have the file saved right here, speak with me again.
 
@@ -84,6 +108,12 @@ reward () {
 	learned $IMAGER
 }
 
+prompt_for_instruction () {
+	echo
+	if prompt_no "Do you want me to repeat my instruction?"; then
+		tutorial
+	fi
+}
 
 if [[ -e "$TARGET" ]]; then
 	if >/dev/null cmp "$TARGET" "$REFERENCE"; then
@@ -92,6 +122,7 @@ if [[ -e "$TARGET" ]]; then
 		wrap <<-EOF
 		${SPEECH}Hm. That's not quite right. I see a file of the correct name, but its contents are not what I expected to see.
 		EOF
+		prompt_for_instruction
 	fi
 else
 	tutorial
