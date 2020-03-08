@@ -101,8 +101,6 @@ reward () {
 	Have you had a look at the funny image yet? You can open it by invoking $(spell "$IMAGER $TARGET").
 
 	Now as promised, I will tell you a hint for the final leg of your journey into the swamp: let your feet be guided by the word $(alt winding).
-
-	$CONTINUE
 	EOF
 
 	learned $IMAGER
@@ -122,8 +120,8 @@ if [[ -e "$TARGET" ]]; then
 		wrap <<-EOF
 		${SPEECH}Hm. That's not quite right. I see a file of the correct name, but its contents are not what I expected to see.
 		EOF
-		prompt_for_instruction
 	fi
+	prompt_for_instruction
 else
 	tutorial
 fi
