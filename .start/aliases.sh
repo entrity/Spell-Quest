@@ -2,15 +2,13 @@
 # Aliases
 ##############
 
-if [[ $(uname) =~ Linux ]]; then
-	export EDITOR=gedit
-	export IMAGER=eog
+EDITOR=$(which gedit || which kate || which xed || which pluma || which nano || which geany || which atom || which /Applications/TextEdit.app/Contents/MacOS/TextEdit || which xdg-open || echo -n 'open -e')
+IMAGER=$(which eog || which eom || which feh || which vlc || which /Applications/Preview.app/Contents/MacOS/Preview || which xdg-open || echo -n open)
 
+if [[ $(uname) =~ Linux ]]; then
 	alias ls='ls --color=auto'
 elif [[ $(uname) =~ Darwin ]]; then
-	osascript -e 'tell application "Terminal" to set current settings of front window to first settings set whose name is "Homebrew"'
-	export EDITOR="open -e"
-	export IMAGER="open"
+	osascript -e 'tell application "Terminal" to set current settings of front window to first settings set whose name is "Pro"'
 
 	ENVSUBST_PATH="$(find /usr/local -name envsubst)"
 	alias envsubst="$ENVSUBST_PATH"
