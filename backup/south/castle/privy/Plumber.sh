@@ -10,9 +10,9 @@ tutorial () {
 
 	$(spell "find . | grep '[0-9]'")
 
-	That $(alt '|') symbol is called a $(alt pipe). It means that the output of the first spell should be the input to the second spell. It won't work on all spells; some spells just don't know how to read input from a standard pipe. For instance, you couldn't $(alt pipe) into a $(spell ls) spell.
+	That $(alt '|') symbol is called a $(alt pipe). It means that the output of the first spell should be the input to the second spell. (It won't work on all spells; some spells just don't know how to read input from a standard pipe. For instance, you couldn't $(alt pipe) into a $(spell ls) spell.)
 
-	You know the spell $(spell grep), do you? Well, let me teach you a pair of parameters to make it more useful. Do you see this file $(alt pipes.txt) here? It shows the contents of my plumbing work. Have a look at the first several lines of the file with me:
+	You know the spell $(spell grep), do you? Well, let me teach you a pair of parameters to make it more useful. I have here with me a file named $(alt pipes.txt). It shows the contents of my plumbing work. Have a look at the first several lines of the file with me:
 
 	${RESET}$(head -n7 "$(thisdir)/pipes.txt")
 	...${SPEECH}
@@ -39,9 +39,9 @@ tutorial () {
 	12
 	...${SPEECH}
 
-	Did you notice that we specified a *file* parameter $(alt pipes.txt) for the first $(spell grep) but not for the $(spell grep) after the $(alt pipe)? That's because we don't want the second $(spell grep) to use any file for input; it should use the first invocation's output as its input.
+	Did you notice that we specified a *file* parameter $(alt pipes.txt) for the first $(spell grep) but no file paramter for the $(spell grep) after the $(alt pipe)? That's because we don't want the second $(spell grep) to use any file for input; it should use the first invocation's output as its input.
 
-	Did you know you can use a pipe for a $(alt while ... read) construction?
+	Have you learnt about loops yet, such as the $(alt while ... read) construction? Did you know you can use a pipe for a $(alt while ... read) loop?
 
 	${RESET}find . -iname "*.txt" | while read MYVAR; do
 	  ...
@@ -67,7 +67,7 @@ tutorial () {
 test_task () {
 	read -d '' PIPED
 	PIPED=$(sed 's/\033\[[0-9;]*m//g' <<< "$PIPED")
-	diff -q "$REFERENCE" - <<<"$PIPED" >/dev/null
+	diff -w -B -q "$REFERENCE" - <<<"$PIPED"
 	return $?
 }
 reward () {
@@ -88,6 +88,8 @@ else
 		wrap <<-EOF
 
 		${SPEECH}Hm. You did pipe into me, but the input I received was not quite what I expected. Each line I receive should consist of one word. Each word should contain one or more letters. Both upper-case and lower-case letters should be included.
+
+		Talk to me again with no pipe if you want me to repeat my instruction.
 		EOF
 	fi
 fi

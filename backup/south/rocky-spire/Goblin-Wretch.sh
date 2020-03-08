@@ -17,7 +17,7 @@ Oh, you can't see the monster from here, but if you proceed, it will surely make
 
 How about I tell you a secret? It may not be of much use, but it's all I know!
 
-Have you noticed that file names tend to end with a period, followed by a few characters, like $(alt foo.txt) or $(alt bar.sh) or $(qux.html)? That last part of the filename is called the file $(alt extension).
+Have you noticed that file names tend to end with a period, followed by a few characters, like $(alt foo.txt) or $(alt bar.sh) or $(alt qux.html)? That last part of the filename is called the file $(alt extension).
 
 Conventionally, a $(alt .txt) file contains text and a $(alt .sh) file contains a shell script and a $(alt .html) file contains a web page and so on. But here's the secret: file extensions can be whatever you want.
 
