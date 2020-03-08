@@ -36,9 +36,23 @@ export -f normal_video
 # Prompt with a default of no
 prompt_no () {
 	echo -n "$1 [y/N] "
-	read -n1 CHOICE
+	</dev/tty read -n1 CHOICE
 	echo
 	[[ $CHOICE =~ y|Y ]]
 	return $?
 }
 export -f prompt_no
+prompt_repeat () {
+	echo
+	if prompt_no "Do you want me to repeat my instruction?"; then
+		tutorial
+	fi
+}
+export -f prompt_repeat
+# Base64-decode all inputs
+mjdecode64 () {
+	while read x; do
+		printf "%s  %s\n" "$x" "$(base64 -i -d <<< "$x")"
+	done
+}
+export -f mjdecode64

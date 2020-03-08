@@ -35,10 +35,10 @@ tutorial () {
 	12
 	13${SPEECH}
 
-	Suppose that I wanted to grep all the numbers between 8 and 800, with 'zero-padding'. I might invoke the following:
+	Suppose that I wanted to grep all the numbers between 8 and 800. I might invoke the following:
 
 	${SPELL}for NUMBER in \$(seq 8 800); do
-	  printf -v ZERO_PADDED_NUMBER "%03d" \$NUMBER
+	  printf -v ZERO_PADDED_NUMBER "%d" \$NUMBER
 	  grep \$ZERO_PADDED_NUMBER some-file.txt
 	done${SPEECH_N}
 
