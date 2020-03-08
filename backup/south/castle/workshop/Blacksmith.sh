@@ -10,12 +10,12 @@ tutorial () {
 
 	Here's an example of what I might write in bash program:
 
-	${RESET}find ~/north -iname '*.txt' \> find-output.txt
-	grep '[0-9]' find-output.txt \> grep-output.txt
+	${RESET}find ~/north -iname '*.txt' > find-output.txt
+	grep '[0-9]' find-output.txt > grep-output.txt
 
 	${SPEECH}Can you see what my program does? The first line makes a list of all files in the $(alt north) directory which end in $(alt .txt). And the next line narrows this list down to filenames that include at least one numeral. The output gets written to a file named $(alt grep-output.txt).
 
-	A program that does not need to be compiled is called a $(alt script). All programs written in the language of bash are scripts. All programs in Python, Ruby, and Javascript are also scripts.
+	You don't need to know this, but often you will hear bash programs referred to as $(alt scripts). What is a script? Well, programs can be arranged into two categories: in one of these categories, the program exists in a file as a collection of 1's and 0's and is simply not readable by humans; in the second of these categories, the program exists as text. You could open such a program file in a text editor and change things around. Programs of this second category are $(alt scripts). All programs written in the language of bash are scripts. All programs in Python, Ruby, and Javascript are also scripts.
 
 	How can you trigger a bash which script you've written? You invoke the spell $(spell bash) with the path to your program as the first parameter. Suppose you have written a script and it is located in the same directory as you and is named $(alt my-program.sh). Just invoke the following:
 
@@ -47,7 +47,7 @@ tutorial () {
 
 	$(spell 'read HERE < myfile.txt')
 
-	Do you recognize the $(alt '<') symbol. It's a kind of $(alt redirect). Maybe you've learned other redirects like $(alt '>') and $(alt '>>') and $(alt '<<<'). This redirect means "let the input to this spell be from the file that follows $(alt '<')."
+	Do you recognize the $(alt '<') symbol? It's a kind of $(alt redirect). Maybe you've learned other redirects like $(alt '>') and $(alt '>>') and $(alt '<<<'). This redirect means "let the input to this spell be from the file that follows $(alt '<')."
 
 	This usage of $(spell read) will read one line from the file $(alt myfile.txt) and assign it to a variable named $(alt HERE).
 
