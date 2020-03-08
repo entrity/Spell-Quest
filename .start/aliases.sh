@@ -3,7 +3,9 @@
 ##############
 
 EDITOR=$(which gedit || which kate || which xed || which pluma || which nano || which geany || which atom || which /Applications/TextEdit.app/Contents/MacOS/TextEdit || which xdg-open || echo -n 'open -e')
+export EDITOR=$(basename "$EDITOR")
 IMAGER=$(which eog || which eom || which feh || which vlc || which /Applications/Preview.app/Contents/MacOS/Preview || which xdg-open || echo -n open)
+export IMAGER=$(basename "$IMAGER")
 
 if [[ $(uname) =~ Linux ]]; then
 	alias ls='ls --color=auto'
