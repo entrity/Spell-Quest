@@ -15,13 +15,15 @@ tutorial () {
 
 	${RESET}$(head -n8 "$(thisdir)/barrels.txt")${SPEECH}
 
-	You can see that the file holds blocks of text. The first line of each block is the name of the barrel. The second line contains ingredients.
+	You can see that the file is divided up into blocks of text. The first line of each block is the name of the barrel. The second line contains ingredients.
 
 	I need to you give me a list of the barrels which include $(alt saffron) as an ingredient. You won't need $(spell head) or $(spell tail) to do this, but you will need $(spell grep). There are a couple of parameters that will make $(spell grep) more powerful: $(alt '-A NUMBER') and $(alt '-B NUMBER'). What do $(alt A) and $(alt B) mean? They are short for $(alt after) and $(alt before)! They mean "when you find a match, also display NUMBER lines before/after the match." Here's an example usage:
 
 	$(spell grep -A 3 somefile.txt)
 
-	When you use the $(alt '-A') or $(alt '-B') parameter, $(spell grep) will not only output the lines you want but will $(red also) output a line consisting of only $(alt '--') between each match. So I want you to do a little bit of extra work to remove these lines. $(red But) you can't just use $(alt '--') as a parameter for $(spell grep)! Some spells, including $(spell grep), recognize $(alt '--') as a special parameter which means "all the parameters before this are optional, and all parameters after this are required." So you to use $(alt '--') as a parameter, you can invoke $(spell 'grep -- --'). (But $(spell 'grep -- --') is not quite the command you want to use.)
+	When you use the $(alt '-A') or $(alt '-B') parameter, $(spell grep) will not only output the lines you want but will $(red also) output a line consisting of only $(alt '--') between each match. So I want you to do a little bit of extra work to remove these lines.
+
+	You might think you could pipe an output to $(spell 'grep -v --') to remove those lines, $(red but) you can't! Some spells, including $(spell grep), recognize $(alt '--') as a special parameter which means "all the parameters before this are optional, and all parameters after this are required." There is a way to use $(alt '--') as a real parameter, though: you can invoke $(spell 'grep -- --'). (But $(spell 'grep -- --') is not quite the command you will need...)
 
 	I want you to only find the lines that hold the names of the barrels. Don't include the lists of ingredients! And don't include the lines that consist of only $(alt '--')! Please pipe the results into me the next time you activate me.
 
@@ -68,4 +70,5 @@ else
 	else
 		mistake
 	fi
+	prompt_repeat
 fi

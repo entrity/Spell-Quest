@@ -19,17 +19,19 @@ tutorial () {
 	${SPEECH}
 	Can you see how tricky a problem this is? I can say one thing for sure: this calls for regular expressions.
 
-	You've learnt to use $(spell sed), right? Well, one thing you can do in a $(spell sed) regular expression is to use $(alt '\(') and $(alt '\)') to capture part of the input and then use $(alt '\\1') to reproduce it in the output.
+	You've learnt to use $(spell sed) from the Gnome in the forest academy, right? Well, one thing you can do in a $(spell sed) regular expression is to use $(alt '\(') and $(alt '\)') to capture part of the input and then use $(alt '\\1') to reproduce it in the output.
 
 	For example, if my input is ${RESET}snafu${SPEECH} and I want the output to just contain the character after $(alt n), I could use this invocation:
 
-	$(spell "sed 's/n\(.\)/\\\1/'")
+	$(spell "sed 's/.*n\(.\).*/\\\1/'")
 
 	The contents within the $(alt '\(\)') is called a $(alt capturing group). You can actually have as many capturing groups as you want in a $(spell sed) regex. You can reference the first one with $(alt '\\1'), the second one with $(alt '\\2'), and so on.
 
 	...You might want to make a copy of all of these cookbooks and practice on your copies. You can copy an entire directory (including all its subdirectories) with $(spell 'cp -r'). The $(alt '-r') option stands for $(alt recursive).
 
 	You might want to write a bash script so that you can carefully write a loop and adjust your spells as you experiment.
+
+	Talk to me again with the parameter $(alt check) when you are ready for me to check your work.
 
 	$CONTINUE
 	EOF
@@ -48,7 +50,7 @@ mistake () {
 
 	* edit ALL of the cookbooks in the bookcase?
 	* swap $(alt dust) with the word two places before it?
-	* perform swaps on EVERY occurrence (using the $(alt global) option)
+	* perform swaps on EVERY occurrence (using the $(alt global) option learned from the Gnome in the forest academy)
 	EOF
 }
 reward () {
@@ -61,20 +63,20 @@ reward () {
 	mkdir -p "${HOME}/bag"
 	cp "${DATA}/wishbone" "${HOME}/bag"
 }
-prompt_repeat () {
-	echo
-	if prompt_no "Do you want me to repeat my instruction?"; then
-		tutorial
-	fi
-}
 
-if [[ -t 0 ]]; then
-	tutorial
-else
+if [[ ${1,,} == check ]]; then
 	if >/dev/null diff -r -q --no-dereference bookcase "$DATA/bookcase-check"; then
 		reward
 	else
 		mistake
 	fi
 	prompt_repeat
+elif (($#)); then
+	wrap <<-EOF
+	${SPEECH}
+	I'm expecting you to talk with me using the parameter $(alt check) when you want me to check your work.
+	EOF
+	prompt_repeat
+else
+	tutorial
 fi
