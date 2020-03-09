@@ -66,23 +66,10 @@ fi
 ##############
 
 debug Start
-if [[ -e "$HOME/../skip" ]] && [[ -e "$__DIR__/.lessons" ]]; then
+if [[ $(whoami) == markham ]] && ((1)); then
 	mkdir -p "$HOME/bag"
-	learned ls
-	grep '[0-9]\{3\}[) -]\{1,2\}[0-9]\{3\}-[0-9]\{4\}' "$HOME/north/forest/path-11/tree-16/spreadsheet.csv" > "$HOME/bag/phone-numbers.csv"
-	grep '[A-Z]\{3\}' "$HOME/north/forest/path-11/tree-16/spreadsheet.csv" > "$HOME/bag/with-capitals.csv"
-	grep 'John' "$HOME/north/forest/path-11/tree-16/spreadsheet.csv" > "$HOME/bag/John.csv"
-	sed -e 's/SALUTARY/INIMICAL/' "$HOME/../backup/north/forest/path-11/tree-16/scroll.txt" > "$HOME/north/forest/path-11/tree-16/scroll.txt"
-	cp "$__DIR__/data/mighty-axe.sh" "$HOME/bag"
-	cp "$__DIR__/data/Lich.sh" "$HOME/cave/tunnel/cavern"
-	cd "$ACADEMYN/Transmutation"
-	ln -s '/home/markham/projects/Spell-Quest/home/south/swamp/dGhl/d2F5/aXM=/d2luZGluZw==' "$HOME/swamp-link"
-	cp "$HOME/../data/Gargoyle's head.sh" "$HOME/bag/magic-seed.txt"
-	cd $(readlink "$HOME/swamp-link")
-	bash $HOME/bag/magic-seed.txt
-	# cp -r "$DATA/hattifattener-academy" "$HOME"
-	# cd "$HOME/hattifattener-academy"
-elif [[ -e "$__DIR__/.lessons/ls" ]]; then
+	ln -s "$HOME/north/forest/path-5/tree-7/academy-sylphan" $HOME
+	ln -s "$HOME/north/forest/path-11/tree-16/" $HOME
 	cd "$HOME"
 else
 	cd "$HOME/hut"

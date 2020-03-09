@@ -25,7 +25,7 @@ if [[ -e "$SCROLL" ]] && [[ $(stat --format %s "$SCROLL") -eq 0 ]]; then
 
 	* $(alt sed) is the name of the spell. It is short for "stream edit." (You may come to understand how much this name makes sense in future.)
 
-	* $(alt \-i) is an optional parameter which means "in-place," that is to say, "actually modify the file." If you omit this paramter, the contents of the file will be printed with the edits that the following paramters specify, but the file itself will *NOT* be changed. You might think you could just use a redirect to alter the file without the $(alt -i) parameter as follows: $(red "sed 's/REGEX/REPLACEMENT/OPTIONS' FILE" > FILE), but this will almost never work! Typically you cannot use a file for both input and output because the file gets read a bit at a time and written a bit at a time, so the writing process interferes with the reading process.
+	* $(alt \-i) is an optional parameter which means "in-place," that is to say, "actually modify the file." If you omit this paramter, the contents of the file will be printed with the edits that the following paramters specify, but the file itself will *NOT* be changed. You might think you could just use a redirect to alter the file without the $(alt -i) parameter as follows: $(red "sed 's/REGEX/REPLACEMENT/OPTIONS' FILE > FILE"), but this will almost never work! Typically you cannot use a file for both input and output because the file gets read a bit at a time and written a bit at a time, so the writing process interferes with the reading process.
 
 	* $(alt REGEX) is a regular expression. $(spell sed) finds strings of text in the file that match your regular expression, and it replaces them with whatever you provide for $(alt REPLACEMENT).
 

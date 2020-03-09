@@ -1,6 +1,7 @@
 #!/bin/bash
 
 prompt_to_repeat_main_text () {
+	echo
 	echo -n "$(alt 'Do you want me to repeat my ealier instructions? [y/N]') "
 	read -n 1 DO_REPEAT
 	echo
@@ -44,8 +45,7 @@ check_scroll_edit () {
 		${SPEECH}
 		Hm. Wait one minute while I gaze into my crystal ball...
 
-		Ehm. It seems the changes you made to the scroll were not as I wished. Did you remember to $(alt save) the file before exiting the text editor?
-
+		Ehm. It seems the changes you made to the scroll were not as I wished. Did you remember to $(alt save) the file before exiting the text editor ($(alt $EDITOR))?
 		HEREDOC
 		prompt_to_repeat_main_text
 		return 1
@@ -121,7 +121,7 @@ main_text () {
 
 	3. I want you to save lines containing phone numbers into a file named $(alt phone-numbers.csv) in your bag. What's a "phone number," you ask? As near as I have been able to determine, it used to be something people used to communicate. But that's not important; what *is* important is how to recognize a phone number:
 
-	A phone number has ten numerals, split up into three groups. Sometimes phone numbers are written like this: $(alt 800-867-5309). And sometimes they're written like this: $(alt '(800) 867-5309'). But I want you to *ignore* any numbers if they are not written like the two examples I just gave.
+	Phone numbers can be formatted in multiple ways, but I want you to extract only phone numbers which are formatted as ten numerals, split up into three groups by hyphens, for instance: $(alt 800-867-5309). You should ignore any phone numbers that don't appear in that format.
 
 	To complete this task, you'll need to make use of a spell which allows you to filter lines which match a $(alt pattern) which you get to specify. Here's an example of how to invoke it:
 
