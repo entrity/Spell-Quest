@@ -49,7 +49,7 @@ cp "scroll.txt" "$ROOTDIR/home/north/forest/path-11/tree-16/scroll.txt"
 cp "spreadsheet.csv" "$ROOTDIR/home/north/forest/path-11/tree-16/spreadsheet.csv"
 grep John spreadsheet.csv > John.csv
 grep '[A-Z]\{3\}' spreadsheet.csv > with-capitals.csv
-grep '[0-9]\{3\}[) -]\{1,2\}[0-9]\{3\}-[0-9]\{4\}' spreadsheet.csv > phone-numbers.csv
+grep '[0-9]\{3\}-[0-9]\{3\}-[0-9]\{4\}' spreadsheet.csv > phone-numbers.csv
 cd - >/dev/null
 
 debug FINISHED INSTALLATION

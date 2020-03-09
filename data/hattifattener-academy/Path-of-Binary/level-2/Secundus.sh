@@ -22,7 +22,7 @@ tutorial () {
 
 	Let's suppose that we and our friend didn't want to invest a great deal of time contriving a code to convert bit-strings to letters. Good news: there's already a well-established code for converting bit-strings to symbols. It's called $(alt ASCII) (American Standard Code for Information Interchange). According to ASCII, $(alt 01110011) signifies the letter $(alt s).
 
-	Want to see something funny? Do you remember that ASCII isn't the only way to interpret a bit-string? Primus showed you that a bit-string can be interpreted as a binary number. Do you remember how the $(alt 101) is binary for the number five? And $(alt 10) is binary for the number two? Well, $(alt 01110011) is binary for the number one hundred and fifteen! Isn't it funny how $(alt 01110011) can mean different things depending on how we choose to interpret it?
+	Want to see something funny? Do you remember that ASCII isn't the only way to interpret a bit-string? Primus showed you that a bit-string can be interpreted as a binary number. Do you remember how $(alt 101) is binary for the number five? And $(alt 10) is binary for the number two? Well, $(alt 01110011) is binary for the number one hundred and fifteen! Isn't it funny how $(alt 01110011) can mean different things (a letter or a number) depending on how we choose to interpret it?
 
 	With some practice, you _could_ use a notepad and pencil to encode your message as a very long bit-string, but with the power of a second-level Transmutation spell, you could use $(spell xxd) to do this work for you. You will want two particular parameters, though:
 
@@ -47,7 +47,7 @@ tutorial () {
 
 	If you wanted only the 2nd column, you could pipe the output to a clever invocation of $(spell grep) or an easy invocation of $(spell cut).
 
-	...What if you want to do the reverse, convert a bitstring ($(alt 01110011)) to an ASCII character ($(alt s))? That's trickier, but doable. $(spell xxd) _can_ reverse the process, converting a number to an ascii value, but it can't do this on binary (base-$(alt 2)) numbers; it can only do it on hexadecimal (base-$(alt 16)) numbers. So we're going to have to add some steps to convert our binary representation $(alt 01110011) to the hexadecimal representation $(alt 73). Let's look at the sequence of commands and then explain how each one works:
+	...What if you want to do the reverse, convert a bitstring ($(alt 01110011)) to an ASCII character ($(alt s))? That's trickier, but doable. $(spell xxd) _can_ reverse the process, converting a number to an ascii value, but it can't do this on binary (base-$(alt 2)) numbers; it can only do it on hexadecimal (base-$(alt 16)) numbers. So we're going to have to add some steps to convert our binary representation $(alt 01110011) to the hexadecimal representation $(alt 73). It's going to be pretty convoluted, and you don't have to remember this, but let's make an exercise of reading through it together. Let's look at the sequence of commands and then explain how each one works:
 
 	$(spell 'BITSTRING=01110011')
 	$(spell 'DECIMAL=$((2#$BITSTRING))')
@@ -56,12 +56,12 @@ tutorial () {
 
 	1. The first line just sets a base-$(alt 2) variable. This step is not strictly necessary because we could just write the literal value in the next line as $(alt '$((2#01110011))'). But I think this makes our work more readable.
 	2. We're setting a base-$(alt 10) variable this time. The expression on the right side of the $(alt \=) sign is quite unusual. It means, "Evaluate the number on the right side of the $(alt \#) symbol using the numbering system defined by the number on the left side of the $(alt \#) symbol, then output the base-$(alt 10) representation." When we interpret our bitstring $(alt 01110011) according to the binary (i.e. base-$(alt 2)) numbering system, we get the decimal (i.e. base-$(alt 10)) number $(alt 115).
-	3. We want to set another variable, this time in base-$(alt 16). Do you remember $(spell printf)? Well another thing that differentiates it from $(spell echo) is that you can send its output to a variable instead of to the terminal. Just add the parameters $(alt \-v VARIABLE_NAME). Do you remember some of the placeholders for $(spell printf)? $(alt \%x) is a placeholder that means, "Format a parameter as a hexadecimal number."
+	3. We want to set another variable, this time in base-$(alt 16). Do you remember $(spell printf)? Well another thing that differentiates it from $(spell echo) is that you can send its output to a variable instead of to the terminal. Just add the parameters $(alt \-v VARIABLE_NAME). Do you remember some of the placeholders for $(spell printf), for instance $(alt %%d) and $(alt %%s)? $(alt %%x) is a placeholder that means, "Format a parameter as a hexadecimal number."
 	4. Then we can finally invoke $(spell xxd), but we'll need two special parameters: $(alt \-r) is short for "reverse" and means, "Instead of converting real data to a numeric representation, convert a numeric representation into real data." $(alt \-p) means, "My input is _plain_; it has only the middle column, not all three columns of information."
 
-	Whew! That was a bit of work. I recommend you write a bash script whose purpose is to convert a bitstring to an ASCII character. (You could keep such a script in your bag.)
+	Whew! That was a bit of work. I recommend you write a $(alt bash script) whose purpose is to convert a bitstring to an ASCII character. (You could keep such a script in your $(alt bag).) Do you remember that you can use $(alt '$1') inside of your bash script to make use of a command-line parameter?
 
-	If you want, you can practice with my two books here. One contains bit-strings, and the other contains a textual message. To people like you and me, who know how to interpret them, these two books contain the same message.
+	If you want, you can practice with my two books here. One contains bit-strings, and the other contains a textual message. To people like you and me, who know how to interpret them, these two books contain the same message. Can you find a way to convert the contents of each one to match the other one?
 
 	$CONTINUE
 	EOF
@@ -72,6 +72,7 @@ tutorial () {
 	learned '(technique) $((BASE#NUMBER))'
 	learned 'echo -n'
 	learned 'printf -v'
+	learned '(printf placeholder) %x'
 
 	wrap <<-EOF
 	${SPEECH}

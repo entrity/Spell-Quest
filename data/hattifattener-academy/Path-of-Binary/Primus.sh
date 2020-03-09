@@ -10,7 +10,7 @@ tutorial () {
 
 	${SPEECH}Hello, young pupil! Have you come to uncover the secrets of binary?
 
-	No? Well, I suppose I shouldn't be suprised. I suppose everybody thinks this subject is pretty musty and dusty. Ah, but there a joy in being able to use even just a little bit of binary. I'll show you:
+	No? Well, I suppose I shouldn't be suprised. I suppose everybody thinks this subject is pretty musty and dusty. Ah, but there is a joy in being able to use even just a little bit of binary. I'll show you:
 
 	There is a spell $(spell stat), which can be used to view a few details of any file or directory. Let me show you an example. Here's what we see when I $(spell stat Primus.sh):
 
@@ -36,7 +36,7 @@ tutorial () {
 	2. Permission to read from the file
 	3. Permission to execute the file
 
-	And now you get an explanation for why some files can be activated (like me) and others cannot (like this $(alt book.txt) here): files that can be activated have the $(alt execute) permission for you.
+	And now you get an explanation for why some files can be activated (like me) and others cannot (like this $(alt book.txt) here): files that can be activated have the $(alt execute) permission.
 
 	Here we come to the magic of numbers: to calculate what value each of those digits in the Access number should hold, start with zero, then follow these steps:
 
