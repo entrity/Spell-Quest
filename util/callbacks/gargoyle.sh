@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TIMEOUT=15
+TIMEOUT=30
 
 encounter_gargoyle () {
 	touch "$HOME/south/rocky-spire/tip-top/Gargoyle.sh"
