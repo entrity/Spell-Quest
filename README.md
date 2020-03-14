@@ -4,8 +4,9 @@
 
 You have two options for downloading:
 
-1. Save and then unzip the file at https://github.com/entrity/Spell-Quest/archive/master.zip
-2. In a terminal: `git clone --depth 1 git@github.com:entrity/Spell-Quest.git`
+* In a terminal: `git clone --depth 1 git@github.com:entrity/Spell-Quest.git` \
+(or)
+* Save and then unzip the file at https://github.com/entrity/Spell-Quest/archive/master.zip
 
 ### Running on Mac OS
 
