@@ -56,6 +56,10 @@ mjdecode64 () {
 	done
 }
 export -f mjdecode64
+mjlower () {
+	echo -n -e "$*" | tr '[:upper:]' '[:lower:]'
+}
+export -f mjlower
 # Stub ssh
 ssh () {
 	host=${1#*@}

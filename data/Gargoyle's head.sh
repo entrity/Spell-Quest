@@ -7,7 +7,7 @@ is_match () {
 	[[ "$PLAIN" == "$2" ]]
 }
 
-if [[ $(basename "${0,,}") =~ .*magic.*seed.* ]]; then
+if [[ $(basename "$(mjlower $0)") =~ .*magic.*seed.* ]]; then
 	if is_match "${STEPS[-1]}" winding \
 		&& is_match "${STEPS[-2]}" is \
 		&& is_match "${STEPS[-3]}" way \

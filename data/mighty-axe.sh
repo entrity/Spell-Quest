@@ -1,7 +1,7 @@
 #!/bin/bash
 
 rename () {
-	if [[ ${1,,} =~ ${2,,} ]]; then
+	if [[ $(mjlower $1) =~ $(mjlower $2) ]]; then
 		NEWNAME=$(sed s@^$2\\s*@@i <<< "$1")
 		if [[ $1 =~ $NEWNAME ]]; then
 			echo "$1 was renamed to $NEWNAME"

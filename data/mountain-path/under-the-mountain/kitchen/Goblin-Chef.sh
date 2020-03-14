@@ -64,7 +64,7 @@ reward () {
 	cp "${DATA}/wishbone" "${HOME}/bag"
 }
 
-if [[ ${1,,} == check ]]; then
+if [[ $(mjlower $1) == check ]]; then
 	if >/dev/null diff -r -q --no-dereference bookcase "$DATA/bookcase-check"; then
 		reward
 	else

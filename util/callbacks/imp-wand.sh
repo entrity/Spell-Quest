@@ -9,7 +9,7 @@ else
 	CONTENT=
 fi
 
-if [[ ${CONTENT,,} =~ salutary ]]; then
+if [[ $(mjlower $CONTENT) =~ salutary ]]; then
 	mkdir -p "$HOME/bag"
 	cp "$DATA/mighty-axe.sh" "$HOME/bag"
 
@@ -45,7 +45,7 @@ if [[ ${CONTENT,,} =~ salutary ]]; then
 		It looks as if the Imp has more to say. Try talking to him when you're ready.
 		EOF
 	fi
-elif [[ ${CONTENT,,} =~ inimical  ]]; then
+elif [[ $(mjlower $CONTENT) =~ inimical  ]]; then
 	wrap <<-EOF
 	${SPEECH}What's this? INIMICAL? Ooh! I'll fix you!
 
