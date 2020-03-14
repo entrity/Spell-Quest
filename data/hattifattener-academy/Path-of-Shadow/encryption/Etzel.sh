@@ -13,7 +13,7 @@ tutorial () {
 
 	I can teach you a second-level Shadow spell to perform encryption: $(spell openssl). This spell actually has several uses, and its very first parameter needs to specify the intended use. Our purpose is encryption and decryption, so we will use $(alt enc) as the first parameter for every invocation of $(spell openssl). Yes, encrypting and decrypting will be done the same way; the only difference will be that to decrypt a message with this spell, you must add the paramter $(alt \-d)
 
-	There are many, many ways to perform an encryption, and the word for these different ways is $(alt ciphers). You can get a list of ciphers available to you by invoking $(spell openssl enc -ciphers). Let's do it right now. (I'll pipe the output to $(spell head) so that we only see the first several results.)
+	There are many, many rulesets to perform an encryption, and the word for these different rulesets is $(alt ciphers). You can get a list of ciphers available to you by invoking $(spell openssl enc -ciphers). Let's do it right now. (I'll pipe the output to $(spell head) so that we only see the first several results.)
 
 	${RESET}$(openssl enc -ciphers | cut -d' ' -f1 | head )${SPEECH}
 
@@ -30,7 +30,7 @@ tutorial () {
 	* it can be contained in an environment variable $(alt env:varname)
 	* ...(and more)
 
-	That's almost all you need to know before setting off on your own, but before you go, let's look at three optional parameters and two usages for encrypting:
+	That's almost all you need to know before setting off on your own, but before you go, let's at look two usages for encrypting and three optional parameters:
 
 	1. You might want to encrypt an entire file
 	2. You might just want to encrypt a string of text (as I did in the example above)
@@ -67,7 +67,7 @@ tutorial () {
 	${SPEECH}
 	You have two exercises from Etzel:
 
-	1. Decrypt the file cipher.bin using the password 'off to the market'. Is the result readable?
+	1. Decrypt the file cipher.bin using the password 'off to the market'. Is the result readable? Remember to use $(alt -d) for decryption, $(alt -a) for base64, $(alt -pass pass:...) for the password, and $(alt -aes128) for the cipher.
 	2. Encrypt the file plain.txt using the password 'grapes on the vine'. Use the base-64 option. Save the output as $(alt cipher.txt), and talk to him again.
 	EOF
 }
@@ -83,11 +83,13 @@ if [[ -e cipher.txt ]]; then
 
 		${SPEECH}Well done! You are truly ready to proceed on your own!
 		EOF
+		prompt_repeat
 	else
 		wrap <<-EOF
 
 		${SPEECH}Welllllllll... Your $(alt cipher.txt) file is not quite right. Please try again.
 		EOF
+		prompt_repeat
 	fi
 else
 	tutorial
