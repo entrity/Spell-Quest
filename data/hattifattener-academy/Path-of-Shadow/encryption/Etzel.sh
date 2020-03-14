@@ -37,7 +37,9 @@ tutorial () {
 
 	If you want to encrypt a file, you can provide parameters $(alt \-in filepath) and $(alt \-out filepath). But you could also use $(alt \<) and $(alt \>) redirects.
 
-	If you want to encrypt a string of text and then view the output on the terminal, you need to know something more: much of the encrypted output will be unprintable. Did you know that many bytes don't correspond to printable symbols? (If you have completed the Path of Binary, your familiarity with $(alt ascii) might make this apparent.) Therefore, if you want an output that you can copy and paste or read and write, you should add the $(alt \-a) parameter. What this does is to base-64 encode the output. All of the symbols in the base-64 alphabet are printable.
+	If you want to encrypt a string of text and then view the output on the terminal, you need to know something more: much of the encrypted output will be unprintable. Did you know that many bytes don't correspond to printable symbols? (If you have completed the Path of Binary, your familiarity with $(alt ascii) might make this apparent.) Therefore, if you want an output that you can copy and paste or read and write, you should add the $(alt \-a) parameter. What this does is to base-64 encode the output. (All of the symbols in the base-64 alphabet are printable.)
+
+	Here's a question: if you want to _decrypt_ a file, how can you tell if you should use the $(alt -a) paramter or not? Just look inside the file. Do all of the characters look like letters, numbers, a few ordinary symbols from the keyboard? If so, it's probably base-64 encoded and needs the $(alt -a) parameter. (You can typically tell in nary more than a heartbeat.)
 
 	Let's try encrypting and decrypting a message using what we've learnt:
 

@@ -8,9 +8,9 @@ intro () {
 	$(art hippocampus.txt)
 
 	${SPEECH_N}
-	So you want to keep things hidden, really hidden? So secret that nobody even knows to that there are secrets to be probed? You have come to the right place.
+	So you want to keep things hidden, really hidden? So secret that nobody even knows to that there are secrets to be probed? You have come to the right place. But proceed no further if you have not learnt the ways of the $(alt Path of Binary) yet. Return here after completing that path.
 
-	Take a minute to look at the two images I have here. Do you remember the use of $(spell $IMAGER)? That's one way to open an image file.
+	If you are ready to go on, take a minute to look at the two images I have here. Do you remember the use of $(spell $IMAGER)? That's one way to open an image file.
 
 	See if you can spot any differences between the two. After you've finished looking, come back and speak with me again. When you come back, use a parameter to tell me what creature you saw in the images.
 
@@ -26,11 +26,11 @@ tutorial_1 () {
 	speak <<-EOF
 	$(art hippocampus.txt)
 
-	${SPEECH_N}The two images appear to be identical, but they aren't. One of them has a message hidden within it. How is that possible, you ask? Let me tell you a thing or two about images.
+	${SPEECH_N}The two images appear to be identical, but they aren't. One of them has a message hidden within it. How is that possible, you ask? Let me tell you a thing or two about how images.
 
-	Each dot in a video screen is actually composed of three tinier dots: one red, one green, one blue. A combination of these three colours makes every colour you ever see on a video screen. Now, each dot in an image is called a $(alt pixel), which is a portmanteau of "$(alt pic)ture $(alt el)ement." Each pixel can be represented by quadruplet of numbers: one for red, one for green, one for blue, and one for opacity (which is called "alpha" channel).
+	Each dot in a video screen is actually composed of three tinier dots: one red, one green, one blue. A combination of these three colours makes every colour you ever see on a video screen. Now, each dot in an image is called a $(alt pixel). (The word "pixel" is a portmanteau of "$(alt pic)ture $(alt el)ement.") Each pixel can be represented by quadruplet of numbers: one for red, one for green, one for blue, and one for opacity (commonly called "alpha" channel).
 
-	Each of these four numbers can have a value between 0 and 255. That's a pretty wide range, so if we make a small change to any of these four values, say plus or minus one, then no human can detect the difference. We can make tiny changes to every pixel in an image, if we want, and no one would know.
+	Each of these four numbers can have a value between 0 and 255. That's a pretty wide range, so if we make a small change to any of these four values, say plus or minus one, then no human can detect the difference. We can make tiny changes to _every_ pixel in an image, if we want, and no one would know.
 
 	Here's how we can hide a message in the image:
 
@@ -40,9 +40,11 @@ tutorial_1 () {
 
 	Here's an example:
 
-	Let decide that our message is just the word $(alt ok). That gives us the following two bit-strings: $(alt 01101111 01101011).
+	Let decide that our message is just the word $(alt ok). Ascii encoding of the two characters $(alt o) and $(alt k) gives us the following two bit-strings: $(alt 01101111 01101011).
 
-	Let's line up the red, green, blue, and alpha values from the first few pixels with the bits from these two bit-strings. Then look at the "modified" column. Can you see what changes I've made to the "original" column?
+	Let's line up the red, green, blue, and alpha values from the first few pixels of one of these unicorn images, along with the bits from these two bit-strings. Then look at the "modified" column.
+
+	Can you see what changes I've made to transform the "original" column into the "modified" column?
 
 	${RESET}
 	                  orig   bit   modified
@@ -66,7 +68,7 @@ tutorial_1 () {
 
 	${SPEECH}Everywhere that the bit-string indicated an even number ($(alt 0)), I altered the pixel value to be even; everywhere that the bit-string indicated an odd number ($(alt 1)), I altered the pixel value to be odd. These modifications never changed any pixel value by more than 1 (and sometimes, it didn't change the pixel value at all), but anyone who knows to look for the message can find it: just read the new pixel values from the "modified" column and write down the sequence of evens and odds:
 
-	If we are given only the "modified" image, we can see the following in the pixel values: $(alt even, ood, odd, even, odd, odd, odd, ...) That gives us the bit-string $(alt 0, 1, 1, 0, 1, 1, 1, ...) Looking at these values, we actually recover the secret message bit-strings: $(alt 01101111 01101011). And using our knowledge of $(alt binary) and $(alt ascii), we can recover the textual message $(alt ok).
+	If we are given only the "modified" image, we can see the following in the pixel values: $(alt even, odd, odd, even, odd, odd, odd, ...) That gives us the bit-string $(alt 0, 1, 1, 0, 1, 1, 1, ...) Looking at these values, we actually recover the secret message bit-strings: $(alt 01101111 01101011). And using our knowledge of $(alt binary) and $(alt ascii), we can recover the textual message $(alt ok).
 
 	I've hidden a message in $(alt b.bmp). I'll help you recover it, and if you do, I'll tell you a secret.
 
@@ -121,9 +123,9 @@ tutorial_2 () {
 	
 	I'll teach you something to get rid of the $(alt newline) characters in your temporary file: use the $(spell tr) spell. $(spell tr) is an abbreviation for "translate" because its primary use is to replace one set of characters with another set of characters. But in truth, I've never used it for that purpose. I usually use it for the sole purpose of deleting newline characters from another spell's output. You can use it to delete any character you like by use of the $(alt \-d) paramter, which must be followed by the character that you wish to delete. So how to you type a $(alt newline) character? The answer is that you should write a combination of two symbols to signify a $(alt newline): $(alt '\n'). I like to pipe the output of one spell into $(spell tr) like so:
 
-	$(spell "somespell | tr -d '\n'")
+	$(spell "somespell | tr -d '\\\n'")
 
-	You might think that you could pipe to $(spell "sed 's/\n//'") to remove the $(alt newline) characters that way, but $(spell sed) has a limitation: whenever it encounters a $(alt newline) character, it stops editing its existing line and starts looking at the next line. That makes it impossible to remove newlines with $(spell sed)!
+	You might think that you could pipe to $(spell "sed 's/\\\n//'") to remove the $(alt newline) characters that way, but $(spell sed) has a limitation: whenever it encounters a $(alt newline) character, it stops editing its existing line and starts looking at the next line. That makes it impossible to remove newlines with $(spell sed)!
 
 	$CONTINUE
 	EOF
@@ -194,8 +196,37 @@ reward () {
 _check_body () { &>/dev/null diff -q body.bin <(tail -c +55 b.bmp); }
 _check_bitstrings () { &>/dev/null diff -q bitstrings.txt <(tail -c +55 b.bmp | xxd -b -c 1 | cut -d' ' -f2 | cut -c8 | tr -d '\n'); }
 
+prompt_repeat () {
+	echo
+	if [[ $1 -gt 3 ]]; then
+		echo -n 'Do you wish me to repeat my third tutorial? [y/N]'
+		read -n1 OPT
+		echo
+		if [[ $(mjlower $OPT) == y ]]; then
+			tutorial_3
+		fi;
+	fi
+	if [[ $1 -gt 2 ]]; then
+		echo -n 'Do you wish me to repeat my second tutorial? [y/N]'
+		read -n1 OPT
+		echo
+		if [[ $(mjlower $OPT) == y ]]; then
+			tutorial_2
+		fi;
+	fi
+	if [[ $1 -gt 1 ]]; then
+		echo -n 'Do you wish me to repeat my first tutorial? [y/N]'
+		read -n1 OPT
+		echo
+		if [[ $(mjlower $OPT) == y ]]; then
+			tutorial_1
+		fi;
+	fi
+}
+
 if [[ $0 =~ ippocampus ]]; then
 	reward
+	prompt_repeat 4
 elif [[ -e bitstrings.txt ]]; then
 	if _check_bitstrings; then
 		tutorial_3
@@ -205,6 +236,7 @@ elif [[ -e bitstrings.txt ]]; then
 		Tsk. The contents of your $(alt bitstrings.txt) are not as expected. Please try again.
 		EOF
 	fi
+	prompt_repeat 3
 elif [[ -e body.bin ]]; then
 	if _check_body; then
 		tutorial_2
@@ -214,6 +246,7 @@ elif [[ -e body.bin ]]; then
 		Tsk. The contents of your $(alt body.bin) are not as expected. Please try again.
 		EOF
 	fi
+	prompt_repeat 2
 elif (($#)); then
 	tutorial_1
 else
