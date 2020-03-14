@@ -73,7 +73,7 @@ function instruction () {
 
 	${RESET}$(ls --color=always)${SPEECH}
 
-	Do you see that list up there? One of the things you can see is my trunk. It's a directory, but there's nothing in it right now, I'm afraid.
+	Do you see that list up there? One of the things you can see is my trunk. It's a directory.
 
 	You don't believe me? Feel free to look. Oh, you don't want to look because you don't want to type that long path? Well, usually people don't actually make use of the entire path.
 
@@ -86,7 +86,7 @@ function instruction () {
 
 	(Notice that a relative path NEVER starts with the $(alt /) symbol.)
 
-	You can try looking in the trunk, and you'll see that it's empty.
+	You can try looking in the trunk.
 
 	Well, I have just a few more things to teach you before you embark on your lunatick treasure hunt.
 
@@ -136,7 +136,7 @@ function instruction () {
 
 	You learnt $(spell ls -F) and $(spell pwd) and how to activate certain files.
 
-	The strange Hermit advised you to practice looking inside of his empty trunk by invoking $(spell ls trunk).
+	The strange Hermit advised you to practice looking inside of his trunk by invoking $(spell ls trunk).
 
 	And you should try to talk to William by invoking $(spell ./William.sh)
 

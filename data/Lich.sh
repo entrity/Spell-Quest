@@ -67,4 +67,6 @@ fi
 
 learned 'base64'
 learned 'base64 -d'
+learned 'base64 -w 0'
+learned 'base64 -w 0 -d'
 learned '(technique) <<<'
