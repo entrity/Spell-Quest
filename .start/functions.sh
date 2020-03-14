@@ -56,3 +56,25 @@ mjdecode64 () {
 	done
 }
 export -f mjdecode64
+# Stub ssh
+ssh () {
+	host=${1#*@}
+	user=${1%@*}
+	if [[ $host != shell.xshellz.com ]]; then
+		>&2 echo "ssh: Could not resolve hostname ${host}: Name or service not known"
+		return 1
+	fi
+	echo -n "${1}'s password: "
+	read -s password
+	FAKEPW=$(base64 -d <<< "bW9vbiBmZXN0aXZhbC5jYW1lcmEuc2FpbGluZy5tYXRpbGRh")
+	if [[ "$user" != "spellcaster" ]] || [[ "$password" != "$FAKEPW" ]]; then
+		>&2 echo "Permission denied."
+		return 1
+	fi
+	[[ -e "$HOME/../xshellz" ]] && rm -r "$HOME/../xshellz"
+	cp -r "$HOME/../data/ssh" "$HOME/../xshellz"
+	touch "$HOME/../xshellz/.sudo_as_admin_successful"
+	echo
+	bash --rcfile "$HOME/../xshellz/.bashrc"
+}
+export -f ssh

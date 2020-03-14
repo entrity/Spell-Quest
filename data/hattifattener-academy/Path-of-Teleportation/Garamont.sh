@@ -37,7 +37,9 @@ tutorial () {
 
 	* The hostname for the remote computer is $(alt shell.xshellz.com)
 	* The username for the ssh account is $(alt spellcaster)
-	* The password for the ssh account is something you should be able to puzzle out. If you travel beneath the mountain south of the Hermit's hut, you should be able to discover four items: a wishbone, a yellow mushroom, a carbuncle, and a rabbit's foot. These four items have encrypted messages, which you can decrypt using the spell taught in $(alt level-2 of the encryption study in the Path of Shadow). You will also need the $(alt private.key) found in this room. Once you have decrypted and read all four messages, you should know what the password is that will gain you access to the $(spell ssh) account at $(alt shell.xshellz.com).
+	* The password for the ssh account is something you should be able to puzzle out. Here is what you must do:
+
+	If you travel beneath the mountain south of the Hermit's hut, you should be able to discover four items: a wishbone, a yellow mushroom, a carbuncle, and a rabbit's foot. These four items have encrypted messages, which you can decrypt using the spell taught in $(alt level-2 of the encryption study in the Path of Shadow). In conjunction with that spell, you will need the $(alt private.key) found in this room. Once you have decrypted and read all four messages, you should know what the password is that will gain you access to the $(spell ssh) account at $(alt shell.xshellz.com).
 
 	Once you have managed to $(spell ssh) to $(alt shell.xshellz.com), you should find a file named 'treasure-key.txt' there. It is base-64 encoded. It contains instructions for opening the treasure at the mountaintop. But it also contains many lines with incorrect advice for opening the treasure. You will want only the line which includes a password that begins with a capital letter and is seven letters long and does not end in the letter $(alt s).
 

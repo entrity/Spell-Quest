@@ -1,0 +1,101 @@
+The password is Canton. The cipher is -bf-cbc. The file is base-64 encoded.
+The password is fora. The cipher is -camellia-128-cfb8. The file is base-64 encoded.
+The password is soberest. The cipher is -sm4. The file is _not_ base-64 encoded.
+The password is judiciously. The cipher is -des-cfb8. The file is base-64 encoded.
+The password is bungles. The cipher is -aria-192-cfb8. The file is _not_ base-64 encoded.
+The password is Wollstonecraft. The cipher is -desx. The file is base-64 encoded.
+The password is priggish. The cipher is -cast5-cbc. The file is _not_ base-64 encoded.
+The password is geeks. The cipher is -id-aes128-wrap. The file is base-64 encoded.
+The password is Alhambra. The cipher is -aria-128-ecb. The file is base-64 encoded.
+The password is emblem. The cipher is -des-cfb1. The file is base-64 encoded.
+The password is overachievers. The cipher is -aria-192-cfb. The file is base-64 encoded.
+The password is vibratos. The cipher is -aria-256-ecb. The file is base-64 encoded.
+The password is Saki. The cipher is -aes-192-ecb. The file is base-64 encoded.
+The password is manipulate. The cipher is -des3-wrap. The file is base-64 encoded.
+The password is complainer. The cipher is -id-aes128-wrap-pad. The file is base-64 encoded.
+The password is avow. The cipher is -des-ede3-ofb. The file is _not_ base-64 encoded.
+The password is Fleischer. The cipher is -camellia-256-ctr. The file is base-64 encoded.
+The password is secrete. The cipher is -des-ede3-cfb. The file is base-64 encoded.
+The password is quadriplegia. The cipher is -id-aes192-wrap-pad. The file is base-64 encoded.
+The password is caring. The cipher is -cast-cbc. The file is base-64 encoded.
+The password is Darth. The cipher is -aes-128-cfb8. The file is _not_ base-64 encoded.
+The password is toughened. The cipher is -id-aes192-wrap. The file is _not_ base-64 encoded.
+The password is snorkelling. The cipher is -aria-128-ofb. The file is _not_ base-64 encoded.
+The password is defecation. The cipher is -aes-128-ofb. The file is _not_ base-64 encoded.
+The password is Marines. The cipher is -aes-256-cfb8. The file is _not_ base-64 encoded.
+The password is contract. The cipher is -aria-192-cfb1. The file is _not_ base-64 encoded.
+The password is naturalism. The cipher is -camellia-256-cfb8. The file is _not_ base-64 encoded.
+The password is scumbag. The cipher is -rc2-40. The file is _not_ base-64 encoded.
+The password is vestibules. The cipher is -aria-192-ofb. The file is _not_ base-64 encoded.
+The password is Madagascar. The cipher is -aria-128-ctr. The file is _not_ base-64 encoded.
+The password is swamp. The cipher is -des-ede3. The file is _not_ base-64 encoded.
+The password is impalpable. The cipher is -camellia-256-cfb. The file is _not_ base-64 encoded.
+The password is Nevrast. The cipher is -blowfish. The file is _not_ base-64 encoded.
+The password is Hellenisation. The cipher is -aes-128-cfb1. The file is _not_ base-64 encoded.
+The password is puzzlement. The cipher is -rc2-40-cbc. The file is _not_ base-64 encoded.
+The password is convalescence. The cipher is -aria-256-ofb. The file is _not_ base-64 encoded.
+The password is bug. The cipher is -id-aes256-wrap. The file is base-64 encoded.
+The password is jogger. The cipher is -aes-256-cfb. The file is base-64 encoded.
+The password is obeisances. The cipher is -camellia-128-ecb. The file is _not_ base-64 encoded.
+The password is chocolate. The cipher is -aria256. The file is base-64 encoded.
+The password is stymied. The cipher is -camellia-192-cbc. The file is base-64 encoded.
+The password is goriest. The cipher is -rc2. The file is _not_ base-64 encoded.
+The password is Kwan. The cipher is -aes256. The file is base-64 encoded.
+The password is gorilla. The cipher is -des-ede-cfb. The file is _not_ base-64 encoded.
+The password is suavity. The cipher is -aria-128-cbc. The file is _not_ base-64 encoded.
+The password is encourages. The cipher is -des-cfb. The file is _not_ base-64 encoded.
+The password is Margarito. The cipher is -bf. The file is _not_ base-64 encoded.
+The password is applying. The cipher is -aes128. The file is base-64 encoded.
+The password is assemble. The cipher is -cast5-cfb. The file is _not_ base-64 encoded.
+The password is veldt. The cipher is -camellia256. The file is base-64 encoded.
+The password is cathode. The cipher is -camellia-192-cfb. The file is base-64 encoded.
+The password is fork. The cipher is -aes-256-ecb. The file is _not_ base-64 encoded.
+The password is theist. The cipher is -aes-192-cfb1. The file is base-64 encoded.
+The password is divot. The cipher is -aria-128-cfb8. The file is base-64 encoded.
+The password is westward. The cipher is -camellia192. The file is base-64 encoded.
+The password is Elsa. The cipher is -rc2-128. The file is _not_ base-64 encoded.
+The password is chitin. The cipher is -seed-cfb. The file is _not_ base-64 encoded.
+The password is soliciting. The cipher is -cast. The file is base-64 encoded.
+The password is youth. The cipher is -aes192. The file is base-64 encoded.
+The password is Corinthians. The cipher is -aes-256-cbc. The file is base-64 encoded.
+The password is Kemp. The cipher is -des-ofb. The file is base-64 encoded.
+The password is intransigence. The cipher is -camellia128. The file is base-64 encoded.
+The password is chronicle. The cipher is -sm4-ctr. The file is base-64 encoded.
+The password is unabridged. The cipher is -seed. The file is _not_ base-64 encoded.
+The password is outrageously. The cipher is -camellia-128-cbc. The file is base-64 encoded.
+The password is homophobia. The cipher is -chacha20. The file is _not_ base-64 encoded.
+The password is default. The cipher is -aes-128-ctr. The file is base-64 encoded.
+The password is testable. The cipher is -aria-256-cfb1. The file is base-64 encoded.
+The password is buzzards. The cipher is -camellia-192-cfb1. The file is base-64 encoded.
+The password is embellishments. The cipher is -des-cbc. The file is _not_ base-64 encoded.
+The password is recliners. The cipher is -sm4-cfb. The file is base-64 encoded.
+The password is hindquarters. The cipher is -aes-192-cfb8. The file is _not_ base-64 encoded.
+The password is reminiscence. The cipher is -aria-192-ctr. The file is base-64 encoded.
+The password is groin. The cipher is -aria-128-cfb1. The file is _not_ base-64 encoded.
+The password is chancy. The cipher is -aes-128-cbc. The file is _not_ base-64 encoded.
+The password is haggle. The cipher is -cast5-ofb. The file is base-64 encoded.
+The password is prize. The cipher is -des-ede3-ecb. The file is _not_ base-64 encoded.
+The password is damndest. The cipher is -seed-cbc. The file is base-64 encoded.
+The password is Popeye. The cipher is -camellia-128-cfb. The file is _not_ base-64 encoded.
+The password is mistier. The cipher is -des-ede3-cfb1. The file is base-64 encoded.
+The password is phantasms. The cipher is -sm4-ecb. The file is _not_ base-64 encoded.
+The password is forearm. The cipher is -des. The file is base-64 encoded.
+The password is stoat. The cipher is -aria192. The file is base-64 encoded.
+The password is expatriates. The cipher is -seed-ofb. The file is base-64 encoded.
+The password is scholarship. The cipher is -id-aes256-wrap-pad. The file is base-64 encoded.
+The password is knowledge. The cipher is -aes-256-ofb. The file is base-64 encoded.
+The password is straightjackets. The cipher is -aria-192-cbc. The file is _not_ base-64 encoded.
+The password is lusciously. The cipher is -camellia-256-ecb. The file is _not_ base-64 encoded.
+The password is lenses. The cipher is -rc2-ofb. The file is base-64 encoded.
+The password is Nationwide. The cipher is -aria-192-ecb. The file is _not_ base-64 encoded.
+The password is Gross. The cipher is -aes256-wrap. The file is base-64 encoded.
+The password is Patrice. The cipher is -des-ede-cbc. The file is _not_ base-64 encoded.
+The password is bossier. The cipher is -camellia-192-ecb. The file is _not_ base-64 encoded.
+The password is lampoon. The cipher is -rc2-cfb. The file is base-64 encoded.
+The password is procreated. The cipher is -aes-256-ctr. The file is base-64 encoded.
+The password is skiffs. The cipher is -des-ecb. The file is base-64 encoded.
+The password is hostage. The cipher is -aes128-wrap. The file is _not_ base-64 encoded.
+The password is Eridanus. The cipher is -camellia-192-ofb. The file is _not_ base-64 encoded.
+The password is Algonquin. The cipher is -aes-192-ctr. The file is _not_ base-64 encoded.
+The password is Jarrett. The cipher is -camellia-192-cfb8. The file is base-64 encoded.
+The password is coldly. The cipher is -aes-192-cfb. The file is _not_ base-64 encoded.
