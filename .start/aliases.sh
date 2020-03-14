@@ -8,7 +8,7 @@ IMAGER=$(which eog || which eom || which feh || which vlc || which /Applications
 export IMAGER=$(basename "$IMAGER")
 
 if [[ $(uname) =~ Linux ]]; then
-	alias ls='ls --color=auto'
+	alias ls='ls --color=always'
 elif [[ $(uname) =~ Darwin ]]; then
 	osascript -e 'tell application "Terminal" to set current settings of front window to first settings set whose name is "Pro"'
 

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 . "$HOME/../.start/aliases.sh"
 
 decompose_path () {
@@ -17,7 +19,7 @@ You might wish to maximize this window. You can also increase the text size by u
 
 You can press the $(alt up)${RESET} and $(alt down)${RESET} arrow keys or $(alt PageUp)${RESET} and $(alt PageDown)${RESET} or $(alt u)${RESET} and $(alt d)${RESET} to scroll through what I have to say.
 
-You will speak with many people on this quest. The normal way to stop someone talking is to press $(red q)${RESET}. If you end up pressing an unexpected key and can't get away from someone who's talking to you, try pressing $(red Escape)${RESET} and/or $(red 'Ctrl+c')${RESET} once or twice, then press $(red q)${RESET}. (You might need to press $(read Backspace) a few times too, if you find that you've started entering text in the bottom left corner.)
+You will speak with many people on this quest. The normal way to stop someone talking is to press $(red q)${RESET}. If you end up pressing an unexpected key and can't get away from someone who's talking to you, try pressing $(red Escape)${RESET} and/or $(red 'Ctrl+c')${RESET} once or twice, then press $(red q)${RESET}. (You might need to press $(red Backspace)${RESET} a few times too, if you find that you've started entering text in the bottom left corner.)
 ${SPEECH}
 EOF
 
@@ -71,7 +73,7 @@ function instruction () {
 
 	If you invoke $(spell ls) with no paramters, you will just look at your current location. Let's give it a try:
 
-	${RESET}$(ls --color=always)${SPEECH}
+	${RESET}$(ls)${SPEECH}
 
 	Do you see that list up there? One of the things you can see is my trunk. It's a directory.
 
@@ -108,7 +110,7 @@ function instruction () {
 
 	If you invoke $(spell ls -F) here, you will see:
 	$RESET
-	$(ls -F --color=always)
+	$(ls -F)
 	$SPEECH
 	You can see that William, that green owl in the corner who is eyeing you carefully, can be activated. Here are a few of the ways that you can invoke William.sh:
 	$BRGREEN
