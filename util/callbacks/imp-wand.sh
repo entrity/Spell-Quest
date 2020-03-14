@@ -61,5 +61,5 @@ else
 	EOF
 fi
 
-2>/dev/null rm "$IMP_BAG/"*
+find "$IMP_BAG" -mindepth 1 ! -iname hint.txt -exec xargs rm -r {} \;
 bash "$HOME/../util/build-flags.sh" > "$FLAGS_FILE"
