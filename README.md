@@ -8,19 +8,12 @@ You have two options for downloading:
 (or)
 * Save and then unzip the file at https://github.com/entrity/Spell-Quest/archive/master.zip
 
-### Running on Mac OS
-
-Double-click the `start.command` file (or the `restart.command` file, since they both do the same thing on your first execution).
-
-If this doesn't work because of a lack of permissions to execute a file downloaded from the internet, open a **Terminal** (from your Applications), then follow the instructions listed under **Linux** below.
-
-### Running on Linux
+### Running
 
 In your terminal:
 
 ```bash
-cd Spell-Quest || cd $HOME/Downloads/Spell-Quest-master
-./start.sh
+cd Spell-Quest || cd $HOME/Downloads/Spell-Quest-master; ./start.sh
 ```
 
 ## Lessons
