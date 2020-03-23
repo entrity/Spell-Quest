@@ -3,7 +3,7 @@ __RELDIR__=$(dirname "$__RELFILE__") # relative dir path
 
 export MAINPID=$$ # So that this can be killed if the character dies
 
-debug () { [[ $(whoami) == markham ]] && echo "++DEBUG>> $*"; }
+debug () { [[ $(whoami) == markham1 ]] && echo "++DEBUG>> $*"; }
 export -f debug
 
 debug Source .start
@@ -45,7 +45,7 @@ case "$TERM" in
 	xterm-color|*-256color) color_prompt=yes;;
 esac
 if [ "$color_prompt" = yes ]; then
-	export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+	export PS1='${debian_chroot:+($debian_chroot)}\[\033[32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
 	export PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi

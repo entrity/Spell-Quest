@@ -35,7 +35,7 @@ normal_video () { printf '\e[?5l'; }
 export -f normal_video
 # Prompt with a default of no
 prompt_no () {
-	echo -n "$1 [y/N] "
+	echo -e -n "$(wrap <<< "$1 [y/N] ${RESET}")"
 	</dev/tty read -n1 CHOICE
 	echo
 	[[ $CHOICE =~ y|Y ]]
@@ -49,6 +49,33 @@ prompt_repeat () {
 	fi
 }
 export -f prompt_repeat
+function run_exercise () {
+	ANSWER="$1"
+	REGEX="$2"
+	while ! prompt_exercise "$REGEX"; do
+		if [[ $# -gt 2 ]]; then
+			wrap <<< "${SPEECH}Hint: $3${RESET}"
+			shift
+		else
+			wrap <<< "${SPEECH}Alas! I'm looking for $(alt "$ANSWER"). Would you try entering exactly that?${RESET}"
+		fi
+	done
+	echo
+	echo "${SPEECH}Good job!${RESET}"
+	echo
+}
+export -f run_exercise
+# Prompt for command. If it matches regex, then evaluate the command.
+prompt_exercise () {
+	read -e -p "${RESET}\$ " -a PP
+	if [[ ${PP[@]} =~ $1 ]]; then
+		[[ -n $NO_EXEC_EXERCISE ]] || "${PP[@]}"
+		return 0
+	else
+		return 2
+	fi
+}
+export -f prompt_exercise
 # Base64-decode all inputs
 mjdecode64 () {
 	while read x; do

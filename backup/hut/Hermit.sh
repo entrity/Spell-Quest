@@ -135,8 +135,17 @@ function instruction () {
 	wrap <<-EOF
 	${SPEECH}
 	Wow! So much information. I hope the other instructors don't have so much to say.
-
-	You learnt $(spell ls -F) and $(spell pwd) and how to activate certain files.
+	EOF
+	echo
+	if prompt_no "Would you like to do some exercises on what you've just been taught?"; then
+	
+		echo "${RESET}....................................."
+		bash "$HOME/../data/Hermit-exercises.sh"
+	fi
+	wrap <<-EOF
+	
+	${RESET}.....................................
+	${SPEECH}You learnt $(spell ls -F) and $(spell pwd) and how to activate certain files.
 
 	The strange Hermit advised you to practice looking inside of his trunk by invoking $(spell ls trunk).
 
