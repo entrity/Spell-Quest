@@ -14,6 +14,8 @@ Well, I suppose I could teach you a Teleportation spell. Write this down in your
 
 $(spell cd) is the "go" spell; it lets you change your location. Its name is short for "change directory."
 
+So what's the real difference between going ($(spell cd)) and looking ($(spell ls))? Going somewhere can change the $(alt relative) path to files and directories around you. Suppose you were in a directory at the path $(alt /foo), and you wanted to repeatedly interact with some files in $(alt /foo/bar). One option would be to stay where you are and type the paths $(alt bar/fileA), $(alt bar/fileB), $(alt bar/fileC), etc. Better still, you could "go" down one level into $(alt bar) by invoking $(spell cd bar) and type the file paths as $(alt fileA), $(alt fileB), $(alt fileC), etc.
+
 Did you know that many spell names are abbreviations? I'll bet that old hermit didn't tell you that, did he? Well, $(alt ls) is short for "list" because it lists the contents of a directory. And $(alt pwd) is short for "present working directory."
 
 So how do you cast $(spell cd)?
