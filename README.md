@@ -32,13 +32,11 @@ In your terminal:
 sudo apt install -y python unzip wget curl openssl
 ``` 
 
-```b  ash
+```bash
 cd Downloads # or wherever you downloaded the zip file
 unzip Spell-Quest-master.zip
 Spell-Quest-master/start.sh
 ```
-
-![Terminal tutorial](https://duck-of-doom.com/terminal2.gif)
 
 ## Lessons
 
