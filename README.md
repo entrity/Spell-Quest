@@ -4,13 +4,6 @@
 
 ![Download tutorial](https://duck-of-doom.com/download.gif)
 
-(You can download the zip file, as demonstrated in the screencap above, your you can clone this repository with `git`:
-
-
-```bash
-git clone --depth 1 git@github.com:entrity/Spell-Quest.git
-```
-
 ### Running on MacOS
 
 ![Startingfoo](https://duck-of-doom.com/start-macos2.gif)
