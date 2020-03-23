@@ -10,7 +10,7 @@ You have two options for downloading:
 
 **Download**
 
-![Download tutorial](https://i.imgur.com/H0oORB3.gif)
+![Download tutorial](https://duck-of-doom.com/download.gif)
 
 **Extract**
 
