@@ -32,7 +32,7 @@ NO_EXEC_EXERCISE=1 run_exercise "ls \"foo bar\"" "^ls (\"|')foo bar/?(\"|')$" "Y
 wrap <<-EOF
 	${SPEECH}Here's a trickier one: what if you want to look at the directory $(alt above) this one (using the simplest relative path possible for that location)?
 EOF
-run_exercise "ls .." "^ls (\"|')?\.\./?(\"|')?$" "The relative path has zero $(alt \/) symbols." "The relative path consists only of a $(alt special) token, which consists of two special symbols."
+run_exercise "ls .." "^ls (\"|')?\.\./?(\"|')?$" "The relative path for this invocation should have zero $(alt \/) symbols." "The relative path consists only of a $(alt special) token, which consists of two special symbols."
 
 wrap <<-EOF
 	${SPEECH}Tricker still, what if you want to look into the cave? (Just where is the cave? Well, it appeared in the results of your previous $(spell ls) invocation.)

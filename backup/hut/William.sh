@@ -12,7 +12,7 @@ You say you want to go to the local magic academy? Why nothing could be easier! 
 
 Well, I suppose I could teach you a Teleportation spell. Write this down in your spellbook, would you? But *DON'T* invoke the spell yet, or you could be whisked away and not know where!
 
-$(spell cd) lets you change your location. Its name is short for "change directory."
+$(spell cd) is the "go" spell; it lets you change your location. Its name is short for "change directory."
 
 Did you know that many spell names are abbreviations? I'll bet that old hermit didn't tell you that, did he? Well, $(alt ls) is short for "list" because it lists the contents of a directory. And $(alt pwd) is short for "present working directory."
 
@@ -44,7 +44,20 @@ My advice is that you $(spell cd) $(alt northward) of here and see if there's an
 $(red Press q to leave)
 HEREDOC
 
-echo -e "$SPEECH_N\nYou should follow William's advice. Invoke $(spell cd ../north)\nDon't forget that you can identify special files with $(spell ls -F)"
+if prompt_no "${SPEECH}Would you like to do some exercises on what you've just been taught?"; then
+
+	echo "${RESET}....................................."
+	bash "$HOME/../data/William-exercises.sh"
+fi
+
+echo -e "${RESET}....................................."
+wrap <<-EOF
+${SPEECH_N}You should follow William's advice. Invoke $(spell cd ../north)
+
+...But if you think you have a decent command of paths and the spells you've learnt so far, you might consider speaking with the $(alt Imp) in the $(alt cave) outside this hut first...
+
+Don't forget that you can identify special files which you can activate by invoking $(spell ls -F) and looking for items that have the symbol $(alt \*) at the end.
+EOF
 
 learned 'cd'
 learned 'cd -'
