@@ -13,7 +13,7 @@ git clone --depth 1 git@github.com:entrity/Spell-Quest.git
 
 ### Running on MacOS
 
-![Starting on MacOS](https://duck-of-doom.com/start-macos.gif)
+![Startingfoo](https://duck-of-doom.com/start-macos2.gif)
 
 1. Using Finder, look in your Downloads folder.
 2. Double-click the `Spell-Quest-master.zip` file.
@@ -30,9 +30,9 @@ In your terminal:
 # If this is your first time setting up the game,
 # make sure you have the dependencies installed:
 sudo apt install -y python unzip wget curl openssl
-```
+``` 
 
-```bash
+```b  ash
 cd Downloads # or wherever you downloaded the zip file
 unzip Spell-Quest-master.zip
 Spell-Quest-master/start.sh
