@@ -24,7 +24,7 @@ In your terminal:
 cd Spell-Quest || cd $HOME/Downloads/Spell-Quest-master; ./start.sh
 ```
 
-![Terminal tutorial](https://i.imgur.com/8jS2VTG.mp4)
+![Terminal tutorial](https://duck-of-doom.com/terminal2.gif)
 
 ## Lessons
 
