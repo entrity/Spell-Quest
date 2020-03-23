@@ -47,7 +47,11 @@ run_exercise "pwd" "^pwd$"
 wrap <<-EOF
 	${SPEECH}The output of your $(spell pwd) invocation (above) is an $(alt absolute path). Can you invoke $(spell ls) with an $(alt absolute path) to look into the directory $(alt above) this one? (Remember that an absolute path is one that begins with the $(alt \/) symbol.)
 EOF
-run_exercise "ls $HOME" "^ls (\"|')?${HOME}/?(\"|')?$"
+if [[ `pwd` =~ \  ]]; then
+	run_exercise "ls \"$HOME\"" "^ls (\"|')${HOME}/?(\"|')$"
+else
+	run_exercise "ls $HOME" "^ls (\"|')?${HOME}/?(\"|')?$"
+fi
 
 wrap <<-EOF
 	${SPEECH}Last exercise: there's an owl named $(alt William.sh) in this very directory. What would you invoke to speak with him?

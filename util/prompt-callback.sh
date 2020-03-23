@@ -6,9 +6,8 @@ export CBDIR=$(canpath "$__DIR__/util/callbacks")
 BASH_ENV= DEBUG= bash "$__DIR__/util/build-flags.sh" > "$FLAGS_FILE"
 
 my_prompt_callback () {
-	read -r -a LAST < <(history | tail -n1 | sed 's/^\s\+[0-9]\+\s\+//')
 	OLD_FLAGS=$(cat "$FLAGS_FILE")
-	NEW_FLAGS=$(bash $__DIR__/util/build-flags.sh)
+	NEW_FLAGS=$(bash "$__DIR__/util/build-flags.sh")
 	if [[ "$OLD_FLAGS" != "$NEW_FLAGS" ]]; then
 		# >&2 echo "CAHGED FLAGS"
 		echo -e "$NEW_FLAGS" > "$FLAGS_FILE"

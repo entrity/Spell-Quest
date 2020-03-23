@@ -68,8 +68,8 @@ fi
 debug Start
 if [[ $(whoami) == markham ]] && ((1)); then
 	mkdir -p "$HOME/bag"
-	ln -s "$HOME/north/forest/path-5/tree-7/academy-sylphan" $HOME
-	ln -s "$HOME/north/forest/path-11/tree-16/" $HOME
+	ln -s "$HOME/north/forest/path-5/tree-7/academy-sylphan" "$HOME"
+	ln -s "$HOME/north/forest/path-11/tree-16/" "$HOME"
 	cd "$HOME"
 else
 	cd "$HOME/hut"
