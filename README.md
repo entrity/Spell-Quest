@@ -8,6 +8,14 @@ You have two options for downloading:
 (or)
 * Save and then unzip the file at https://github.com/entrity/Spell-Quest/archive/master.zip
 
+**Download**
+
+![Download tutorial](https://duck-of-doom.com/download.gif)
+
+**Extract**
+
+![Extract tutorial](https://i.imgur.com/QHBNnqO.gif)
+
 ### Running
 
 In your terminal:
@@ -15,6 +23,8 @@ In your terminal:
 ```bash
 cd Spell-Quest || cd $HOME/Downloads/Spell-Quest-master; ./start.sh
 ```
+
+![Terminal tutorial](https://duck-of-doom.com/terminal2.gif)
 
 ## Lessons
 
