@@ -44,20 +44,27 @@ Spell-Quest-master/start.sh
 
 | | 1 | 2 | 3 |
 | - | - | - | - |
-| Transmutation | mv, rm, rmdir | cut, sort | sed |
-| Teleportation | cd, ln | | ssh |
-| Divination | ls, pwd, cat | find, grep, less |
-| Conjuration | mkdir, curl, wget, seq |
-| Illusion | 
+| Transmutation | mv, rm, rmdir, chmod | cut, sort, head, tail | sed |
+| Teleportation | cd, ln, mv | | ssh, scp, sftp, sshfs |
+| Divination | ls, pwd, cat, man, read | find, grep, less |
+| Conjuration | mkdir, curl, wget, seq, cp |
+| Illusion | echo, alias, printf |
 | Obfuscation | base64 | openssl | gpg |
 
 
 ## Techniques
 
-* pipe
-* redirects
-* for loops (with seq)
-* ./../~
+* tab-completion
+* pipe `|`
+* redirects `>>`, `>`, `<`, `<<<`
+* `for` loops
+* `while` loops
+* `if ...; then ...; fi`
+* `.`/`..`/`~`
+* variables
+* regular expressions
+* capturing groups with `sed`
+* subshell
 
 ### BMP
 
