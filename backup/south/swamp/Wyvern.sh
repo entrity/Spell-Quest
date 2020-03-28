@@ -97,9 +97,22 @@ tutorial () {
 reward () {
 	wrap <<-EOF
 	${SPEECH}Huzzah! This! This is what I have awaited these many years!
+	EOF
 
-	Have you had a look at the funny image yet? You can open it by invoking $(spell "$IMAGER $TARGET").
+	if [[ $OS == WSL ]]; then # Handle Windows with Linux as a susbsystem
 
+		canonical_path=$(canpath "$TARGET" | sed 's@/@\\@g')
+		wsl_img_path='\\wsl$\Ubuntu\'"$canonical_path"
+		wrap <<-EOF
+		Have you had a look at the funny image yet? You can open it by invoking $(spell "$IMAGER \"$wsl_image_path\"").${WSL_EXPLANATION}
+		EOF
+	else
+		wrap <<-EOF
+		Have you had a look at the funny image yet? You can open it by invoking $(spell "$IMAGER \"$TARGET\"").
+		EOF
+	fi
+
+	wrap <<-EOF
 	Now as promised, I will tell you a hint for the final leg of your journey into the swamp: let your feet be guided by the word $(alt winding).
 	EOF
 

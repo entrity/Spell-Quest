@@ -105,7 +105,7 @@ main_text () {
 
 	One way $(alt to alter a scroll) or any text file is to open it in a $(alt text editor). A text editor is *not* like a word processor; a word processor lets you format text with bold, italics, different fonts, tables, even images... But a text editor only lets you edit text.
 
-	There is an abundance of text editors in the world. The easiest one for a new spellcaster can be started by invoking $(spell $EDITOR PATH), where "PATH" is the path of a file. A window will open, and you can make your changes. Then save the file and exit the text editor.
+	There is an abundance of text editors in the world. The easiest one for a new spellcaster can be started by invoking $(spell $EDITOR PATH), where "PATH" is the path of a file. A window will open, and you can make your changes. Then save the file and exit the text editor.${WSL_EXPLANATION}
 
 	A text editor can be a convenient way to read a file, even when you don't want to make changes to it.
 
