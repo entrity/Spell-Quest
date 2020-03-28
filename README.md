@@ -40,6 +40,14 @@ Step two: set up your Ubuntu environment
 5. Re-enter the same password to continue.
 6. Remember this password. When the Linux (Ubuntu) terminal asks you for your password in future, this is the password that it will want.
 
+Step three: extract the Spell-Quest zip file
+
+![Install WSL](https://duck-of-doom.com/spell-quest/wsl-extract.gif)
+
+1. Open File Explorer
+2. Open "Downloads"
+3. Click on "Spell-Quest-master.zip"; click "Extract"; click "Extract all"; approve the destination path.
+
 #### Every time:
 
 ![Install WSL](https://duck-of-doom.com/spell-quest/wsl-open-terminal.gif)
