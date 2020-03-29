@@ -4,6 +4,10 @@
 
 ![Download tutorial](https://duck-of-doom.com/spell-quest/download.gif)
 
+* [Running on MacOS](#running-on-macos)
+* [Running on Windows](#running-on-windows)
+* [Running on Linux](#running-on-linux)
+
 ### Running on MacOS
 
 ![Startingfoo](https://duck-of-doom.com/spell-quest/start-macos2.gif)
