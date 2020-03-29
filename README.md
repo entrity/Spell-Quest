@@ -23,6 +23,12 @@
 ### Running on Windows
 
 #### First time:
+A Windows setup requires the most work, but it won't require you to do anything dangerous or technically challenging. It consists of:
+
+1. Installing "Windows Subsystem for Linux (WSL)" from the Microsoft Store
+2. Starting your WSL terminal for the first time and creating a user account
+3. Downloading and extracting the "Spell Quest" [zip file](https://github.com/entrity/Spell-Quest/archive/master.zip).
+
 Step one: install WSL
 
 ![Install WSL](https://duck-of-doom.com/spell-quest/wsl-install.gif)
