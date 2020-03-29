@@ -4,6 +4,8 @@
 
 ![Download tutorial](https://duck-of-doom.com/spell-quest/download.gif)
 
+[Download the zip file](https://github.com/entrity/Spell-Quest/archive/master.zip) 
+
 * [Running on MacOS](#running-on-macos)
 * [Running on Windows](#running-on-windows)
 * [Running on Linux](#running-on-linux)
