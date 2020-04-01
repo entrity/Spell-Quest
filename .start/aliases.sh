@@ -10,8 +10,8 @@ export IMAGER=$(basename "$IMAGER")
 if [[ $(uname) =~ Linux ]]; then
 	if >/dev/null which cmd.exe; then
 		OS=WSL # Linux as a Subsystem in Windows
-		EDITOR='cmd.exe /c open'
-		IMAGER='cmd.exe /c open'
+		EDITOR='cmd.exe /c notepad'
+		IMAGER='cmd.exe /c start'
 		WSL_EXPLANATION="\n\nBut here's a tricky thing because your Linux environment is running as a subsystem within Windows: one of the subsystem's limitations is that it can't run any graphical programs (such as image-viewers or text-editors). So you must run a Windows command to open a program in Windows (not in Linux), using a path which your Windows environment will understand. These paths will be long and look broken.\n\nHow can you craft such a path? That's not too hard: first, make sure you're starting with an $(alt absolute path); second, change all of the $(alt /) symbols to $(alt \\); finally, prepend $(alt \\\\wsl$\\Ubuntu\\) to the front. Here's an example:\n\n$(alt '\\wsl$\Ubuntu\home\gregory\hut\Hermit.sh')"
 	else
 		OS=Linux
