@@ -35,6 +35,11 @@ mkdir -p "$ROOTDIR/home/cave/tunnel/cavern/calm-pool"
 debug Copy from backup
 cp -r "$ROOTDIR/backup/"* "$ROOTDIR/home"
 
+# Make .less
+if >/dev/null which lesskey; then
+	lesskey "$ROOTDIR/.start/lesskey-config"
+fi
+
 # Lock doors
 for arg in "${LOCKED_DIRS[@]}"; do
 	chmod -x "$arg"
