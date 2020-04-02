@@ -37,7 +37,7 @@ run_exercise "ls .." "^ls (\"|')?\.\./?(\"|')?$" "The relative path for this inv
 wrap <<-EOF
 	${SPEECH}Tricker still, what if you want to look into the cave? (Just where is the cave? Well, it appeared in the results of your previous $(spell ls) invocation.)
 EOF
-run_exercise "ls ../cave" "^ls (\"|')?\.\./cave/?(\"|')?$" "The relative path has one $(alt \/) symbol." "The relative path includes the $(alt special token) that you used in your previous invocation of $(spell ls)."
+run_exercise "ls ../cave" "^ls (\"|')?\.\./cave/?(\"|')?$" "The relative path for this exercise should have exactly one $(alt \/) symbol." "The relative path for this exercise includes the $(alt special token) that you used in your previous invocation of $(spell ls)."
 
 wrap <<-EOF
 	${SPEECH}Here's something simple: do you remember what spell to invoke to learn the path of your current location?
@@ -56,4 +56,4 @@ fi
 wrap <<-EOF
 	${SPEECH}Last exercise: there's an owl named $(alt William.sh) in this very directory. What would you invoke to speak with him?
 EOF
-NO_EXEC_EXERCISE=1 run_exercise "./William.sh" '^\./William\.sh$'
+NO_EXEC_EXERCISE=1 run_exercise "./William.sh" '^\./William\.sh$' "Recall that to execute a file, you need to invoke a path (relative or absolute) using at least one directory in the path. (Please use a relative path for this exercise.)" "Recall that the token which means \"the current directory\" is $(alt .)"

@@ -28,7 +28,7 @@ function instruction () {
 	$BOILERPLATE
 	$(art hermit.txt)
 
-	So your friends have gone off to that Warty Hogs school to become wizards and witches, have they? What's that? You don't want to learn magic, you just want to be a treasure hunter?
+	${SPEECH}So your friends have gone off to that Warty Hogs school to become wizards and witches, have they? What's that? You don't want to learn magic, you just want to be a treasure hunter?
 
 	Bah and piffle! You won't go far without a bit of magic of your own, treasure hunter or no! But I suppose you could learn enough to get your treasure hunt on its way at the local magic academy.
 
@@ -71,13 +71,13 @@ function instruction () {
 	$(spell ls \'/foo/My Documents/bar\')
 	$(spell ls \"/foo/My Documents/bar\")
 
-	If you invoke $(spell ls) with no paramters, you will just look at your current location. Let's give it a try:
+	If you invoke $(spell ls) with no paramters, you will just look at your current location. I'll give it a try:
 
 	${RESET}$(ls)${SPEECH}
 
-	Do you see that list up there? One of the things you can see is my trunk. It's a directory.
+	Do you see that list up there? That's the output of $(spell ls) when invoked in this location. One of the things you can see is my trunk. It's a directory.
 
-	You don't believe me? Feel free to look. Oh, you don't want to look because you don't want to type that long path? Well, usually people don't actually make use of the entire path.
+	You don't believe me? ...Oh, you just don't want to look because you don't want to type that long path? Well, usually people don't actually make use of the entire path.
 
 	Trying to look into the trunk by typing the entire path would be like saying, "Walk all the way up to $(alt /), then walk all the way back here, then look in the trunk." No, you can just specify a path relative to our current location. Our current location is:
 	$(alt $(pwd))
@@ -88,31 +88,29 @@ function instruction () {
 
 	(Notice that a relative path NEVER starts with the $(alt /) symbol.)
 
-	You can try looking in the trunk.
-
 	Well, I have just a few more things to teach you before you embark on your lunatick treasure hunt.
 
 	The first $(alt technique) is the use of the $(alt ..) token. When used in a path, this token means "upward one level." That means that all of the following paths are equivalent:
 	$BRCYAN
 	..
-	$(dirname "$(pwd)")
-	$(pwd)/..
-	$(pwd)/../../$(basename "$(dirname "$(pwd)")")
+	/foo/bar
+	/foo/bar/qux/..
+	/foo/bar/qux/../../bar
 	$SPEECH_N
 	If you want, you can look at the contents of the directory one level up from here by invoking $(spell ls ..) Another $(alt technique) is the use of the $(alt .) token. This token signifies your current directory. So right now, the following two paths are equivalent:
 	$BRCYAN
 	.
 	$(pwd)
 	$SPEECH_N
-	You may think that's not useful, but I shall show you now that it is! The last technique I have to teach you is how to $(alt activate a file). Most files cannot be activated; they just hold information, but some files can be activated as if they were spells. So how do you activate such a file? You must invoke its path using $(alt at least one directory in the path). So if the file is in your current directory, you can use the $(alt .) token. We'll look at some examples in a minute.
+	You may think that's not useful, but I shall show you now that it is! The last technique I have to teach you is how to $(alt execute a file). Most files cannot be executed; they just hold information, but some files can be executed as if they were spells. So how do you execute such a file? You must invoke its path using $(alt at least one directory in the path). So if the file is in your current directory, you can use the $(alt .) token. We'll look at some examples in a minute.
 
-	First, how do you recognize which files can be activated? You can recognize them by their color, or you can run $(spell ls) with a $(spell -F) parameter. When you run $(spell ls -F), it will add a $(alt \*) symbol onto the end of files that can be activated. And it will add a $(alt \/) symbol on to the end of directories.
+	First, how do you recognize which files can be executed? You can recognize them by their color, or you can run $(spell ls) with a $(spell -F) parameter. When you run $(spell ls -F), it will add a $(alt \*) symbol onto the end of files that can be executed. And it will add a $(alt \/) symbol on to the end of directories.
 
 	If you invoke $(spell ls -F) here, you will see:
 	$RESET
 	$(ls -F)
 	$SPEECH
-	You can see that William, that green owl in the corner who is eyeing you carefully, can be activated. Here are a few of the ways that you can invoke William.sh:
+	You can see that William, that green owl in the corner who is eyeing you carefully, can be executed. Here are a few of the ways that you can invoke William.sh:
 	$BRGREEN
 	./William.sh
 	../$(basename "$(pwd)")/William.sh
@@ -128,7 +126,7 @@ function instruction () {
 	learned 'ls'
 	learned 'ls -F'
 	learned 'pwd'
-	learned '(technique) activate script'
+	learned '(technique) execute script'
 	learned '(path element) .'
 	learned '(path element) ..'
 
@@ -145,13 +143,13 @@ function instruction () {
 	wrap <<-EOF
 	
 	${RESET}.....................................
-	${SPEECH}You learnt $(spell ls -F) and $(spell pwd) and how to activate certain files.
+	${SPEECH}You learnt $(spell ls -F) and $(spell pwd) and how to execute certain files.
 
 	The strange Hermit advised you to practice looking inside of his trunk by invoking $(spell ls trunk).
 
 	And you should try to talk to William by invoking $(spell ./William.sh)
 
-	If you want, you might even talk to the Hermit again by invoking $(spell ./Hermit.sh)
+	If you want the Hermit to repeat what he told you earlier, you might even talk to him again by invoking $(spell ./Hermit.sh)
 	EOF
 }
 
