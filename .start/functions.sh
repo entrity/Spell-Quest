@@ -54,7 +54,7 @@ function run_exercise () {
 	REGEX="$2"
 	while ! prompt_exercise "$REGEX"; do
 		if [[ $# -gt 2 ]]; then
-			wrap <<< "${SPEECH}Hint: $3${RESET}"
+			wrap <<< "${SPEECH}Free Hint: $3 (This hint is not necessarily useful; I did not consider whether this hint reflects your error before I shared it.)${RESET}"
 			shift
 		else
 			wrap <<< "${SPEECH}Alas! I'm looking for $(alt "$ANSWER"). Would you try entering exactly that?${RESET}"
