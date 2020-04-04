@@ -1,6 +1,7 @@
 #!/bin/bash
 
 . "$HOME/../.start/aliases.sh"
+clear
 
 decompose_path () {
 	PTH="$(pwd)"
@@ -12,20 +13,8 @@ decompose_path () {
 	echo /
 }
 
-read -r -d '' BOILERPLATE <<-EOF
-
-${RESET}
-You might wish to maximize this window. You can also increase the text size by use of the menu.
-
-You can press the $(alt up)${RESET} and $(alt down)${RESET} arrow keys or $(alt PageUp)${RESET} and $(alt PageDown)${RESET} or $(alt u)${RESET} and $(alt d)${RESET} to scroll through what I have to say.
-
-You will speak with many people on this quest. The normal way to stop someone talking is to press $(red q)${RESET}. If you end up pressing an unexpected key and can't get away from someone who's talking to you, try pressing $(red Escape)${RESET} and/or $(red 'Ctrl+c')${RESET} once or twice, then press $(red q)${RESET}. (You might need to press $(red Backspace)${RESET} a few times too, if you find that you've started entering text in the bottom left corner.)
-${SPEECH}
-EOF
-
 function instruction () {
 	speak <<-EOF
-	$BOILERPLATE
 	$(art hermit.txt)
 
 	${SPEECH}So your friends have gone off to that Warty Hogs school to become wizards and witches, have they? What's that? You don't want to learn magic, you just want to be a treasure hunter?

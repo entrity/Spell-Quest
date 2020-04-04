@@ -66,12 +66,29 @@ fi
 ##############
 
 debug Start
-if [[ $(whoami) == markham ]] && ((1)); then
+if [[ $(whoami) == markham ]] && (($SKIP)); then
+	touch "$HOME/.last-location"
 	mkdir -p "$HOME/bag"
 	ln -s "$HOME/north/forest/path-5/tree-7/academy-sylphan" "$HOME"
 	ln -s "$HOME/north/forest/path-11/tree-16/" "$HOME"
 	cd "$HOME"
+elif [[ -e "$HOME/.last-location" ]]; then
+	cd "$(cat "$HOME/.last-location")"
 else
 	cd "$HOME/hut"
+fi
+
+orig_cd=$(which cd)
+function cd () {
+	if [[ -n $orig_cd ]]; then
+		orig_cd "${@}"
+	else
+		builtin cd "${@}"
+	fi
+	pwd > "$HOME/.last-location"
+}
+
+if ! [[ -e "$HOME/.last-location" ]]; then
+	bash "$HOME/../data/intro-tutorial.sh"
 	bash "./Hermit.sh"
 fi
