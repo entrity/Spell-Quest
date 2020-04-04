@@ -10,7 +10,7 @@ What's that you have there? A spellbook? Ah, that old fuddy-duddy can teach you 
 
 You say you want to go to the local magic academy? Why nothing could be easier! Just spread your wings, hop to the window, and --- what's that? You have no wings? Oh, dear.
 
-Well, I suppose I could teach you a Teleportation spell. Write this down in your spellbook, would you? But *DON'T* invoke the spell yet, or you could be whisked away and not know where!
+Well, I suppose I could teach you a Teleportation spell. Write this down in your spellbook, would you? But *DON'T* invoke the spell yet, or you could be whisked away and not know whither!
 
 $(spell cd) is the "go" spell; it lets you change your location. Its name is short for "change directory."
 
