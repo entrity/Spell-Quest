@@ -2,13 +2,17 @@
 # Functions
 ###########
 
+# This fn is used because WSL (Linux on Windows) does not install anything for
+# 'python' but does install something for 'python3'.
+python_exec() { which python || which python3; }
+export -f python_exec
 spell () { printf "${SPELL}${*}${SPEECH_N}"; }
 export -f spell
 alt () { printf "${CYAN}${*}${SPEECH_N}"; }
 export -f alt
 red () { printf "${RED}${*}${SPEECH_N}"; }
 export -f red
-wrap () { python "$UTIL/my_formatter.py" $(tput cols); }
+wrap () { $(python_exec) "$UTIL/my_formatter.py" $(tput cols); }
 export -f wrap
 speak () { wrap | less -r; }
 export -f speak
@@ -25,7 +29,7 @@ export -f thisdir
 art () { cat "$HOME/../util/ascii/$1"; }
 export -f art
 # Get canonical path
-canpath () { python -c "import sys, os; print(os.path.realpath(sys.argv[1]))" "$1"; }
+canpath () { $(python_exec) -c "import sys, os; print(os.path.realpath(sys.argv[1]))" "$1"; }
 export -f canpath
 # Flash function
 reverse_video () { printf '\e[?5h'; }
