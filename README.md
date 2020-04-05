@@ -61,11 +61,12 @@ Step three: extract the Spell-Quest zip file
 
 #### Every time:
 
-![Install WSL](https://duck-of-doom.com/spell-quest/wsl-open-terminal.gif)
+![Run on Windows Susbsystem for Linux](https://duck-of-doom.com/spell-quest/start-windows.gif)
 
-1. Press the "Windows" key; type "Ubuntu"; click on "Ubuntu."
-2. Enter `cd Downloads/Spell-Quest-master`
-3. Enter `./start.sh`
+1. Open "File Explorer"
+2. Navigate to where you extracted the Spell-Quest files from `Spell-Quest-master.zip` (by default, this would be in Downloads > Spell-Quest-master
+3. Double-click on the `start` file that has a gear icon. (Its true name is `start.bat`, but Windows tends to hide the filename's extension.)
+4. (If prompted for a password, it's because the system wants to install dependencies. Type the password that you decided when you created a user in step 4 of **set up your Ubuntu environment**, described above. As before, the password will _NOT_ appear as you type it. Just type it and hit <kbd>Enter</kbd>.)
 
 ### Running on Linux
 
