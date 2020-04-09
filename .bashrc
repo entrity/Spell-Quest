@@ -78,13 +78,8 @@ else
 	cd "$HOME/hut"
 fi
 
-orig_cd=$(which cd)
 function cd () {
-	if [[ -n $orig_cd ]]; then
-		"$orig_cd" "${@}"
-	else
-		builtin cd "${@}"
-	fi
+	builtin cd "${@}"
 	pwd > "$HOME/.last-location"
 }
 
