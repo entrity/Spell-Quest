@@ -15,24 +15,37 @@ LOCKED_DIRS=(
 )
 
 # Remove everything
-debug ++Remove lessons
-rm -r "$ROOTDIR/.lessons"* 2>/dev/null
-find "$ROOTDIR/home" -not -writable 2>/dev/null | while read -r arg; do
-	[[ -e "$arg" ]] && chmod +wrx "$arg"
-done
+debug 'Remove everything'
 for arg in "${LOCKED_DIRS[@]}"; do
 	[[ -e "$arg" ]] && chmod +wrx "$arg"
 done
+find "$ROOTDIR/home" -not -writable 2>/dev/null | while read -r arg; do
+	[[ -e "$arg" ]] && chmod +wrx "$arg"
+done
+[[ -e "$ROOTDIR/.lessons" ]] && rm -r "$ROOTDIR/.lessons"
 [[ -e "$ROOTDIR/home" ]] && rm -r "$ROOTDIR/home"
 
 # Make dirs
-debug ++Make dirs
-mkdir "$ROOTDIR/.lessons"
+debug '++Make dirs'
+mkdir -p "$ROOTDIR/.lessons"
 mkdir -p "$ROOTDIR/home/hut/trunk"
 mkdir -p "$ROOTDIR/home/cave/tunnel/cavern/calm-pool"
 
+# Fail
+if ! [[ -e "$ROOTDIR/home" ]]; then
+	STYLE1=$'\033[0;31;1m'
+	STYLE2=$'\033[0;41;30m'
+	RESET=$'\033[0m'
+	>&2 fold -w 50 -s <<-EOF
+	${STYLE1}
+	Rats. Seems like your system's config has blocked permission for this program's installation. That's okay. You can still install it by typing the following into your terminal and hitting Enter or Return. (Please include the quotation marks):${RESET}
+	EOF
+	>&2 echo "\"${ROOTDIR}/start.sh\" -r"
+	exit 1
+fi
+
 # Copy from .backup
-debug Copy from backup
+debug 'Copy from backup'
 cp -r "$ROOTDIR/backup/"* "$ROOTDIR/home"
 
 # Make .less
@@ -55,6 +68,6 @@ cp "spreadsheet.csv" "$ROOTDIR/home/north/forest/path-11/tree-16/spreadsheet.csv
 grep John spreadsheet.csv > John.csv
 grep '[A-Z]\{3\}' spreadsheet.csv > with-capitals.csv
 grep '[0-9]\{3\}-[0-9]\{3\}-[0-9]\{4\}' spreadsheet.csv > phone-numbers.csv
-cd - >/dev/null
 
 debug FINISHED INSTALLATION
+exit 0

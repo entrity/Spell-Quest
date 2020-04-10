@@ -126,3 +126,8 @@ https://en.wikipedia.org/wiki/BMP_file_format
 xxd -s 10 
 od -j 10 -N 4 -t d4 # unsigned 4-byte int, skip ahead 10 bytes
 ```
+
+## ASCII art referenced from:
+
+* https://www.oocities.org/spunk1111
+* https://www.asciiart.eu

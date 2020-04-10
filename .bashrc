@@ -6,6 +6,10 @@ export MAINPID=$$ # So that this can be killed if the character dies
 debug () { [[ $(whoami) == markham1 ]] && echo "++DEBUG>> $*"; }
 export -f debug
 
+##############
+# Import functions and consts
+##############
+
 debug Source .start
 . "$__RELDIR__/.start/functions.sh"
 debug Sourced functions
@@ -15,8 +19,6 @@ export HOME="$__DIR__/home"
 debug Sourced color
 . "$__RELDIR__/.start/aliases.sh"
 debug Sourced aliases
-. "$__RELDIR__/util/prompt-callback.sh"
-debug Sourced prompt-callback
 
 ###########
 # Settings
@@ -62,7 +64,7 @@ if (($RESTART)) || ! [[ -e "$__DIR__/home" ]]; then
 fi
 
 ##############
-# Start
+# Move to start dir
 ##############
 
 debug Start
@@ -78,10 +80,25 @@ else
 	cd "$HOME/hut"
 fi
 
+#######################
+# Override `cd`
+#######################
+
 function cd () {
 	builtin cd "${@}"
 	pwd > "$HOME/.last-location"
 }
+
+#######################
+# Set up prompt callback
+#######################
+
+. "$__RELDIR__/util/prompt-callback.sh"
+debug Sourced prompt-callback
+
+#######################
+# Start scripts
+#######################
 
 if ! [[ -e "$HOME/.last-location" ]]; then
 	bash "$HOME/../data/intro-tutorial.sh"
