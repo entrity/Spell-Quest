@@ -6,6 +6,7 @@ EDITOR=$(which gedit || which kate || which xed || which pluma || which nano || 
 export EDITOR=$(basename "$EDITOR")
 IMAGER=$(which eog || which eom || which feh || which vlc || which /Applications/Preview.app/Contents/MacOS/Preview || which xdg-open || echo -n open)
 export IMAGER=$(basename "$IMAGER")
+export ENTER_KEY=Enter
 
 if [[ $(uname) =~ Linux ]]; then
 	if >/dev/null which cmd.exe; then
@@ -20,6 +21,7 @@ if [[ $(uname) =~ Linux ]]; then
 elif [[ $(uname) =~ Darwin ]]; then
 	OS=MACOS
 	osascript -e 'tell application "Terminal" to set current settings of front window to first settings set whose name is "Pro"'
+	export ENTER_KEY=Return
 
 	ENVSUBST_PATH="$(find /usr/local -name envsubst)"
 	alias envsubst="$ENVSUBST_PATH"

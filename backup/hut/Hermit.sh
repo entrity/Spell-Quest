@@ -29,83 +29,52 @@ function instruction () {
 
 	You'll have to learn spells of Transmutation, Conjuration, Teleportation, Divination, Destruction, and Illusion, to name a few. You'll need first-level spells, second-level spells, and perhaps even a third-level spell or two.
 
-	I'm afraid I can't really teach you a great deal, but I do know charm or two, and I'm handy with an enchantment. Here is your first spell: $(spell ls) is a "look" spell. It lets you look not just in front of you but *anywhere*, even faraway places. Its only limitation is that you have to give the location of where you want to look. Write it down as a first-level Divination spell.
+	I'm afraid I can't really teach you a great deal, but I do know charm or two, and I'm handy with an enchantment. Here is your first spell: $(spell ls) is a "look" spell. Write it down as a first-level Divination spell.
 
-	How do you cast it? Just type $(spell ls), followed by a space, then a $(alt path). What's a "path," you ask? A $(alt path) is how people specify the location of a $(alt file) or $(alt directory). (Some people use the word 'folder' instead of 'directory'.)
-
-	Files and directories are distinguished by what they can hold: a $(alt file) holds words, sounds, images, or things of that nature; but a $(alt directory) is like a bag. It can hold files or other directories---or even you!
-
-	That's right, wherever you are, your location is in a directory. Do you know the path for your current location? It's $(alt $(pwd))
-
-	Notice that a path is a series of directories, joined by the $(alt \/) symbol. As you move from left to right when reading a path, you are moving into deeper and deeper directories.
-	$CYAN
-	$(decompose_path | tac | xargs printf "  %s\n" )
-	$SPEECH_N
-	So if you want to look inside your current directory, invoke:
-
-	$(spell ls \"$(pwd)\")
-
-	Always put a space between the name of the spell and its parameters. Then press $(alt Enter) or $(alt Return) when you're ready for the spell to be cast.
-
-	Did you notice that I put $(alt \"quotation marks\") around the path? That isn't strictly necessary, but if the path contains spaces or other special characters, it becomes important. Just imagine if your path were $(alt /foo/My Documents/bar). Without quotation marks, the spell would look like this:
-
-	$(spell ls /foo/My Documents/bar)
-
-	...and it would be interpreted as if you had provided *two* parameters:
-
-	$(spell ls \"/foo/My\" \"Documents/bar\")
-
-	You can avoid this by the use of 'single quotes' or "double quotes":
-
-	$(spell ls \'/foo/My Documents/bar\')
-	$(spell ls \"/foo/My Documents/bar\")
-
-	If you invoke $(spell ls) with no paramters, you will just look at your current location. I'll give it a try:
+	How do you cast it? Just type $(spell ls), then hit $ENTER_KEY. (Use $ENTER_KEY after typing to invoke any spell.) Watch me cast it now:
 
 	${RESET}$(ls)${SPEECH}
 
-	Do you see that list up there? That's the output of $(spell ls) when invoked in this location. One of the things you can see is my trunk. It's a directory.
+	...Do you see that list above? My spell just listed everything to be found at this location!
 
-	You don't believe me? ...Oh, you just don't want to look because you don't want to type that long path? Well, usually people don't actually make use of the entire path.
+	Well, I guess it doesn't really list EVERYTHING in this location because YOU are in this location. But it lists $(alt files) and $(alt directories). (Some people use the word 'folder' instead of 'directory'.) Files and directories are distinguished by what they can hold: a $(alt file) holds words, sounds, images, or things of that nature; but a $(alt directory) is like a bag. It can hold files or other directories---or even you!
 
-	Trying to look into the trunk by typing the entire path would be like saying, "Walk all the way up to $(alt /), then walk all the way back here, then look in the trunk." No, you can just specify a path relative to our current location. Our current location is:
-	$(alt $(pwd))
-	The trunk's whole path is:
-	$(alt $(canpath trunk))
-	Its path relative to our current path is just:
-	$(alt trunk)
+	That's right, wherever you may travel in this world, your location will always be inside some directory or other.
 
-	(Notice that a relative path NEVER starts with the $(alt /) symbol.)
+	How do you know just what your current location is? I can teach you another spell that answers that question: $(spell pwd). It shows you the $(alt path) to your current location. I'll invoke it now so that you can see the output:
 
-	Well, I have just a few more things to teach you before you embark on your lunatick treasure hunt.
+	${RESET}$(pwd)${SPEECH}
 
-	The first $(alt technique) is the use of the $(alt ..) token. When used in a path, this token means "upward one level." That means that all of the following paths are equivalent:
-	$BRCYAN
-	..
-	/foo/bar
-	/foo/bar/qux/..
-	/foo/bar/qux/../../bar
-	$SPEECH_N
-	If you want, you can look at the contents of the directory one level up from here by invoking $(spell ls ..) Another $(alt technique) is the use of the $(alt .) token. This token signifies your current directory. So right now, the following two paths are equivalent:
-	$BRCYAN
-	.
-	$(pwd)
-	$SPEECH_N
-	You may think that's not useful, but I shall show you now that it is! The last technique I have to teach you is how to $(alt execute a file). Most files cannot be executed; they just hold information, but some files can be executed as if they were spells. So how do you execute such a file? You must invoke its path using $(alt at least one directory in the path). So if the file is in your current directory, you can use the $(alt .) token. We'll look at some examples in a minute.
+	But what's a $(alt path), you ask? A $(alt path) is how people specify the location of a $(alt file) or $(alt directory). So what can we understand by looking at the path above?
 
-	First, how do you recognize which files can be executed? You can recognize them by their color, or you can run $(spell ls) with a $(spell -F) parameter. When you run $(spell ls -F), it will add a $(alt \*) symbol onto the end of files that can be executed. And it will add a $(alt \/) symbol on to the end of directories.
+	That path (and every path) is a series of directories, joined by the $(alt \/) symbol. As you move from left to right when reading a path, you are moving into deeper and deeper directories. Imagine you have a large bag which holds another bag, which holds yet another bag... and that's how you organize your belongings!
 
-	If you invoke $(spell ls -F) here, you will see:
+	$(decompose_path | tac | xargs printf "${CYAN}  %s\n" )
+	$(find "`pwd`" -maxdepth 1 -type f | sort | while read f; do printf "${RESET}  "; canpath "$f"; done)
+	${SPEECH_N}
+
+	In the list above, I've taken the trouble to colour all of the $(alt directories) cyan and all of the $(alt files) white just to demonstrate that $(alt paths) indicate the location of both $(alt files) and $(alt directories).
+
+	Well, that's half of what I have to teach you. What's left is to answer the question, after you use the $(spell ls) spell to discover people around you, how do you speak to them?
+
+	The short answer, which is all that I can give you, is to enter their name on the command line with the symbols $(alt ./) in front. For example, did you remember that there is someone in this hut named $(alt William.sh)? To talk to him, you would just enter $(spell ./William.sh) on your command line and hit $ENTER_KEY.
+
+	Here's an important matter, though: not all files can be spoken to. You can identify which files will speak to you by invoking $(spell ls -F) instead of $(spell ls). Let me invoke it now. See if you can recognize how its output differs from $(spell ls):
+
 	$RESET
-	$(ls -F)
+	Hermit.sh*
+	Shopping-list.txt
+	trunk/
+	William.sh*
 	$SPEECH
-	You can see that William, that green owl in the corner who is eyeing you carefully, can be executed. Here are a few of the ways that you can invoke William.sh:
-	$BRGREEN
-	./William.sh
-	../$(basename "$(pwd)")/William.sh
-	$(pwd)/William.sh
-	$SPEECH_N
-	Well, the last thing I have to teach you is a simple spell: $(spell pwd). It is a first-level Divination spell. If you cast it, it will show you your current location.
+
+	Did you notice that now some of the items have a $(alt \/) symbol at the end and others have a $(alt \*) symbol at the end? The $(alt \/) at the end indicates that the item is a $(alt directory). The $(alt \*) at the end indicates that the item is a $(alt file) with whom you can speak! You can see that $(alt William.sh), that green owl in the corner who is eyeing you carefully, can be spoken with.
+
+	You must understand that $(spell ls) and $(spell ls -F) are actually the same spell; the difference is only that the latter invocation has a $(alt parameter). Most spells that you learn can change their behaviour in small ways if you cast them using one or more $(alt parameters) after the spell name. But each spell interprets parameters in its own way; you will learn them gradually. For the $(spell ls) spell, the $(alt '-F') parameter means, "Show me the type of each item at this location."
+
+	$(alt Parameters) must be separated from each other and from the spell's name by a blank space. For example, if you knew a spell named $(spell cat) and wanted to give it two parameters, $(alt '-n') and $(alt Shopping-list.txt), you would cast it as:
+
+	${RESET}cat -n Shopping-list.txt${SPEECH}
 
 	Now it's time for me to rest. Good luck on your lunatick treasure hunt. You should talk to William before you go.
 
@@ -116,8 +85,6 @@ function instruction () {
 	learned 'ls -F'
 	learned 'pwd'
 	learned '(technique) execute script'
-	learned '(path element) .'
-	learned '(path element) ..'
 
 	wrap <<-EOF
 	${SPEECH}
@@ -130,15 +97,15 @@ function instruction () {
 		bash "$HOME/../data/Hermit-exercises.sh"
 	fi
 	wrap <<-EOF
-	
+
 	${RESET}.....................................
-	${SPEECH}You learnt $(spell ls -F) and $(spell pwd) and how to execute certain files.
+	${SPEECH}You learnt $(spell ls -F) and $(spell pwd) and how to speak with people.
 
-	The strange Hermit advised you to practice looking inside of his trunk by invoking $(spell ls trunk).
+	The Hermit also mentioned an invocation $(spell cat -n Shopping-list.txt). Hm... I wonder what it does?
 
-	And you should try to talk to William by invoking $(spell ./William.sh)
+	You should try to talk to William by invoking $(spell ./William.sh)
 
-	If you want the Hermit to repeat what he told you earlier, you might even talk to him again by invoking $(spell ./Hermit.sh)
+	If you want the Hermit to repeat everything he told you a moment ago, you might even talk to him again by invoking $(spell ./Hermit.sh)
 	EOF
 }
 
