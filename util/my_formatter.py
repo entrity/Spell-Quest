@@ -1,6 +1,7 @@
 import sys, re
 
-WIDTH = min(65, int(sys.argv[1]) if (len(sys.argv) > 1) else 65)
+MAX_WIDTH = 100
+WIDTH = min(MAX_WIDTH, int(sys.argv[1]) if (len(sys.argv) > 1) else MAX_WIDTH)
 HANGING_INDENT = 4
 
 class Line(object):
@@ -32,7 +33,7 @@ class Line(object):
 						count += 1
 						token = token[1:]
 					self.__print()
-			# Buffer at capacity. Print
+			# Buffer at capacity. Print and update self.color
 			if self.printlen + len(plaintext) > WIDTH:
 				self.__print()
 			# Append to buffer
@@ -43,11 +44,16 @@ class Line(object):
 		self.__print()
 
 	def __print(self):
+		global color
+		print(color, end='')
 		print(self.outbuf)
+		matches = re.findall(r'\033\[[0-9;]+m', self.outbuf)
+		if matches is not None and len(matches) > 0:
+			color = matches[-1]
 		self.lineno += 1
 		self.printlen = self.hanging_indent
 		self.outbuf = ' ' * self.hanging_indent
 
-
+color = '\033[0m'
 for line in sys.stdin:
 	Line(line.rstrip()).loop()
