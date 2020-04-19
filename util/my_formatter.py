@@ -45,7 +45,7 @@ class Line(object):
 
 	def __print(self):
 		global color
-		print(color, end='')
+		sys.stdout.write('%s' % color)
 		print(self.outbuf)
 		matches = re.findall(r'\033\[[0-9;]+m', self.outbuf)
 		if matches is not None and len(matches) > 0:
