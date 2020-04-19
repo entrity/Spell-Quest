@@ -1,6 +1,6 @@
 #!/bin/bash
 
-debug INSTALLING...
+>&2 echo INSTALLING...
 
 THISDIR=$(thisdir)
 ROOTDIR=$(canpath "$THISDIR/..")
@@ -15,18 +15,20 @@ LOCKED_DIRS=(
 )
 
 # Remove everything
-debug 'Remove everything'
+>&2 echo 'Removing any existing files...'
 for arg in "${LOCKED_DIRS[@]}"; do
-	[[ -e "$arg" ]] && chmod +wrx "$arg"
+	[[ -e "$arg" ]] && chmod +wr "$arg"
+	[[ -d "$arg" ]] && chmod +x "$arg"
 done
 find "$ROOTDIR/home" -not -writable 2>/dev/null | while read -r arg; do
-	[[ -e "$arg" ]] && chmod +wrx "$arg"
+	[[ -e "$arg" ]] && chmod +wr "$arg"
+	[[ -d "$arg" ]] && chmod +x "$arg"
 done
 [[ -e "$ROOTDIR/.lessons" ]] && rm -r "$ROOTDIR/.lessons"
 [[ -e "$ROOTDIR/home" ]] && rm -r "$ROOTDIR/home"
 
 # Make dirs
-debug '++Make dirs'
+>&2 echo 'Making directories...'
 mkdir -p "$ROOTDIR/.lessons"
 mkdir -p "$ROOTDIR/home/hut/trunk"
 mkdir -p "$ROOTDIR/home/cave/tunnel/cavern/calm-pool"
@@ -45,8 +47,9 @@ if ! [[ -e "$ROOTDIR/home" ]]; then
 fi
 
 # Copy from .backup
-debug 'Copy from backup'
+>&2 echo 'Copying from backup to home...'
 cp -r "$ROOTDIR/backup/"* "$ROOTDIR/home"
+>&2 echo 'Copying achieved'
 
 # Make .less
 if >/dev/null which lesskey; then
@@ -69,5 +72,5 @@ grep John spreadsheet.csv > John.csv
 grep '[A-Z]\{3\}' spreadsheet.csv > with-capitals.csv
 grep '[0-9]\{3\}-[0-9]\{3\}-[0-9]\{4\}' spreadsheet.csv > phone-numbers.csv
 
-debug FINISHED INSTALLATION
+>&2 echo "FINISHED INSTALLATION"
 exit 0
