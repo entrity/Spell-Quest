@@ -59,7 +59,7 @@ unset color_prompt force_color_prompt
 
 if (($RESTART)) || ! [[ -e "$__DIR__/home" ]]; then
 	debug Install
-	cd $(dirname "$BASH_SOURCE")
+	cd "$(dirname "$BASH_SOURCE")"
 	bash "util/install.sh"
 fi
 
