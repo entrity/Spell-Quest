@@ -2,7 +2,7 @@
 # Aliases
 ##############
 
-EDITOR=$(which gedit || which kate || which xed || which pluma || which nano || which geany || which atom || which /Applications/TextEdit.app/Contents/MacOS/TextEdit || which xdg-open || echo -n 'open -e')
+EDITOR=$(which gedit || which kate || which xed || which pluma || which geany || which atom || which /Applications/TextEdit.app/Contents/MacOS/TextEdit || which xdg-open || echo -n 'open -e')
 export EDITOR=$(basename "$EDITOR")
 IMAGER=$(which eog || which eom || which feh || which vlc || which /Applications/Preview.app/Contents/MacOS/Preview || which xdg-open || echo -n open)
 export IMAGER=$(basename "$IMAGER")
@@ -22,6 +22,7 @@ elif [[ $(uname) =~ Darwin ]]; then
 	OS=MACOS
 	osascript -e 'tell application "Terminal" to set current settings of front window to first settings set whose name is "Pro"'
 	export ENTER_KEY=Return
+	export EDITOR="open -e" # Forcefully set this b/c `which xed` returns true, but running xed actually requires installing Xcode tools
 
 	ENVSUBST_PATH="$(find /usr/local -name envsubst)"
 	alias envsubst="$ENVSUBST_PATH"
