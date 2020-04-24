@@ -49,7 +49,7 @@ function instruction () {
 
 	That path (and every path) is a series of directories, joined by the $(alt \/) symbol. As you move from left to right when reading a path, you are moving into deeper and deeper directories. Imagine you have a large bag which holds another bag, which holds yet another bag... and that's how you organize your belongings!
 
-	$(decompose_path | tac | xargs printf "${CYAN}  %s\n" )
+	$(decompose_path | tac | xargs -d$'\n' printf "${CYAN}  %s\n" )
 	$(find "`pwd`" -maxdepth 1 -type f | sort | while read f; do printf "${RESET}  "; canpath "$f"; done)
 	${SPEECH_N}
 
