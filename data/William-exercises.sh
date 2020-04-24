@@ -21,6 +21,11 @@ EOF
 run_exercise "cd trunk" "^cd (\"|')?trunk/?(\"|')?$" "I'm looking for just two words." "The second word should be path of the trunk, relative to our current path."
 
 wrap <<-EOF
+	${SPEECH}Alright, how would you teleport $(alt home) by use of an $(alt arcane symbol)?
+EOF
+run_exercise "cd ~" "^cd ~$"
+
+wrap <<-EOF
 	${SPEECH}Now let's just imagine that there were a directory named $(alt foo bar) here. How would you move into it? (Bear in mind that there is a blank space in the name.)
 EOF
 NO_EXEC_EXERCISE=1 run_exercise "cd \"foo bar\"" "^cd (\"|')foo bar/?(\"|')$" "You should put quotation marks around the directory name."

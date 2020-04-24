@@ -190,6 +190,10 @@ main_instruction () {
 	EOF
 	main_text) | speak
 	main_endslate
+	if prompt_no "${SPEECH}Would you like to do some exercises on what you've just been taught?"; then
+		echo "${RESET}....................................."
+		bash "$HOME/../data/Raleigh-exercises.sh"
+	fi
 }
 cleanup_checks () {
 	[[ -e Closet/broom ]] || echo $(alt '* There should be a broom in the Closet.')

@@ -47,6 +47,8 @@ First, what happens if you invoke $(spell cd) with *no* parameters? The answer i
 
 At some point, you might invoke $(spell cd) with no parameters by accident and be whisked away. It could take you a long time to prepare the spell to teleport back to where you were previously unless you know the second trick: if you cast $(spell 'cd -'), you will teleport back to whichever directory you previously occupied. (This works even if your previous invocation of $(spell cd) was *not* to your home directory.)
 
+Another way to teleport to your $(alt home) directory is the use of $(spell cd) with an arcane symbol: $(alt '~'). This symbol is an alias for $(alt home), so you could invoke $(spell 'cd ~') to teleport home or $(spell 'cd ~/hut') to teleport into this very hut!
+
 The last thing you must know before you go on your way is how to use quotation marks. Let me show you what I mean: $(spell "cd \"/User/My Documents\""). Did you notice that I put $(alt \"quotation marks\") around the path? That isn't strictly necessary in every case, but if the path contains spaces or other special characters, it becomes important. Without quotation marks, my invocation would look like this:
 
 $(spell "cd /User/My Documents")
