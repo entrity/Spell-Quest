@@ -3,7 +3,7 @@
 . "$HOME/../.start/aliases.sh"
 clear
 
-decompose_path () {
+_decompose_path () {
 	PTH="$(pwd)"
 	while [[ -n "$PTH" ]]; do
 		echo $PTH
@@ -11,6 +11,12 @@ decompose_path () {
 		PTH="${PTH%/}"
 	done
 	echo /
+}
+
+decompose_path () {
+	IFS=$'\n' _decompose_path | tac | while read -r P; do
+		xargs printf "${CYAN}  %s\n" "$P"
+	done
 }
 
 function instruction () {
@@ -49,7 +55,7 @@ function instruction () {
 
 	That path (and every path) is a series of directories, joined by the $(alt \/) symbol. As you move from left to right when reading a path, you are moving into deeper and deeper directories. Imagine you have a large bag which holds another bag, which holds yet another bag... and that's how you organize your belongings!
 
-	$(decompose_path | tac | xargs -d$'\n' printf "${CYAN}  %s\n" )
+	$(decompose_path)
 	$(find "`pwd`" -maxdepth 1 -type f | sort | while read f; do printf "${RESET}  "; canpath "$f"; done)
 	${SPEECH_N}
 
