@@ -5,7 +5,7 @@ export NO_EXEC_EXERCISE=1
 
 wrap <<-EOF
 
-	${SPEECH}Here we go. I'll ask you a few questions which might pertain to our conversation and which might require knowledge from previous conversations. Press $(alt 'Ctrl+c') at any time if you want to quit these exercises and go on your way. Ready?
+	${SPEECH}Here we go. I'll ask you a few questions which might pertain to our conversation and which might require knowledge from previous conversations. Press $(alt Ctrl)+$(alt c) at any time if you want to quit these exercises and go on your way. Ready?
 
 EOF
 

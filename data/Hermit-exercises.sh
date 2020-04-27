@@ -6,7 +6,7 @@ cd "$HOME/hut"
 
 wrap <<-EOF
 
-	${SPEECH}Here we go. I'll ask you to perform certain invocations. Press $(alt 'Ctrl+c') at any time if you want to quit these exercises and go on your way. Ready?
+	${SPEECH}Here we go. I'll ask you to perform certain invocations. Press $(alt Ctrl)+$(alt c) at any time if you want to quit these exercises and go on your way. Ready?
 
 EOF
 wrap <<-EOF
