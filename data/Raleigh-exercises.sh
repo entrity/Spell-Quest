@@ -20,27 +20,27 @@ EOF
 run_exercise "find" "^find$"
 
 wrap <<-EOF
-	${SPEECH}Okay, let's make things harder: what if we had a file $(alt myfile.txt), and you wanted to find a line in it which contained _only_ the word $(alt furor)?
+	${SPEECH}Okay, let's make things harder: what if we had a file $(alt x.txt), and you wanted to find a line in it which contained _only_ the word $(alt furor)?
 EOF
-run_exercise "grep \"^furor$\" myfile.txt" "^grep ['\"]\^furor\\\$['\"] (./)?myfile.txt\$" "Your pattern should use special the special characters $(alt \^) and $(alt \$) because your pattern is intended to specify the start and end of a line in the file." "You had better put quotation marks around your pattern because it contains special characters."
+run_exercise "grep \"^furor$\" x.txt" "^grep ['\"]\^furor\\\$['\"] (./)?x.txt\$" "Your pattern should use special the special characters $(alt \^) and $(alt \$) because your pattern is intended to specify the start and end of a line in the file." "You had better put quotation marks around your pattern because it contains special characters."
 
 wrap <<-EOF
-	${SPEECH}Here's an easier one: what if we had a file $(alt myfile.txt), and you wanted to find a line in it which ended with the word $(alt furor) but might contain additional text?
+	${SPEECH}Here's an easier one: what if we had a file $(alt x.txt), and you wanted to find a line in it which ended with the word $(alt furor) but might contain additional text?
 EOF
-run_exercise "grep 'furor$' myfile.txt" "^grep ['\"]furor\\\$['\"] (./)?myfile.txt\$" "Your pattern should _not_ use special the special character $(alt \^) because a matching line might begin with anything." "Your pattern should use special the special character $(alt \$) because a matching line must end with $(alt furor)." "You had better put quotation marks around your pattern because it contains special characters."
+run_exercise "grep 'furor$' x.txt" "^grep ['\"]furor\\\$['\"] (./)?x.txt\$" "Your pattern should _not_ use special the special character $(alt \^) because a matching line might begin with anything." "Your pattern should use special the special character $(alt \$) because a matching line must end with $(alt furor)." "You had better put quotation marks around your pattern because it contains special characters."
 
 wrap <<-EOF
-	${SPEECH}What would you invoke to search a file $(alt myfile.txt) for a line containing any character between $(alt a) and $(alt m), followed by any character between $(alt A) and $(alt M)?
+	${SPEECH}What would you invoke to search a file $(alt x.txt) for a line containing any character between $(alt a) and $(alt m), followed by any character between $(alt A) and $(alt M)?
 EOF
-run_exercise "grep '[a-m][A-M]' myfile.txt" "^grep ['\"]\[a-m\]\[A-M\]['\"] (./)?myfile.txt$" "Your pattern should use $(alt [) and $(alt ])." "Your pattern should have 2 instances of $(alt [...]) back-to-back."
+run_exercise "grep '[a-m][A-M]' x.txt" "^grep ['\"]\[a-m\]\[A-M\]['\"] (./)?x.txt$" "Your pattern should use $(alt [) and $(alt ])." "Your pattern should have 2 instances of $(alt [...]) back-to-back."
 
 wrap <<-EOF
-	${SPEECH}What would you invoke to search a file $(alt myfile.txt) for a line beginning with any character in the set $(alt a, d, q, r) and ending with any character in the set $(alt b, s, z), with any number of characters (of any type) between them?
+	${SPEECH}What would you invoke to search a file $(alt x.txt) for a line beginning with any character in the set $(alt a, d, q, r) and ending with any character in the set $(alt b, s, z), with any number of characters (of any type) between them?
 EOF
-run_exercise "grep '^[adqr].*[bsz]$' myfile.txt" "^grep ['\"]\^\[adqr\]\.\*\[bsz\]\\\$['\"] (./)?myfile.txt$" "Your pattern should have 2 instances of $(alt [...])." "Your pattern should have an instance of $(alt '.*')"
+run_exercise "grep '^[adqr].*[bsz]$' x.txt" "^grep ['\"]\^\[adqr\]\.\*\[bsz\]\\\$['\"] (./)?x.txt$" "Your pattern should have 2 instances of $(alt [...])." "Your pattern should have an instance of $(alt '.*')"
 
 
 wrap <<-EOF
-	${SPEECH}Last exercise: what would you invoke to search a file $(alt myfile.txt) for a line containing 5 characters from the set $(alt a, d, q, r) all next to each other?
+	${SPEECH}Last exercise: what would you invoke to search a file $(alt x.txt) for a line containing 5 characters from the set $(alt a, d, q, r) all next to each other?
 EOF
-run_exercise "grep '[adqr]\{5\}$' myfile.txt" "^grep ['\"]\[adqr\]\\{5\\}['\"] (./)?myfile.txt$" "Your pattern should make use of $(alt '\{...\}')."
+run_exercise "grep '[adqr]\{5\}$' x.txt" "^grep ['\"]\[adqr\]\\{5\\}['\"] (./)?x.txt$" "Your pattern should make use of $(alt '\{...\}')."
