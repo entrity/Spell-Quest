@@ -23,7 +23,7 @@ run_exercise "cd trunk" "^cd (\"|')?trunk/?(\"|')?$" "I'm looking for just two w
 wrap <<-EOF
 	${SPEECH}Alright, how would you teleport $(alt home) by use of an $(alt arcane symbol)?
 EOF
-run_exercise "cd ~" "^cd ~$"
+NO_EXEC_EXERCISE=1 run_exercise "cd ~" "^cd ~$"
 
 wrap <<-EOF
 	${SPEECH}Now let's just imagine that there were a directory named $(alt foo bar) here. How would you move into it? (Bear in mind that there is a blank space in the name.)
@@ -46,10 +46,9 @@ EOF
 NO_EXEC_EXERCISE=1 run_exercise "cd ../cave/tunnel" "^cd (\"|')?\.\./cave/tunnel/?(\"|')?$" "Your spell invocation should include only one paramter." "The first token in your parameter should be $(alt ..)"
 
 wrap <<-EOF
-	${SPEECH}What would you invoke if you wanted to quickly teleport to your $(alt home) directory?
+	${SPEECH}What would you invoke if you wanted to quickly teleport to your $(alt home) directory with a brief invocation that does _not_ use the $(alt '~') symbol?
 EOF
 run_exercise "cd" "^cd$" "Your invocation should have *zero* parameters."
-
 
 wrap <<-EOF
 	${SPEECH}What would you invoke if you wanted to quickly teleport to the last directory that you occupied?
