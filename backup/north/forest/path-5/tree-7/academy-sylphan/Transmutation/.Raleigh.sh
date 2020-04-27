@@ -216,7 +216,6 @@ cleanup () {
 
 		Talk to me again after you've fixed this mess.
 
-		$CONTINUE
 		EOF
 		) | wrap
 }
