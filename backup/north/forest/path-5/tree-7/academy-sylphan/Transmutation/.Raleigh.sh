@@ -134,12 +134,14 @@ main_text () {
 	* $(alt myfile.txt) is the input file. Any lines from this file which match my pattern will be printed. All others will be ignored.
 
 	$(spell grep) uses much more complicated patterns than $(spell find) does. There's a name for these complicated patterns: "regular expressions." Let me walk you through a the elements of my the example regular expression which I gave a moment ago:
-	
-	* When brackets ($(alt [])) appear, they mean "match *any* of the characters that appear between these brackets." So a regular expression of $(alt '^[abc]$') would match $(alt a) or $(alt b) or $(alt c) but *nothing* else!
+
+	* The $(alt '^') character means "start matching from the beginning of each input line," and $(alt '$') means "match up to the end of the input line." So $(alt '^foo') could match any line beginning with 'foo', and $(alt 'foo$') could match any line ending with 'foo', but $(alt foo) could match any line containing 'foo'.
+
+	* When brackets ($(alt [])) appear, they mean "match _one_ of any of the characters that appear between these brackets." So a regular expression of $(alt '^[abc]$') would match $(alt a) or $(alt b) or $(alt c) but *nothing* else!
 	
 	* When a $(alt '\+') follows a pair of brackets, it means "match one or more of these characters." So a regular expression of $(alt '^[abc]+$') would match $(alt a), $(alt aa) $(alt bcca), $(alt ccccc), and many more.
 	
-	* When an $(alt '*') follows a pair of brachets, it means "match zero or more of these characters." So a regular expression of $(alt '^[abc]*$') would match any of the lines that $(alt '^[abc]+$') would match, but it would also match an empty line!
+	* When an $(alt '*') follows a pair of brackets, it means "match zero or more of these characters." So a regular expression of $(alt '^[abc]*$') would match any of the lines that $(alt '^[abc]+$') would match, but it would also match an empty line!
 	
 	* The $(alt '\+') and $(alt '*') don't have to follow a pair of brackets, though. When they follow an ordinary character, they mean "match one or more (or zero or more) of this character."
 
@@ -148,8 +150,6 @@ main_text () {
 	* When curly braces $(alt '\{\}') appear, they work like a $(alt \+) or $(alt \*), except that they mean "match exactly the number of repetitions specified by the numbers inside the curly braces." For instance, $(alt '[a-z]\{4\}') means "match exactly four characters between a and z." You can actually specify multiple numbers, separated by commas or joined by a hyphen: $(alt '[a-z]\{2,4\}') means "match 2 or 4 characters between a and z," and $(alt '[a-z]\{3-5\}') means "match anywhere between 3 and 5 characters between a and z."
 	
 	* The $(alt .) character has a special meaning in a regular expression. It is a wild card which means "exactly one of any character."
-
-	* The $(alt '^') character means "start matching from the beginning of each input line," and $(alt '$') means "match up to the end of the input line." So $(alt '^foo') could match any line beginning with 'foo', and $(alt 'foo$') could match any line ending with 'foo', but $(alt foo) could match any line containing 'foo'.
 
 	With a little bit of practice, regular expressions aren't too hard to write, but they *can* be pretty difficult to read. Don't feel discouraged if you can't interpret the example I gave above.
 
