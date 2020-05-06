@@ -80,7 +80,7 @@ final_instruction () {
 
 	${CYAN}Raleigh raises a small ground-glass phial with a cork stopper before your face. You can see a dram of clear fluid in the tiny bottle. Raleigh slips it into your bag.
 
-	${SPEECH}There stands a still pool in the very back of a cave beyond the forest. You must add the contents of this bottle to the pool, but take care that you do so from *without* the cave.
+	${SPEECH}There stands a still pool in the very back of a cave beyond the forest. You must deposit this bottle into the pool, but take care that you do so from *without* the cave.
 
 	${CYAN}He gives a little shudder.
 
@@ -150,6 +150,8 @@ main_text () {
 	* When curly braces $(alt '\{\}') appear, they work like a $(alt \+) or $(alt \*), except that they mean "match exactly the number of repetitions specified by the numbers inside the curly braces." For instance, $(alt '[a-z]\{4\}') means "match exactly four characters between a and z." You can actually specify multiple numbers, separated by commas or joined by a hyphen: $(alt '[a-z]\{2,4\}') means "match 2 or 4 characters between a and z," and $(alt '[a-z]\{3-5\}') means "match anywhere between 3 and 5 characters between a and z."
 	
 	* The $(alt .) character has a special meaning in a regular expression. It is a wild card which means "exactly one of any character."
+
+	If you _aren't_ using any of the special characters, $(spell grep) will just look for the exact thing in your $(alt '""').
 
 	With a little bit of practice, regular expressions aren't too hard to write, but they *can* be pretty difficult to read. Don't feel discouraged if you can't interpret the example I gave above.
 

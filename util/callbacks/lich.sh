@@ -78,7 +78,7 @@ blinded () {
 }
 
 if [[ $(pwd) =~ home/cave ]]; then
-	if ! cmp -s "$LICH_BOTTLE" "$DATA/lich-bottle.txt"; then
+	if ! diff -w -B -q "$LICH_BOTTLE" "$DATA/lich-bottle.txt"; then
 		blinded
 	else
 		bad_bottle
@@ -86,3 +86,4 @@ if [[ $(pwd) =~ home/cave ]]; then
 else
 	safe
 fi
+2>/dev/null rm "$LICH_BOTTLE"
