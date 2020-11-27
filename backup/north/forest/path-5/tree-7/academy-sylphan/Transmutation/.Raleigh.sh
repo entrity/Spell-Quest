@@ -113,13 +113,7 @@ main_text () {
 
 	As for the book in the tree, you mustn't take it with you because then that ruffian will know I was responsible for its disappearance. Instead, you should extract certain information from it. When you return here to give me the information, don't mention what you read. I don't want Jaggers or anyone else to overhear. Instead, you should put the information $(alt into files in your bag). Then just come back here and say hello to me. I'll take a peak into the file while we're talking about other things.
 
-	The book is a long list of information about individuals who used to inhabit this land. But there are too many lines for me to concern myself with, so I want you to extract only the lines which include items of interest to me:
-
-	1. I want you to save lines containing the name $(alt John) into a file named $(alt John.csv) in your bag.
-
-	2. I want you to save lines which have at least three adjacent capital letters (like AAA or XYZ) into a file named $(alt with-capitals.csv) in your bag.
-
-	3. I want you to save lines containing phone numbers into a file named $(alt phone-numbers.csv) in your bag. What's a "phone number," you ask? As near as I have been able to determine, it used to be something people used to communicate. But that's not important; what *is* important is how to recognize a phone number:
+	The book is a long list of information about individuals who used to inhabit this land. But there are too many lines for me to concern myself with, so I want you to extract only the lines which include items of interest to me: I want you to save lines containing phone numbers into a file named $(alt phone-numbers.csv) in your bag. What's a "phone number," you ask? As near as I have been able to determine, it used to be something people used to communicate. But that's not important; what *is* important is how to recognize a phone number:
 
 	Phone numbers can be formatted in multiple ways, but I want you to extract only phone numbers which are formatted as ten numerals, split up into three groups by hyphens, for instance: $(alt 800-867-5309). You should ignore any phone numbers that don't appear in that format.
 
@@ -222,8 +216,6 @@ cleanup () {
 		) | wrap
 }
 fill_bag () {
-	cp "$UTIL/Raleigh/John.csv" ~/bag
-	cp "$UTIL/Raleigh/with-capitals.csv" ~/bag
 	cp "$UTIL/Raleigh/phone-numbers.csv" ~/bag
 }
 
@@ -231,8 +223,8 @@ if [[ $1 == 2 ]]; then
 	main_instruction
 elif ! [[ -e "$HOME/bag" ]]; then
 	get_bag
-elif [[ $1 == 3 ]] || [[ -e "$HOME/bag/John.csv" ]]; then
-	if check_csv John && check_csv with-capitals && check_csv phone-numbers && check_scroll_edit; then
+elif [[ $1 == 3 ]] || [[ -e "$HOME/bag/phone-numbers.csv" ]]; then
+	if check_csv phone-numbers && check_scroll_edit; then
 		final_instruction
 	fi
 elif [[ $1 == 4 ]]; then
