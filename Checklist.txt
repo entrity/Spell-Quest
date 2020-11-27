@@ -1,0 +1,59 @@
+Checklist
+----------------------------
+
+- [ ] mv | lv 1 Transmutation | Fletcher
+- [ ] rm | lv 1 Transmutation | Gatekeeper
+- [ ] rmdir | lv 1 Transmutation
+- [ ] chmod | lv 1 Transmutation | Primus
+- [ ] cut | lv 2 Transmutation | Carpenter
+- [ ] sort | lv 2 Transmutation
+- [ ] head | lv 2 Transmutation | Goblin Chamberlain, Tertius
+- [ ] tail | lv 2 Transmutation | Goblin Chamberlain, Tertius
+- [ ] sed | lv 3 Transmutation | Gnome
+- [ ] cd | lv 1 Teleportation | William
+- [ ] ln | lv 1 Teleportation | Gatekeeper
+- [ ] mv | lv 1 Teleportation | Fletcher
+- [ ] ssh | lv 3 Teleportation | Garamont
+- [ ] scp | lv 3 Teleportation | Slime
+- [ ] sftp | lv 3 Teleportation | Slime
+- [ ] sshfs | lv 3 Teleportation | Slime
+- [ ] ls | lv 1 Divination | Hermit, Gatekeeper
+- [ ] pwd | lv 1 Divination | Hermit
+- [ ] cat | lv 1 Divination | Gumpy
+- [ ] man | lv 1 Divination | Goblin Page
+- [ ] read | lv 1 Divination | Tertius
+- [ ] find | lv 2 Divination | Theo
+- [ ] grep | lv 2 Divination | Raleigh, Plumber, Goblin Chamberlain
+- [ ] stat | lv 2 Divination | Primus
+- [ ] less | lv 2 Divination | Goblin Page
+- [ ] mkdir | lv 1 Conjuration | Jaggers
+- [ ] curl | lv 1 Conjuration | Wyvern
+- [ ] wget | lv 1 Conjuration | Wyvern
+- [ ] seq | lv 1 Conjuration | Goblin King
+- [ ] cp | lv 1 Conjuration | Goblin Chef
+- [ ] echo | lv 1 Illusion | Gumpy, Secundus
+- [ ] alias | lv 1 Illusion | Man at Arms
+- [ ] printf | lv 1 Illusion | Mermaid, Secundus
+- [ ] base64 | lv 1 Obfuscation | Lich
+- [ ] openssl | lv 2 Obfuscation | Etzel
+- [ ] gpg | lv 3 Obfuscation | Azriel and Flavius
+- [ ] type | lv 1 | Divination | Man at Arms
+- [ ] xxd | lv 3 | Divination | Secundus
+- [ ] escape character | Technique | Imp
+- [ ] tab-completion | Technique | Imp
+- [ ] pipe `|` | Technique | Plumber
+- [ ] redirects `>>`, `>`, `<`, `<<<` | Technique | Gumpy, Blacksmith
+- [ ] `for` loops | Technique | Goblin King
+- [ ] `while` loops | Technique | Blacksmith
+- [ ] `if ...; then ...; fi` | Technique
+- [ ] `.`/`..`/`~` | Technique | Jaggers
+- [ ] variables | Technique | Man at Arms
+- [ ] regular expressions | Technique
+- [ ] capturing groups with `sed` | Technique | Goblin Chef
+- [ ] subshell | Technique | Goblin King
+- [ ] sourcing | Technique | Man at Arms
+- [ ] execute script | Technique | Hermit
+- [ ] bash scripts | Technique | Blacksmith
+- [ ] Ctrl+c | Technique | Blacksmith
+- [ ] ascii | Lore | Secundus
+- [ ] regex patterns | Technique, Lore | Raleigh, Goblin Butler
