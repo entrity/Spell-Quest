@@ -18,7 +18,7 @@
 3. Look inside the newly extracted `Spell-Quest-master` folder.
 4. Two-finger click the `start.command` file (or on the `restart.command` file if you want to restore your game from the beginning.)
 5. Select 'Open' from the newly opened context menu.
-6. This will open a terminal running the Spell-Quest game. Start reading the instructions! (Use the arrow keys or <kbd>u</kbd>/<kbd>d</kbd> to move up and down)
+6. This will open a terminal running the Spell-Quest game. Start reading the instructions! (Press <kbd>Cmd</kbd>+<kbd>+</kbd> to increase the size of the window. Use the arrow keys or <kbd>u</kbd>/<kbd>d</kbd> to move up and down.)
 
 ### Running on Windows
 
